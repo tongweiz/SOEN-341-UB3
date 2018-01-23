@@ -2,6 +2,6 @@
 
 Clone this repo, create a new branch and add your name below.
 
-## Team membbers
+## Team members
 
 * Tongwei Zhang
