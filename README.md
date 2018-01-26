@@ -24,6 +24,7 @@ asked with all its information attached to it and all the answers they gave to o
 * Tongwei Zhang
 * Eloy Tripetujen
 * Irina Patrocinio Frazao
+* Dmytro Semenov
 
 ## Techologies
 
