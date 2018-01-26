@@ -26,6 +26,7 @@ asked with all its information attached to it and all the answers they gave to o
 * Irina Patrocinio Frazao
 * Dmytro Semenov
 * Alireza Karimi
+* Vibha Verma
 
 ## Techologies
 
