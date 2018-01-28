@@ -31,6 +31,7 @@ asked with all its information attached to it and all the answers they gave to o
 ## Techologies
 
 * Laravel (web framework)
+* Composer (dependency manager)
 * PHP (main coding language for back-end development)
 * Bootstrap (HTML, CSS and JS library for front-end development) 
 * XAMPP (web server to host website locally and database manager to have a local database)
