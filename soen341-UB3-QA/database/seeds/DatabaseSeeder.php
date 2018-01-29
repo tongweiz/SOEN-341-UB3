@@ -9,8 +9,13 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+    //php artisan db:seed
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('users')->insert([
+            'name' => 'user1',
+            'email' => 'user1@gmail.com',
+            'password' => bcrypt('user1'),
+        ]);
     }
 }
