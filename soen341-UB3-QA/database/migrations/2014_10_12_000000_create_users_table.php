@@ -11,6 +11,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+    // to run code and create database locally, use "php artisan migrate" in command line in workspace
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
