@@ -19,6 +19,8 @@ The extra feature that we decided to add is to have a user page. The user page w
 user to find all the relevant information for him. On that user page, they will find all the questions they previously 
 asked with all its information attached to it and all the answers they gave to other user's questions.
 
+A search feature will also be available in the header to search thrpugh all the questions that were asked on the website.
+
 ## Team members
 
 * Tongwei Zhang
