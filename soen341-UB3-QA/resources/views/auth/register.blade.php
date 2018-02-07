@@ -1,13 +1,37 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Home - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog-home.css" rel="stylesheet">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+</head>
+<body>
+
+@include('header')
+<script src="{{ asset('js/app.js') }}"></script>)
+
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+        <div class="col-md-8 col-md-offset-2" style="margin-left: 20%; ">
+            <div class="panel panel-default card my-4">
+                <div class="panel-heading card-header">Register</div>
 
-                <div class="panel-body">
+                <div class="panel-body card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -74,4 +98,15 @@
         </div>
     </div>
 </div>
-@endsection
+
+<!-- Footer -->
+@include('footer')
+
+<!-- Bootstrap core JavaScript -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+
