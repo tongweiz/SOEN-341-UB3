@@ -17,7 +17,6 @@
     <link href="/css/blog-home.css" rel="stylesheet">
 
 </head>
-
 <body>
 
 <!-- Navigation -->
