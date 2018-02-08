@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>Asking Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -32,26 +32,23 @@
         <div class="col-lg-8">
 
             <!-- Title -->
-            <h1 class="mt-4">Ask a new question!</h1>
-
-            <!-- Author -->
-            <p class="lead">
-                by
-                <a href="#">Start Bootstrap</a>
-            </p>
-
-            <hr>
-
-            <!-- Date/Time -->
-            <p>Posted on January 1, 2018 at 12:00 PM</p>
+            <h1 class="mt-4">Have a question? Ask below!</h1>
 
             <!-- Comments Form -->
             <div class="card my-4">
-                <h5 class="card-header">Leave a Comment:</h5>
                 <div class="card-body">
                     <form>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <h4 class="mt-4">Title:</h4>  
+                            <textarea class="form-control" rows="1"></textarea>
+                        </div> 
+                    </form>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <h4 class="mt-4">Contents:</h4>  
+                            <textarea class="form-control" rows="10"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

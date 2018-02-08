@@ -23,7 +23,7 @@
 <body>
 
 @include('header')
-<script src="{{ asset('js/app.js') }}"></script>)
+<script src="{{ asset('js/app.js') }}"></script>
 
 <div class="container">
     <div class="row">
