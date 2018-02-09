@@ -149,7 +149,7 @@
             
             
                 <div>
-                    <a href="" class="btn btn-primary">Ask  Question!</a>
+                    <a href="http://localhost:8000/ask" class="btn btn-primary">Ask  Question!</a>
                 </div>
             
         </div>
