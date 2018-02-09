@@ -146,12 +146,15 @@
                     You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
                 </div>
             </div>
-            
-            
-                <div>
-                    <a href="" class="btn btn-primary">Ask  Question!</a>
-                </div>
-            
+
+
+            <div>
+                <a href="" class="btn btn-primary">Ask  Question!</a>
+            </div>
+            <br />
+            <div>
+                <a href="/question" class="btn btn-primary">Question Page link</a>
+            </div>
         </div>
 
     </div>
