@@ -148,10 +148,13 @@
             </div>
             
             
-                <div>
-                    <a href="http://localhost:8000/ask" class="btn btn-primary">Ask  Question!</a>
-                </div>
+            <div>
+                <a href="http://localhost:8000/ask" class="btn btn-primary">Ask  Question!</a>
+            </div>
             
+            <div>
+                <a href="/question" class="btn btn-primary">Question Page link</a>
+            </div>
         </div>
 
     </div>
