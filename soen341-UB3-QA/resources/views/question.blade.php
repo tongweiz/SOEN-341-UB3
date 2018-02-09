@@ -33,8 +33,8 @@
             <div class="col-lg-8">
 
                 <!-- Title -->
-                <h2 class="mt-4" id="question-title">Can (a==1 && a==2 && a==3) evaluate to true in Java?
-                </h2>
+                <h1 class="mt-4" id="question-title">Can (a==1 && a==2 && a==3) evaluate to true in Java?
+                </h1>
 
                 <table class="table">
                     <tbody>
