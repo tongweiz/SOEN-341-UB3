@@ -18,8 +18,10 @@ The only thing that the user can do while being logged off is to view the questi
 The extra feature that we decided to add is to have a user page. The user page will be an easy way for a frequent
 user to find all the relevant information for him. On that user page, they will find all the questions they previously 
 asked with all its information attached to it and all the answers they gave to other user's questions.
+Another extra feature will be to have user-defined labels attached to questions and all users will be able to
+sort through the bank of questions by those labels.
 
-A search feature will also be available in the header to search thrpugh all the questions that were asked on the website.
+A search feature will also be available in the header to search through all the questions that were asked on the website.
 
 ## Team members
 
@@ -37,4 +39,5 @@ A search feature will also be available in the header to search thrpugh all the 
 * PHP (main coding language for back-end development)
 * Bootstrap (HTML, CSS and JS library for front-end development) 
 * XAMPP (web server to host website locally and database manager to have a local database)
+* TravisCI (testing management framework)
 
