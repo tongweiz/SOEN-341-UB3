@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Answer;
+use App\reply;
 use Illuminate\Routing\UrlGenerator;
 
 class ReplyController extends Controller
@@ -19,7 +17,6 @@ class ReplyController extends Controller
     {
         //
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +26,6 @@ class ReplyController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -42,19 +38,20 @@ class ReplyController extends Controller
             'body' => 'required'
         ]);
 		
-		$qid = NULL;		//PLACE QUESTION ID HERE
-
+		$qid = 1;		//PLACE QUESTION ID HERE
         if(Auth::check()) {
-			$reply = new Answer;
+			$reply = new reply;
 			$reply->question_id = $qid;
 			$reply->user_id = Auth::id();
-			$reply->body = request('body');
+			$reply->content = request('body');
+			$reply->likectr = 0;
+			$reply->dislikectr = 0;
+			$reply->status = 0;
 		
 			$reply->save();
 		}
-		return redirect("details/$qid");
+		return redirect("question/$qid");
     }
-
     /**
      * Display the specified resource.
      *
@@ -65,7 +62,6 @@ class ReplyController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -76,7 +72,6 @@ class ReplyController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -88,7 +83,6 @@ class ReplyController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
