@@ -49,6 +49,8 @@ class ReplyController extends Controller
 			$reply->question_id = $qid;
 			$reply->user_id = Auth::id();
 			$reply->body = request('body');
+		
+			$reply->save();
 		}
 		return redirect("details/$qid");
     }
