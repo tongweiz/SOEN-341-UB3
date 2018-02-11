@@ -10,7 +10,6 @@ class reply extends Model
     {
         return $this->belongsTo('app\Users');
     }
-
     public function questions()
     {
         return $this->belongsTo('app\Questions');
