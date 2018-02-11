@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 */
 
-Route::get('/', function () {
+
+//home page
+Route::get('/', array('as' => 'welcome', function()
+{
     return view('welcome');
-});
+}));
+
 
 Route::get('/details', function () {
     return view('details');
@@ -29,3 +33,5 @@ Route::get('/question', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+?>
