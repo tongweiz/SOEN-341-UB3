@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\reply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Answer;
+use Illuminate\Routing\UrlGenerator;
 
 class ReplyController extends Controller
 {
@@ -35,7 +38,21 @@ class ReplyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$this->validate(request(), [
+            'body' => 'required'
+        ]);
+		
+		$qid = NULL;		//PLACE QUESTION ID HERE
+
+        if(Auth::check()) {
+			$reply = new Answer;
+			$reply->question_id = $qid;
+			$reply->user_id = Auth::id();
+			$reply->body = request('body');
+		
+			$reply->save();
+		}
+		return redirect("details/$qid");
     }
 
     /**

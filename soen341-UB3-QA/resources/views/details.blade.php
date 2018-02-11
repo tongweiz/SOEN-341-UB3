@@ -154,9 +154,10 @@
             <div class="card my-4">
                 <h5 class="card-header">Leave a Comment:</h5>
                 <div class="card-body">
-                    <form>
+                    <form method="POST" action="/reply">
+						{{ csrf_field() }}
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea name="body" class="form-control" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

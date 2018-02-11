@@ -14,9 +14,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/details', function () {
-    return view('details');
-});
+Route::get('/question/{id}', 'QuestionController@index');
 
 Route::get('/ask', function () {
     return view('ask');
@@ -25,6 +23,8 @@ Route::get('/ask', function () {
 Route::get('/question', function () {
     return view('question');
 });
+
+Route::resource('/reply', 'ReplyController');
 
 Auth::routes();
 
