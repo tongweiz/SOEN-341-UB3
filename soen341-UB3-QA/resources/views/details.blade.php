@@ -36,43 +36,25 @@
         <div class="col-lg-8">
 
             <!-- Title -->
-            <h1 class="mt-4">Can (a==1 && a==2 && a==3) evaluate to true in Java?</h1>
+            <h1 class="mt-4">{{$info['question']->title}}</h1>
 
             <!-- Author -->
             <p class="lead">
                 by
-                <a href="#">User #123123</a>
+                <a href="#">User #{{$info['question']->user_id}}</a>
             </p>
 
             <hr>
 
             <!-- Date/Time -->
-            <p>Posted on January 1, 2018 at 12:00 PM</p>
+            <p>Posted on {{$info['question']->created_at}}</p>
 
             <hr>
             <table class="table" style="background-color: #FAFAFA;">
                 <tbody>
                     <tr class="question" >
                         <td width=70%>
-                            <p>We know it can in JavaScript.<br />
-
-                                But is it possible to print "Success" message on the condition given below in Java?<br />
-                                <code>
-                                    if (a==1 && a==2 && a==3) {<br />
-                                        System.out.println("Success");<br />
-                                    }<br />
-                                </code>
-                                Someone suggested:<br />
-                                <code>
-                                    int _a = 1;<br />
-                                    int a  = 2;<br />
-                                    int a_ = 3;<br />
-                                    if (_a == 1 && a == 2 && a_ == 3) {<br />
-                                        System.out.println("Success");<br />
-                                    }<br />
-                                </code>
-                                But by doing this we are changing the actual variable. Is there any other way?<br />
-                            </p>
+                            {{$info['question']->content}}
                         </td>
                         <td class="rating" style="vertical-align:middle; "  width=15%>
                             <div style="color:teal; float:left; margin: 0 40% 0 50%;">
@@ -98,10 +80,12 @@
             </p>
             <table class="answers table" width=100% style="background-color: #FAFAFA;">
                 <tbody>
+					@if(count($info['replies']) > 0)
+						@foreach($info['replies'] as $reply)
                     <tr class="answer">
                         <td class="answer-text" width=70%>
                             <p>
-                                I HAVE A SOLUTION FOR YOU!
+							{{$reply->content}}
                             </p>
                         </td>
                         <td class="rating" style="vertical-align:middle; "  width=15%>
@@ -122,30 +106,10 @@
                             <i class="fa fa-check-circle"></i>
                         </td>
                     </tr>
-                    <tr class="answer">
-                        <td class="answer-text">
-                            <p>
-                                I have the wrong answer for you
-                            </p>
-                        </td>
-                        <td class="rating" style="vertical-align:middle; "  width=15%>
-                            <div style="color:teal; float:left; margin: 0 50% 0 50%;">
-                                <a href="#">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i></span> 7
-                                </a>
-                            </div>
-                            <br />
-                            <div style="color:teal; float:left; margin: 0 50% 0 50%;">
-                                <a href="#">
-                                    <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i> 2
-                                </a>
-                            </div>
-                        </td>
-                        <!--<td class="w3-padding w3-xlarge w3-teal" style="vertical-align:middle; ">-->
-                        <td class="w3-padding w3-xlarge w3-text-red" style="vertical-align:middle; ">
-                            <i class="fa fa-times"></i>
-                        </td>
-                    </tr>
+					@endforeach
+					@else
+						<p>No comments</p>
+					@endif
                 </tbody>
             </table>
             <hr>
@@ -154,7 +118,7 @@
             <div class="card my-4">
                 <h5 class="card-header">Leave a Comment:</h5>
                 <div class="card-body">
-                    <form method="POST" action="/reply">
+                    <form method="POST" action="/reply/{{$info['question']->id}}">
 						{{ csrf_field() }}
                         <div class="form-group">
                             <textarea name="body" class="form-control" rows="3"></textarea>

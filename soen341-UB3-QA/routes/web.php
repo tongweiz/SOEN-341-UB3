@@ -11,10 +11,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/question/{id}', 'QuestionController@index');
+Route::get('question/{id}', 'QuestionController@show');
 Route::get('/ask', function () {
     return view('ask');
 });
-Route::resource('/reply', 'ReplyController');
+Route::post('/reply/{id}', 'ReplyController@store');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

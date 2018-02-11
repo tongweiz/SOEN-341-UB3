@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\question;
+use App\Reply;
 use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
@@ -38,9 +39,11 @@ class QuestionController extends Controller
      * @param  \App\question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(question $question)
+    public function show($id)
     {
-        //
+		$question = Question::find($id);
+		$replies = Reply::where('question_id', $id)->get();
+        return view('details')->with('info', ['question'=>$question, 'replies'=>$replies]);
     }
     /**
      * Show the form for editing the specified resource.

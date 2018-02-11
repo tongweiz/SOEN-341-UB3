@@ -32,13 +32,13 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
 		$this->validate(request(), [
             'body' => 'required'
         ]);
 		
-		$qid = 1;		//PLACE QUESTION ID HERE
+		$qid = $id;
         if(Auth::check()) {
 			$reply = new reply;
 			$reply->question_id = $qid;
