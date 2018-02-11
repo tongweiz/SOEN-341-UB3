@@ -151,7 +151,7 @@
             </div>
             <br />
             <div>
-                <a href="/details" class="btn btn-primary">Question Page link</a>
+                <a href="/question" class="btn btn-primary">Question Page link</a>
             </div>
         </div>
 
