@@ -32,43 +32,16 @@
 
             <h1 class="my-4"> <small> Discover User Questions! </small> </h1>
 
-            <!-- Blog Post -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">Replace this by the Title of an awesome question in the database!</h4> </br>
-                    <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            <!-- Question Post -->
+            @foreach($question_data as $key => $data)
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title">{{$data->title}}</h4> </br>
+                        <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted"> Posted on  {{$data->updated_at}} by {{$data->name}}</div>
                 </div>
-                <div class="card-footer text-muted">
-                    Posted on CREATED QUESTION DATE by
-                    <a >USER NAME</a>
-                </div>
-            </div>
-
-            <!-- Blog Post -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">Replace this by the Title of another cool question in the database!</h4> </br>
-                    <a href="#" class="btn btn-primary">Read More &rarr;</a>
-                </div>
-                <div class="card-footer text-muted">
-                    Posted on CREATED QUESTION DATE by
-                    <a >USER NAME</a>
-                </div>
-            </div>
-
-            <!-- Blog Post -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Replace this by the Title of a final epic question in the database!
-                        (add as many or as few as needed depending on data)</h4> </br>
-                    <a href="#" class="btn btn-primary">Read More &rarr;</a>
-                </div>
-                <div class="card-footer text-muted">
-                    Posted on CREATED QUESTION DATE by
-                    <a >USER NAME</a>
-                </div>
-            </div>
+            @endforeach
 
             <!-- Pagination (TO IMPLEMENT IF WE HAVE TIME)-->
             <ul class="pagination justify-content-center mb-4">
@@ -96,7 +69,6 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
-
 
 </body>
 

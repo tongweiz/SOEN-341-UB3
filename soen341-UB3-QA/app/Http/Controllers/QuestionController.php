@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
@@ -14,7 +16,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $question_data = DB::table('questions')->join('users','users.id','=','questions.user_id')->get();
+
+        return view('welcome', ['question_data' => $question_data]);
     }
 
     /**

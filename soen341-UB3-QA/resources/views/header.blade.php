@@ -35,14 +35,14 @@
 
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="font-size: 20px">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu ">
-                                    <li> <a style="color: #212529; padding: 10px" href="#">History </a></li>
+                                    <li> <a style="color: #212529; font-size: 20px; padding: 10px" href="#">History </a></li>
                                     <li>
-                                        <a style="color: #212529; padding: 10px" href="{{ route('logout') }}"
+                                        <a style="color: #212529; padding: 10px; font-size: 20px;" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
