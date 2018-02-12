@@ -12,7 +12,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('details');
+        //
     }
     /**
      * Show the form for creating a new resource.
@@ -43,7 +43,7 @@ class QuestionController extends Controller
     {
 		$question = Question::find($id);
 		$replies = Reply::where('question_id', $id)->get();
-        return view('details')->with('info', ['question'=>$question, 'replies'=>$replies]);
+        return view('question')->with('info', ['question'=>$question, 'replies'=>$replies]);
     }
     /**
      * Show the form for editing the specified resource.
