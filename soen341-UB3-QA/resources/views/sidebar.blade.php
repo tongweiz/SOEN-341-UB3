@@ -21,10 +21,10 @@
 
     <!-- Asking Question sidebar -->
     <div class="card my-4">
-        <h5 class="card-header">Feeling Confused?</h5>
+        <h5 class="card-header">Have a Question of your own?</h5>
         <div class="card-body">
             <div>
-                <a href="http://localhost:8000/ask" class="btn btn-primary">Ask a Question!</a>
+                <a href="http://localhost:8000/ask" class="btn btn-primary">Ask it here!</a>
             </div>
         </div>
     </div>

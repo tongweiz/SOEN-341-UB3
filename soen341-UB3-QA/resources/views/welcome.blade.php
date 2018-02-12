@@ -30,53 +30,47 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-            <h1 class="my-4">Page Heading
-                <small>Secondary Text</small>
-            </h1>
+            <h1 class="my-4"> <small> Discover User Questions! </small> </h1>
 
             <!-- Blog Post -->
             <div class="card mb-4">
-                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
-                    <h2 class="card-title">Post Title</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                    <h4 class="card-title">Replace this by the Title of an awesome question in the database!</h4> </br>
                     <a href="#" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
-                    Posted on January 1, 2017 by
-                    <a href="#">Start Bootstrap</a>
+                    Posted on CREATED QUESTION DATE by
+                    <a >USER NAME</a>
                 </div>
             </div>
 
             <!-- Blog Post -->
             <div class="card mb-4">
-                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
-                    <h2 class="card-title">Post Title</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                    <h4 class="card-title">Replace this by the Title of another cool question in the database!</h4> </br>
                     <a href="#" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
-                    Posted on January 1, 2017 by
-                    <a href="#">Start Bootstrap</a>
+                    Posted on CREATED QUESTION DATE by
+                    <a >USER NAME</a>
                 </div>
             </div>
 
             <!-- Blog Post -->
             <div class="card mb-4">
-                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
-                    <h2 class="card-title">Post Title</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                    <h4 class="card-title">
+                        Replace this by the Title of a final epic question in the database!
+                        (add as many or as few as needed depending on data)</h4> </br>
                     <a href="#" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
-                    Posted on January 1, 2017 by
-                    <a href="#">Start Bootstrap</a>
+                    Posted on CREATED QUESTION DATE by
+                    <a >USER NAME</a>
                 </div>
             </div>
 
-            <!-- Pagination -->
+            <!-- Pagination (TO IMPLEMENT IF WE HAVE TIME)-->
             <ul class="pagination justify-content-center mb-4">
                 <li class="page-item">
                     <a class="page-link" href="#">&larr; Older</a>
