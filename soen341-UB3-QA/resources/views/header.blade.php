@@ -6,7 +6,7 @@
     <div class="container">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a href="{{ route('welcome') }}"> <img src="{{asset('assets/jux_logo.png')}}"> </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,12 +15,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
+                    <a class="nav-link" href="#" style="font-size: 20px">Home
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
         </div>
@@ -33,8 +30,8 @@
                         <ul class="nav navbar-nav navbar-right">
 
                         @guest
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            <a class="nav-link" style="font-size: 20px" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link" style="font-size: 20px" href="{{ route('register') }}">Register</a>
 
                         @else
                             <li class="dropdown">
