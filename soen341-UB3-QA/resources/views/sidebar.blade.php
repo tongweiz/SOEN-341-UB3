@@ -24,7 +24,7 @@
         <h5 class="card-header">Have a Question of your own?</h5>
         <div class="card-body">
             <div>
-                <a href="http://localhost:8000/ask" class="btn btn-primary">Ask it here!</a>
+                <a href="{{ route('ask') }}" class="btn btn-primary">Ask it here!</a>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
 
     <!-- ONLY HERE IN THE MEANTIME THAT HOME PAGE IS NOT DONE -->
     <div>
-        <a href="/details" class="btn btn-primary">Question Page link</a>
+        <a href="{{ route('details') }}" class="btn btn-primary">Question Page link</a>
     </div>
 </div>
 
