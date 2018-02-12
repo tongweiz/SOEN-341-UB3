@@ -13,6 +13,7 @@
 
 //home page
 Route::get('/', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
+
 Route::get('/home', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
 
 Route::get('/details', array('as' => 'details', function () {
