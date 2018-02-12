@@ -1,0 +1,14 @@
+language: php
+
+php:
+- 7.1.9
+
+before_script:
+- cd soen341-UB3-QA
+- composer self-update
+- composer install --no-interaction
+- cp .env.example .env
+- php artisan key:generate
+
+script:
+- vendor/bin/phpunit
