@@ -1,7 +1,5 @@
 # SOEN-341-UB3
 
-[![Build Status](https://travis-ci.org/Alex44711/SOEN-341-UB3.svg?branch=master)](https://travis-ci.org/Alex44711/SOEN-341-UB3)
-
 ## Objective
 
 Develop a questions and answers website for the project component of SOEN 341.
