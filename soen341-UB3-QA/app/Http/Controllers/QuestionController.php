@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\question;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
 
 class QuestionController extends Controller
 {
@@ -17,6 +17,19 @@ class QuestionController extends Controller
     public function index()
     {
         $question_data = DB::table('questions')->join('users','users.id','=','questions.user_id')->get();
+
+        return view('welcome', ['question_data' => $question_data]);
+    }
+
+    //search function of home page
+    public function search()
+    {
+        //user input taken from search form
+        $search = Request::get('search');
+
+        //taking all the questions that have the search term in their title
+        $question_data = Question::where('title', 'LIKE', '%'.$search.'%')
+            ->join('users','users.id','=','questions.user_id')->get();
 
         return view('welcome', ['question_data' => $question_data]);
     }
