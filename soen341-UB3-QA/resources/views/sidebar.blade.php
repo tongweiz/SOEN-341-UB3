@@ -10,12 +10,15 @@
     <div class="card my-4">
         <h5 class="card-header">Search </h5>
         <div class="card-body">
+            {!! Form::open(['url' => 'home']) !!}
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
+                {!! Form::text('search', '', array('class'=>'form-control',
+                    'style'=>'margin-right:10px;', 'placeholder'=>'Search for...')) !!}
                 <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
+                    {!! Form::submit('Go!', ['class' => 'btn btn-secondary']) !!}
                 </span>
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
 
