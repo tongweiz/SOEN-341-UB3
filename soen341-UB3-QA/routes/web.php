@@ -10,23 +10,26 @@
 | contains the "web" middleware group. Now create something great!
 */
 
-//home page
+//home page with question listing
 Route::get('/', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
-
 Route::get('/home', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
 
 //home page search
 Route::post('/home', array('as' => 'welcome', 'uses' => 'SearchController@search'));
 
+//to get to ask page and store new question
 Route::post('/ask', 'QuestionController@store');
-
 Route::get('/ask', array('as' => 'ask', function () {
     return view('ask');
 }));
 
-Route::get('/question/{id}', 'QuestionController@show');
+//to show question page of a specific question
+Route::get('/question/{id}', array('as' => 'question', 'uses' => 'QuestionController@show'));
+
+//to store reply to questions
 Route::post('/reply/{id}', 'ReplyController@store');
 
+//login, register
 Auth::routes();
 
 ?>
