@@ -25,9 +25,10 @@ Route::get('/ask', array('as' => 'ask', function () {
     return view('ask');
 }));
 
-Route::get('/question', array('as' => 'question', function () {
+Route::get('/question/{q_id}', array('as' => 'question', function () {
     return view('question');
 }));
+
 
 Auth::routes();
 
