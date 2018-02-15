@@ -24,10 +24,19 @@ Route::get('/ask', array('as' => 'ask', function () {
 }));
 
 //to show question page of a specific question
-Route::get('/question/{id}', array('as' => 'question', 'uses' => 'QuestionController@show'));
+Route::get('/question/{id}', 'QuestionController@show');
 
 //to store reply to questions
-Route::post('/reply/{id}', 'ReplyController@store');
+Route::post('/question/reply/{id}', 'ReplyController@store');
+
+//to like or dislike a reply
+Route::get('/question/like/{id}', 'LikeController@like');
+Route::get('/question/dislike/{id}', 'LikeController@dislike');
+
+//to accept, reject or normalize a reply
+Route::get('/question/accept/{id}', 'LikeController@accept');
+Route::get('/question/reject/{id}', 'LikeController@reject');
+Route::get('/question/normalize/{id}', 'LikeController@normalize');
 
 //login, register
 Auth::routes();

@@ -75,7 +75,8 @@ class QuestionController extends Controller
     {
 		$question = Question::find($id);
 		$replies = Reply::where('question_id', $id)->get();
-        return view('question')->with('info', ['question'=>$question, 'replies'=>$replies]);
+		$qOwner = ($question->user_id == Auth::id());
+        return view('question')->with('info', ['question'=>$question, 'replies'=>$replies, 'qOwner'=>$qOwner]);
     }
 
     /**
