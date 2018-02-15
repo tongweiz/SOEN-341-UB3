@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\question;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class QuestionController extends Controller
 {
@@ -21,27 +25,17 @@ class QuestionController extends Controller
         return view('welcome', ['question_data' => $question_data]);
     }
 
-    //search function of home page
-    public function search()
-    {
-        //user input taken from search form
-        $search = Request::get('search');
 
-        //taking all the questions that have the search term in their title
-        $question_data = Question::where('title', 'LIKE', '%'.$search.'%')
-            ->join('users','users.id','=','questions.user_id')->get();
-
-        return view('welcome', ['question_data' => $question_data]);
-    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-        //
+       //
     }
 
     /**
@@ -52,7 +46,20 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|unique:questions|max:255',
+            'content' => 'required',
+        ]);
+
+
+            $question = new Question;
+            $question->user_id = Auth::id();
+            $question->title = $request->get('title');
+            $question->content = $request->get('content');
+            $question->save();
+
+        return redirect('/home');
+
     }
 
     /**
