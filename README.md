@@ -34,7 +34,7 @@ A search feature will also be available in the header to search through all the 
 * Alireza Karimi
 * Vibha Verma
 
-## Techologies
+### Techologies
 
 * Laravel (web framework)
 * Composer (dependency manager)
