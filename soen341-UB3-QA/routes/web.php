@@ -25,12 +25,12 @@ Route::get('/ask', array('as' => 'ask', function () {
 }));
 
 Route::get('/question/{id}', 'QuestionController@show');
-Route::post('/reply/{id}', 'ReplyController@store');
-Route::get('/like/{id}', 'LikeController@like');
-Route::get('/dislike/{id}', 'LikeController@dislike');
-Route::get('/accept/{id}', 'LikeController@accept');
-Route::get('/reject/{id}', 'LikeController@reject');
-Route::get('/normalize/{id}', 'LikeController@normalize');
+Route::post('/question/reply/{id}', 'ReplyController@store');
+Route::get('/question/like/{id}', 'LikeController@like');
+Route::get('/question/dislike/{id}', 'LikeController@dislike');
+Route::get('/question/accept/{id}', 'LikeController@accept');
+Route::get('/question/reject/{id}', 'LikeController@reject');
+Route::get('/question/normalize/{id}', 'LikeController@normalize');
 
 Auth::routes();
 
