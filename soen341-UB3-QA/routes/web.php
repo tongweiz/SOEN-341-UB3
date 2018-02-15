@@ -12,10 +12,13 @@
 
 //home page
 Route::get('/', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
+
 Route::get('/home', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
 
 //home page search
-Route::post('/home', array('as' => 'welcome', 'uses' => 'QuestionController@search'));
+Route::post('/home', array('as' => 'welcome', 'uses' => 'SearchController@search'));
+
+Route::post('/ask', 'QuestionController@store');
 
 Route::get('/ask', array('as' => 'ask', function () {
     return view('ask');
