@@ -39,7 +39,7 @@
                     {{--<form>--}}{!! Form::open(['url' => 'ask']) !!}
                         <div class="form-group">
                             {!! Form::label('title','Title:') !!}
-                            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Titles...']) !!}
+                            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter your question title here']) !!}
                             {{--<h4 class="mt-4">Title:</h4>  --}}
                             {{--<textarea class="form-control" rows="1"></textarea>--}}
                         </div>
@@ -51,7 +51,7 @@
                             {{--<h4 class="mt-4">Contents:</h4>--}}
                             {{--<textarea class="form-control" rows="10"></textarea>--}}
                             {!! Form::label('content', 'Contents:') !!}
-                            {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Contents...']) !!}
+                            {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Enter the details of your question here']) !!}
                         </div>
                         {{--<button type="submit" class="btn btn-primary">Submit</button>--}}
                         {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
