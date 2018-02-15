@@ -106,7 +106,23 @@
                         </td>
                         <!--<td class="w3-padding w3-xlarge w3-teal" style="vertical-align:middle; ">-->
                         <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
-                            <i class="fa fa-check-circle"></i>
+						@if($info['qOwner'])
+							<a href="/accept/{{$reply->id}}">
+								<i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>"></i>
+							</a>
+							<a href="/normalize/{{$reply->id}}">
+								<i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>"></i>
+							</a>
+							<a href="/reject/{{$reply->id}}">
+								<i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>"></i>
+							</a>
+						@else
+							@if($reply->status == -1)
+								<i class="fa fa-ban"></i>
+							@elseif($reply->status == 1)
+								<i class="fa fa-check-circle"></i>
+							@endif
+						@endif
                         </td>
                     </tr>
 					@endforeach

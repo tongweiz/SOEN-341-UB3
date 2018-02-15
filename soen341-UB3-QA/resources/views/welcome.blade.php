@@ -37,7 +37,7 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <h4 class="card-title">{{$data->title}}</h4> </br>
-                        <a href="{{ route('question', [$data->id]) }}" class="btn btn-primary">Read More &rarr;</a>
+                        <a href="/question/{{$data->id}}" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted"> Posted on  {{$data->updated_at}} by {{$data->name}}</div>
                 </div>
