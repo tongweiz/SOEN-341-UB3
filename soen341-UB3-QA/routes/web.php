@@ -20,18 +20,12 @@ Route::post('/home', array('as' => 'welcome', 'uses' => 'SearchController@search
 
 Route::post('/ask', 'QuestionController@store');
 
-Route::get('/details', array('as' => 'details', function () {
-    return view('details');
-}));
-
 Route::get('/ask', array('as' => 'ask', function () {
     return view('ask');
 }));
 
-Route::get('/question/{q_id}', array('as' => 'question', function () {
-    return view('question');
-}));
-
+Route::get('/question/{id}', 'QuestionController@show');
+Route::post('/reply/{id}', 'ReplyController@store');
 
 Auth::routes();
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\reply;
 
 
 class QuestionController extends Controller
@@ -70,9 +71,11 @@ class QuestionController extends Controller
      * @param  \App\question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(question $question)
+    public function show($id)
     {
-        //
+		$question = Question::find($id);
+		$replies = Reply::where('question_id', $id)->get();
+        return view('question')->with('info', ['question'=>$question, 'replies'=>$replies]);
     }
 
     /**
