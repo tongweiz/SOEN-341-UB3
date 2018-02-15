@@ -36,21 +36,26 @@
             <!-- Comments Form -->
             <div class="card my-4">
                 <div class="card-body">
-                    <form>
+                    {{--<form>--}}{!! Form::open(['url' => 'ask']) !!}
                         <div class="form-group">
-                            <h4 class="mt-4">Title:</h4>  
-                            <textarea class="form-control" rows="1"></textarea>
-                        </div> 
-                    </form>
+                            {!! Form::label('title','Title:') !!}
+                            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Titles...']) !!}
+                            {{--<h4 class="mt-4">Title:</h4>  --}}
+                            {{--<textarea class="form-control" rows="1"></textarea>--}}
+                        </div>
+                    {{--</form>--}}
                 </div>
                 <div class="card-body">
-                    <form>
+                    {{--<form>--}}
                         <div class="form-group">
-                            <h4 class="mt-4">Contents:</h4>  
-                            <textarea class="form-control" rows="10"></textarea>
+                            {{--<h4 class="mt-4">Contents:</h4>--}}
+                            {{--<textarea class="form-control" rows="10"></textarea>--}}
+                            {!! Form::label('content', 'Contents:') !!}
+                            {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Contents...']) !!}
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                        {{--<button type="submit" class="btn btn-primary">Submit</button>--}}
+                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                    {{--</form>--}}{!! Form::close() !!}
                 </div>
             </div>
 
