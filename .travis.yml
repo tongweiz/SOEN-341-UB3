@@ -3,10 +3,16 @@ language: php
 php:
 - 7.1.9
 
+services:
+- mysql
+
 before_script:
 - cd soen341-UB3-QA
-- composer self-update
+- mysql -e 'create database projectub3'
 - composer install --no-interaction
+- composer self-update
+- php artisan migrate
+- php artisan db:seed
 - php artisan key:generate
 
 script:
