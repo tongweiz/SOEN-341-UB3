@@ -10,8 +10,8 @@ class LikeController extends Controller
 {
     public function like($rid)
     {
+		$reply = Reply::find($rid);
         if(Auth::check()) {
-			$reply = Reply::find($rid);
 			$reply->likectr += 1;
 			
 			$reply->save();
@@ -22,8 +22,8 @@ class LikeController extends Controller
 	
 	public function dislike($rid)
     {
+		$reply = Reply::find($rid);
 		if(Auth::check()) {
-			$reply = Reply::find($rid);
 			$reply->dislikectr += 1;
 			
 			$reply->save();
