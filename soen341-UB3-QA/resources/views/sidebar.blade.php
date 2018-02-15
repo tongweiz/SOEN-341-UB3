@@ -66,11 +66,6 @@
             </div>
         </div>
     </div>
-
-    <!-- ONLY HERE IN THE MEANTIME THAT HOME PAGE IS NOT DONE -->
-    <div>
-        <a href="/question/1" class="btn btn-primary">Question Page link</a>
-    </div>
 </div>
 
 
