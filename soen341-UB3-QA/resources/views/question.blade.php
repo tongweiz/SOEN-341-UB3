@@ -93,13 +93,13 @@
                         </td>
                         <td class="rating" style="vertical-align:middle; "  width=15%>
                             <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="#">
+                                <a href="/like/{{$reply->id}}">
                                     <i class="fa fa-thumbs-up" aria-hidden="true"></i></span> {{$reply->likectr}}
                                 </a>
                             </div>
                             <br />
                             <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="#">
+                                <a href="/dislike/{{$reply->id}}">
                                     <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i> {{$reply->dislikectr}}
                                 </a>
                             </div>

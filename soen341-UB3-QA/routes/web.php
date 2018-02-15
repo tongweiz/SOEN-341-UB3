@@ -26,6 +26,8 @@ Route::get('/ask', array('as' => 'ask', function () {
 
 Route::get('/question/{id}', 'QuestionController@show');
 Route::post('/reply/{id}', 'ReplyController@store');
+Route::get('/like/{id}', 'LikeController@like');
+Route::get('/dislike/{id}', 'LikeController@dislike');
 
 Auth::routes();
 
