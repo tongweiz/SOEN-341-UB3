@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\reply;
 use Illuminate\Routing\UrlGenerator;
 
 class ReplyController extends Controller
@@ -17,6 +18,7 @@ class ReplyController extends Controller
     {
         //
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,6 +28,7 @@ class ReplyController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,6 +55,7 @@ class ReplyController extends Controller
 		}
 		return redirect("question/$qid");
     }
+
     /**
      * Display the specified resource.
      *
@@ -62,6 +66,7 @@ class ReplyController extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -72,6 +77,7 @@ class ReplyController extends Controller
     {
         //
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -83,6 +89,7 @@ class ReplyController extends Controller
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *

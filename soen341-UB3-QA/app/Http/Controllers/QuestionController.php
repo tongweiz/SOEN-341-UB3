@@ -1,8 +1,13 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\question;
-use App\Reply;
-use Illuminate\Http\Request;
+use App\reply;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
+
 class QuestionController extends Controller
 {
     /**
@@ -12,8 +17,24 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $question_data = DB::table('questions')->join('users','users.id','=','questions.user_id')->get();
+
+        return view('welcome', ['question_data' => $question_data]);
     }
+
+    //search function of home page
+    public function search()
+    {
+        //user input taken from search form
+        $search = Request::get('search');
+
+        //taking all the questions that have the search term in their title
+        $question_data = Question::where('title', 'LIKE', '%'.$search.'%')
+            ->join('users','users.id','=','questions.user_id')->get();
+
+        return view('welcome', ['question_data' => $question_data]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -23,6 +44,7 @@ class QuestionController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -33,6 +55,7 @@ class QuestionController extends Controller
     {
         //
     }
+
     /**
      * Display the specified resource.
      *
@@ -45,6 +68,7 @@ class QuestionController extends Controller
 		$replies = Reply::where('question_id', $id)->get();
         return view('question')->with('info', ['question'=>$question, 'replies'=>$replies]);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -55,6 +79,7 @@ class QuestionController extends Controller
     {
         //
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -66,6 +91,7 @@ class QuestionController extends Controller
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *

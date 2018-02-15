@@ -1,4 +1,5 @@
 <?php
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -8,13 +9,21 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 */
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('question/{id}', 'QuestionController@show');
-Route::get('/ask', function () {
+
+//home page
+Route::get('/', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
+Route::get('/home', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
+
+//home page search
+Route::post('/home', array('as' => 'welcome', 'uses' => 'QuestionController@search'));
+
+Route::get('/ask', array('as' => 'ask', function () {
     return view('ask');
-});
+}));
+
+Route::get('/question/{id}', 'QuestionController@show');
 Route::post('/reply/{id}', 'ReplyController@store');
+
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
+?>
