@@ -59,22 +59,6 @@
                         <td width=70%>
                             {{$info['question']->content}}
                         </td>
-                        <td class="rating" style="vertical-align:middle; "  width=15%>
-                            <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="#">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i></span> 7
-                                </a>
-                            </div>
-                            <br />
-                            <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="#">
-                                    <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i> 2
-                                </a>
-                            </div>
-                        </td>
-                        <td class="" width=15%>
-
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -84,7 +68,7 @@
             <div class="card my-4">
                 <h5 class="card-header">Leave a Comment:</h5>
                 <div class="card-body">
-                    <form method="POST" action="/reply/{{$info['question']->id}}">
+                    <form method="POST" action="/question/reply/{{$info['question']->id}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <textarea name="body" class="form-control" rows="3"></textarea>
@@ -98,7 +82,7 @@
 				{{count($info['replies'])}} answers
             </p>
             <table class="answers table" width=100% style="background-color: #FAFAFA;">
-                <tbody>
+                <br>
                     @if(count($info['replies']) > 0)
 						@foreach($info['replies'] as $reply)
                     <tr class="answer">
@@ -134,9 +118,9 @@
 							</a>
 						@else
 							@if($reply->status == -1)
-								<i class="fa fa-ban"></i>
+								<i class="fa fa-ban <?php echo 'fa-2x'; ?>"></i>
 							@elseif($reply->status == 1)
-								<i class="fa fa-check-circle"></i>
+								<i class="fa fa-check-circle <?php echo 'fa-2x'; ?>"></i>
 							@endif
 						@endif
                         </td>
