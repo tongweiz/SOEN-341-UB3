@@ -11,8 +11,8 @@ before_script:
 - mysql -e 'CREATE DATABASE IF NOT EXISTS projectub3;'
 - composer install --no-interaction
 - composer self-update
-- php artisan migrate:fresh --env=testing --no-interaction -vvv
 - php artisan key:generate
+- php artisan migrate --no-interaction -vvv
 
 script:
 - vendor/bin/phpunit
