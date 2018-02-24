@@ -4,8 +4,9 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
 
-class AuthTests
+class AuthTests extends TestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;
