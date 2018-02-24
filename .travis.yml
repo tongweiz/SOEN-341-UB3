@@ -8,11 +8,11 @@ services:
 
 before_script:
 - cd soen341-UB3-QA
-- mysql -e 'create database projectub3'
+- mysql -e 'CREATE DATABASE IF NOT EXISTS projectub3;'
 - composer install --no-interaction
 - composer self-update
-- php artisan migrate
 - php artisan key:generate
+- php artisan migrate --no-interaction -vvv
 
 script:
 - vendor/bin/phpunit
