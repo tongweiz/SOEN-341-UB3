@@ -6,12 +6,14 @@ php:
 services:
 - mysql
 
-#database projectub3 and tables are created by travis with the stuff in .env
+#database tables are created by travis with the stuff in .env
 before_script:
 - cd soen341-UB3-QA
 - composer self-update
 - composer install --no-interaction
+- mysql -e 'CREATE DATABASE IF NOT EXISTS projectub3;'
 - cp .env.example .env
+- php artisan migrate
 - php artisan key:generate
 
 script:
