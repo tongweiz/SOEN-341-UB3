@@ -24,7 +24,7 @@ class AuthTests extends TestCase
             ->type('secret123', 'password')
             ->type('secret123', 'password_confirmation')
             ->press('Register')
-            ->seePageIs('http://localhost/home')
+            ->seePageIs('http://localhost/register')
             ->seeInDatabase('users', [
                 'email' => 'tester@gmail.com'
             ]);
