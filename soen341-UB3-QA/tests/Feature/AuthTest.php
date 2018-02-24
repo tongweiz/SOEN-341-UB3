@@ -15,6 +15,7 @@ class AuthTest extends TestCase
     * Test the case where a user registers successfully
     * Confirms that the user is redirected to /home.
     * Confirms the user exists in the database.
+    * Confirms that user was also logged in by registering.
     */
     public function testRegistrationSuccess(){
         $this->visit('/register')
@@ -23,9 +24,9 @@ class AuthTest extends TestCase
             ->type('secret123', 'password')
             ->type('secret123', 'password_confirmation')
             ->press('Register')
-            ->seePageIs('http://localhost/register')
+            ->seePageIs('http://localhost/home')
             ->seeInDatabase('users', [
                 'email' => 'tester@gmail.com'
-            ]);
+            ])->isAuthenticated();
     }
 }
