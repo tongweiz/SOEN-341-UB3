@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class AuthTests extends TestCase
+class AuthTest extends TestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;
@@ -23,7 +23,7 @@ class AuthTests extends TestCase
             ->type('secret123', 'password')
             ->type('secret123', 'password_confirmation')
             ->press('Register')
-            ->seePageIs('http://localhost/home')
+            ->seePageIs('http://localhost/register')
             ->seeInDatabase('users', [
                 'email' => 'tester@gmail.com'
             ]);
