@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
+use Tests\BrowserKitTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
-class AuthTest extends TestCase
+class AuthTest extends BrowserKitTestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;
