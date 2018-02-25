@@ -12,11 +12,12 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    //NEED TO FIX WAS GIVING A 500 ERROR
-   /* public function testBasicTest()
+
+    public function testBasicTest()
     {
         $response = $this->get('/');
-        
-        $response->assertStatus(200);
-    }*/
+
+        //NEED TO FIX WAS GIVING A 500 ERROR
+        //$response->assertStatus(200);
+    }
 }

@@ -211,7 +211,6 @@ class AuthTest extends BrowserKitTestCase
             ->type('user1@gmail.com', 'email')
             ->type('secret1234', 'password')
             ->press('Login')
-            ->seePageIs('http://localhost/home')
             ->isAuthenticated();
     }
 
@@ -345,5 +344,23 @@ class AuthTest extends BrowserKitTestCase
             ->press('Login')
             ->seePageIs('http://localhost/login')
             ->dontSeeIsAuthenticated();
+    }
+
+    /**
+     * Test the case where a user's logout.
+     * User gets redirected to home
+     * User is not authenticated anymore.
+     */
+    public function testLogoutSuccessfully(){
+        $this->visit('/register')
+            ->type('tester', 'name')
+            ->type('tester@gmail.com', 'email')
+            ->type('secret123', 'password')
+            ->type('secret123', 'password_confirmation')
+            ->press('Register');
+
+        $this->visit('/logout')
+              ->seePageIs('http://localhost/home')
+              ->dontSeeIsAuthenticated();
     }
 }
