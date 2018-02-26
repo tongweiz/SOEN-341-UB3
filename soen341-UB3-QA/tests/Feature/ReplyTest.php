@@ -47,7 +47,7 @@ class ReplyTest extends BrowserKitTestCase
     public function testReplyFailureNotAuthenticated()
     {
         $this->visit('/')
-             ->press('Read More →')
+             ->press('Read')
              ->type('this is a reply', 'body')
              ->press('Submit')
              ->seePageIs('http://question/1')
