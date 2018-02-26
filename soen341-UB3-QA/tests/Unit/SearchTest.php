@@ -12,13 +12,11 @@ class SearchTest extends BrowserKitTestCase
     use DatabaseMigrations;
     use DatabaseTransactions;
 
-    /**
-     * Test the case where a user's searches empty string in search bar
-     * User stays on home page.
-     * User should see both questions in database.
-     */
-    public function testSearchEmpty()
+    //set up environment for tests
+    public function setUp()
     {
+        parent::setUp();
+
         factory(Question::class)->create([
             'title' => 'first title test',
             'content' => 'first content',
@@ -30,7 +28,15 @@ class SearchTest extends BrowserKitTestCase
             'content' => 'second content',
             'user_id' => 1
         ]);
+    }
 
+    /**
+     * Test the case where a user's searches empty string in search bar
+     * User stays on home page.
+     * User should see both questions in database.
+     */
+    public function testSearchEmpty()
+    {
         $this->visit('/home')
             ->type('', 'search')
             ->press('Go!')
@@ -46,18 +52,6 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchMatchWordZero()
     {
-        factory(Question::class)->create([
-            'title' => 'first title test',
-            'content' => 'first content',
-            'user_id' => 1
-        ]);
-
-        factory(Question::class)->create([
-            'title' => 'second title test',
-            'content' => 'second content',
-            'user_id' => 1
-        ]);
-
         $this->visit('/home')
             ->type('elephant', 'search')
             ->press('Go!')
@@ -73,18 +67,6 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchMatchWordOne()
     {
-        factory(Question::class)->create([
-            'title' => 'first title test',
-            'content' => 'first content',
-            'user_id' => 1
-        ]);
-
-        factory(Question::class)->create([
-            'title' => 'second title test',
-            'content' => 'second content',
-            'user_id' => 1
-        ]);
-
         $this->visit('/home')
             ->type('first', 'search')
             ->press('Go!')
@@ -100,18 +82,6 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchMatchWordAll()
     {
-        factory(Question::class)->create([
-            'title' => 'first title test',
-            'content' => 'first content',
-            'user_id' => 1
-        ]);
-
-        factory(Question::class)->create([
-            'title' => 'second title test',
-            'content' => 'second content',
-            'user_id' => 1
-        ]);
-
         $this->visit('/home')
             ->type('test', 'search')
             ->press('Go!')
@@ -127,18 +97,6 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchMatchPartWordZero()
     {
-        factory(Question::class)->create([
-            'title' => 'first title test',
-            'content' => 'first content',
-            'user_id' => 1
-        ]);
-
-        factory(Question::class)->create([
-            'title' => 'second title test',
-            'content' => 'second content',
-            'user_id' => 1
-        ]);
-
         $this->visit('/home')
             ->type('el', 'search')
             ->press('Go!')
@@ -154,18 +112,6 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchMatchPartWordOne()
     {
-        factory(Question::class)->create([
-            'title' => 'first title test',
-            'content' => 'first content',
-            'user_id' => 1
-        ]);
-
-        factory(Question::class)->create([
-            'title' => 'second title test',
-            'content' => 'second content',
-            'user_id' => 1
-        ]);
-
         $this->visit('/home')
             ->type('ir', 'search')
             ->press('Go!')
@@ -181,18 +127,6 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchMatchPartWordAll()
     {
-        factory(Question::class)->create([
-            'title' => 'first title test',
-            'content' => 'first content',
-            'user_id' => 1
-        ]);
-
-        factory(Question::class)->create([
-            'title' => 'second title test',
-            'content' => 'second content',
-            'user_id' => 1
-        ]);
-
         $this->visit('/home')
             ->type('es', 'search')
             ->press('Go!')
@@ -208,18 +142,6 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchMatchMultipleWordsZero()
     {
-        factory(Question::class)->create([
-            'title' => 'first title test',
-            'content' => 'first content',
-            'user_id' => 1
-        ]);
-
-        factory(Question::class)->create([
-            'title' => 'second title test',
-            'content' => 'second content',
-            'user_id' => 1
-        ]);
-
         $this->visit('/home')
             ->type('test failure', 'search')
             ->press('Go!')
@@ -235,18 +157,6 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchMatchMultipleWordsOne()
     {
-        factory(Question::class)->create([
-            'title' => 'first title test',
-            'content' => 'first content',
-            'user_id' => 1
-        ]);
-
-        factory(Question::class)->create([
-            'title' => 'second title test',
-            'content' => 'second content',
-            'user_id' => 1
-        ]);
-
         $this->visit('/home')
             ->type('first title', 'search')
             ->press('Go!')
@@ -262,18 +172,6 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchMatchMultipleWordsAll()
     {
-        factory(Question::class)->create([
-            'title' => 'first title test',
-            'content' => 'first content',
-            'user_id' => 1
-        ]);
-
-        factory(Question::class)->create([
-            'title' => 'second title test',
-            'content' => 'second content',
-            'user_id' => 1
-        ]);
-
         $this->visit('/home')
             ->type('title test', 'search')
             ->press('Go!')
