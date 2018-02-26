@@ -40,8 +40,8 @@ class SearchTest extends BrowserKitTestCase
         $this->visit('/home')
             ->type('', 'search')
             ->press('Go!')
-            ->assertRedirectedTo('http://localhost/home');
-
+            ->seePageIs('http://localhost/home');
+        
         $this->see('first title test')
              ->see('second title test');
     }
@@ -72,7 +72,7 @@ class SearchTest extends BrowserKitTestCase
             ->type('first', 'search')
             ->press('Go!')
             ->seePageIs('http://localhost/home')
-            ->see('Discover User Questions!')
+            ->see('first title test')
             ->dontSee('second title test');
     }
 
