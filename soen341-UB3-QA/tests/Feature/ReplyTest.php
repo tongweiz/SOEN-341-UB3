@@ -26,18 +26,17 @@ class ReplyTest extends BrowserKitTestCase
             'password' => 'secret1234',
         ]);
 
-        factory(User::class)->create([
-            'name' => 'user2',
-            'email' => 'user2@gmail.com',
-            'password' => 'secret1234',
-        ]);
-
         factory(Question::class)->create([
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
         ]);
 
+        factory(User::class)->create([
+            'name' => 'user2',
+            'email' => 'user2@gmail.com',
+            'password' => 'secret1234',
+        ]);
     }
 
     /**
@@ -47,6 +46,8 @@ class ReplyTest extends BrowserKitTestCase
      */
     public function testReplyFailureNotAuthenticated()
     {
+        $this->dontSeeIsAuthenticated();
+
         $this->visit('/question/1')
              ->type('this is a reply', 'body')
              ->press('Submit')
@@ -61,16 +62,15 @@ class ReplyTest extends BrowserKitTestCase
      */
     public function testReplyFailureEmptyBody()
     {
-        $this->visit('/login')
-            ->type('user2@gmail.com', 'email')
-            ->type('secret1234', 'password')
-            ->press('Login')
-            ->isAuthenticated();
+        //login as user id 2
+        $user = \App\User::find(2);
 
-        $this->visit('/question/1')
+        $this->actingAs($user)
+            ->visit('/question/1')
             ->press('Submit')
             ->seePageIs('http://localhost/question/1')
-            ->see('No comments');
+            ->see('No comments')
+            ->isAuthenticated();
     }
 
     /**
@@ -80,18 +80,17 @@ class ReplyTest extends BrowserKitTestCase
      */
     public function testReplySuccessfullReply()
     {
-        $this->visit('/login')
-            ->type('user2@gmail.com', 'email')
-            ->type('secret1234', 'password')
-            ->press('Login')
+        //login as user id 2
+        $user = \App\User::find(2);
+
+        $this->actingAs($user)
+            ->visit('/question/1')
+            ->type('saved', 'body')
+            ->press('Submit')
+            ->seePageIs('http://localhost/question/1')
             ->isAuthenticated();
 
-        $this->visit('/question/1')
-            ->type('this reply will be saved!', 'body')
-            ->press('Submit')
-            ->seePageIs('http://localhost/question/1');
-
-        $this->seeInDatabase('replies', ['content' => 'this reply will be saved!']);
+        $this->seeInDatabase('replies', ['content' => 'saved']);
 
       /*  $this->seeInDatabase('replies', ['id' => 1,
             'content' => 'this reply will be saved!',
