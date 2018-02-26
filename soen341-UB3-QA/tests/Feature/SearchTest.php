@@ -20,11 +20,13 @@ class SearchTest extends BrowserKitTestCase
        factory(Question::class)->create([
             'title' => 'first title test',
             'content' => 'first content',
+            'user_id' => 1,
         ]);
 
         factory(Question::class)->create([
             'title' => 'second title test',
             'content' => 'second content',
+            'user_id' => 1,
         ]);
     }
 
