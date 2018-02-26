@@ -49,7 +49,7 @@ class ReplyTest extends BrowserKitTestCase
         $this->visit('/question/1')
              ->type('this is a reply', 'body')
              ->press('Submit')
-             ->seePageIs('http://question/1')
+             ->seePageIs('http://localhost/question/1')
              ->see('No comments');
     }
 
@@ -68,7 +68,7 @@ class ReplyTest extends BrowserKitTestCase
 
         $this->visit('/question/1')
             ->press('Submit')
-            ->seePageIs('http://question/1')
+            ->seePageIs('http://localhost/question/1')
             ->see('No comments');
     }
 
@@ -88,7 +88,7 @@ class ReplyTest extends BrowserKitTestCase
         $this->visit('/question/1')
             ->type('this reply will be saved!', 'body')
             ->press('Submit')
-            ->seePageIs('http://question/1')
+            ->seePageIs('http://localhost/question/1')
             ->see('this reply will be saved!')
             ->dontSee('No comments');
 
