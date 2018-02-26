@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\BrowserKitTestCase;
 use App\Question;
-use App\User;
 
 class SearchTest extends BrowserKitTestCase
 {
@@ -17,12 +16,6 @@ class SearchTest extends BrowserKitTestCase
     public function setUp()
     {
         parent::setUp();
-
-        factory(User::class)->create([
-            'name' => 'user2',
-            'email' => 'user2@gmail.com',
-            'password' => 'secret1234',
-        ]);
 
         factory(Question::class)->create([
             'title' => 'first title test',
