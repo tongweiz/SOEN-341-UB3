@@ -15,7 +15,26 @@ class SearchTest extends BrowserKitTestCase
     //set up environment for tests
     public function setUp()
     {
-        factory(Question::class)->create([
+        DB::table('questions')->insert([
+            'id' => 1,
+            'title' => 'first title test',
+            'content' => 'first content',
+            'user_id' => '1',
+            'created_at' => '2018-02-10 12:25:00',
+            'updated_at' => '2018-02-10 12:25:00'
+        ]);
+
+        DB::table('questions')->insert([
+            'id' => 2,
+            'title' => 'second title test',
+            'content' => 'second content',
+            'user_id' => '1',
+            'created_at' => '2018-02-10 12:25:00',
+            'updated_at' => '2018-02-10 12:25:00'
+        ]);
+
+
+       /* factory(Question::class)->create([
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1
@@ -25,7 +44,7 @@ class SearchTest extends BrowserKitTestCase
             'title' => 'second title test',
             'content' => 'second content',
             'user_id' => 1
-        ]);
+        ]);*/
     }
 
     /**
