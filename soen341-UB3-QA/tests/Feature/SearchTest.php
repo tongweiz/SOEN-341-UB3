@@ -37,15 +37,13 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchEmpty()
     {
-        $this->seeInDatabase('questions', ['title' => 'first title test']);
-        $this->seeInDatabase('questions', ['title' => 'second title test']);
-
         $this->visit('/home')
             ->type('', 'search')
             ->press('Go!')
-            ->seePageIs('http://localhost/home')
-            ->see('first title test')
-            ->see('second title test');
+            ->assertRedirectedTo('http://localhost/home');
+
+        $this->see('first title test')
+             ->see('second title test');
     }
 
     /**
@@ -74,7 +72,7 @@ class SearchTest extends BrowserKitTestCase
             ->type('first', 'search')
             ->press('Go!')
             ->seePageIs('http://localhost/home')
-            ->see('first title test')
+            ->see('Discover User Questions!')
             ->dontSee('second title test');
     }
 
