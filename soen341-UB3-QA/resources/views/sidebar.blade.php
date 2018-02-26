@@ -15,7 +15,7 @@
                 {!! Form::text('search', '', array('class'=>'form-control',
                     'style'=>'margin-right:10px;', 'placeholder'=>'Search for...')) !!}
                 <span class="input-group-btn">
-                    {!! Form::submit('Go!', ['class' => 'btn btn-secondary']) !!}
+                    {!! Form::submit('Go!', ['class' => 'btn btn-secondary', 'name' => "Go!"]) !!}
                 </span>
             </div>
             {!! Form::close() !!}
