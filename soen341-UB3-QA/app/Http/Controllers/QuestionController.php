@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\reply;
+use App\Reply;
 
 
 class QuestionController extends Controller
