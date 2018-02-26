@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -15,8 +15,6 @@ class SearchTest extends BrowserKitTestCase
     //set up environment for tests
     public function setUp()
     {
-        parent::setUp();
-
         factory(Question::class)->create([
             'title' => 'first title test',
             'content' => 'first content',
