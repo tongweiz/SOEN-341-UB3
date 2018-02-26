@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\BrowserKitTestCase;
 use App\Question;
 use App\User;
+use App\Reply;
 
 class ReplyTest extends BrowserKitTestCase
 {
@@ -38,7 +39,6 @@ class ReplyTest extends BrowserKitTestCase
         ]);
     }
 
-
     /**
      * Test the case where a user is not authenticated
      * Stays on page.
@@ -46,8 +46,7 @@ class ReplyTest extends BrowserKitTestCase
      */
     public function testReplyFailureNotAuthenticated()
     {
-        $this->visit('/')
-             ->click('Read')
+        $this->visit('/question/1')
              ->type('this is a reply', 'body')
              ->press('Submit')
              ->seePageIs('http://question/1')
