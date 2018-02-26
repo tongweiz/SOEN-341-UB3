@@ -88,7 +88,7 @@ class ReplyTest extends BrowserKitTestCase
             ->type('saved', 'body')
             ->press('Submit')
             ->seePageIs('http://localhost/question/1')
-            ->see('this reply will be saved!')
+            ->see('saved')
             ->dontSee('No comments')
             ->isAuthenticated();
 
