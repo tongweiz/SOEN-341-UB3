@@ -40,7 +40,7 @@ class SearchTest extends BrowserKitTestCase
         $this->seeInDatabase('questions', ['title' => 'first title test']);
         $this->seeInDatabase('questions', ['title' => 'second title test']);
 
-        $this->visit('/')->see('first title test')->see('second title test');
+        $this->visit('/')->seeText('first title test')->seeText('second title test');
 
        /* $this->visit('/home')
             ->type('', 'search')
