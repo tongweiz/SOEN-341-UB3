@@ -88,9 +88,7 @@ class ReplyTest extends BrowserKitTestCase
         $this->visit('/question/1')
             ->type('this reply will be saved!', 'body')
             ->press('Submit')
-            ->seePageIs('http://localhost/question/1')
-            ->seeText('this reply will be saved!')
-            ->dontSee('No comments');
+            ->seePageIs('http://localhost/question/1');
 
         $this->seeInDatabase('replies', ['id' => 1,
             'content' => 'this reply will be saved!',
@@ -99,5 +97,8 @@ class ReplyTest extends BrowserKitTestCase
             'likectr' => 0,
             'dislikectr' => 0,
             'status' => 0]);
+
+        $this->see('this reply will be saved!')
+             ->dontSee('No comments');
     }
 }
