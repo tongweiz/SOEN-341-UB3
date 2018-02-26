@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\BrowserKitTestCase;
+use App\Question;
 
 class SearchTest extends BrowserKitTestCase
 {
@@ -14,16 +15,16 @@ class SearchTest extends BrowserKitTestCase
     //set up environment for tests
     public function setUp()
     {
-       factory(\App\Question::class)->create([
+        parent::setUp();
+
+       factory(Question::class)->create([
             'title' => 'first title test',
             'content' => 'first content',
-            'user_id' => 1,
         ]);
 
-        factory(\App\Question::class)->create([
+        factory(Question::class)->create([
             'title' => 'second title test',
             'content' => 'second content',
-            'user_id' => 1,
         ]);
     }
 

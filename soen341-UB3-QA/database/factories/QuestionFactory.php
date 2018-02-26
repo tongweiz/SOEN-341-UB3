@@ -17,6 +17,5 @@ $factory->define(App\Question::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence(10),
         'content' => $faker->text(),
-        'user_id' => $faker->uuid,
     ];
 });
