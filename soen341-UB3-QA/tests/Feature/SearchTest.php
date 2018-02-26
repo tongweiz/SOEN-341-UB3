@@ -37,6 +37,9 @@ class SearchTest extends BrowserKitTestCase
      */
     public function testSearchEmpty()
     {
+        $this->seeInDatabase('questions', ['title' => 'first title test']);
+        $this->seeInDatabase('questions', ['title' => 'second title test']);
+
         $this->visit('/home')
             ->type('', 'search')
             ->press('Go!')
