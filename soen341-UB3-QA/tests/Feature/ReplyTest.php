@@ -88,19 +88,16 @@ class ReplyTest extends BrowserKitTestCase
             ->type('saved', 'body')
             ->press('Submit')
             ->seePageIs('http://localhost/question/1')
+            ->see('this reply will be saved!')
+            ->dontSee('No comments')
             ->isAuthenticated();
 
-        $this->seeInDatabase('replies', ['content' => 'saved']);
-
-      /*  $this->seeInDatabase('replies', ['id' => 1,
-            'content' => 'this reply will be saved!',
+       $this->seeInDatabase('replies', ['id' => 1,
+            'content' => 'saved',
             'question_id' => 1,
             'user_id' => 2,
             'likectr' => 0,
             'dislikectr' => 0,
-            'status' => 0]);*/
-
-       /* $this->see('this reply will be saved!')
-             ->dontSee('No comments');*/
+            'status' => 0]);
     }
 }
