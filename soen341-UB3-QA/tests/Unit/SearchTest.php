@@ -4,8 +4,8 @@ namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Symfony\Component\Console\Question\Question;
 use Tests\BrowserKitTestCase;
+use App\Question;
 
 class SearchTest extends BrowserKitTestCase
 {
