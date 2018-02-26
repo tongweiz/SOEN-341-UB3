@@ -41,8 +41,8 @@ class SearchTest extends BrowserKitTestCase
             ->type('', 'search')
             ->press('Go!')
             ->seePageIs('http://localhost/home')
-            ->seeText('first title test')
-            ->seeText('second title test');
+            ->see('first title test')
+            ->see('second title test');
     }
 
     /**
@@ -71,7 +71,7 @@ class SearchTest extends BrowserKitTestCase
             ->type('first', 'search')
             ->press('Go!')
             ->seePageIs('http://localhost/home')
-            ->seeText('first title test')
+            ->see('first title test')
             ->dontSee('second title test');
     }
 
@@ -86,8 +86,8 @@ class SearchTest extends BrowserKitTestCase
             ->type('test', 'search')
             ->press('Go!')
             ->seePageIs('http://localhost/home')
-            ->seeText('first title test')
-            ->seeText('second title test');
+            ->see('first title test')
+            ->see('second title test');
     }
 
     /**
@@ -116,7 +116,7 @@ class SearchTest extends BrowserKitTestCase
             ->type('ir', 'search')
             ->press('Go!')
             ->seePageIs('http://localhost/home')
-            ->seeText('first title test')
+            ->see('first title test')
             ->dontSee('second title test');
     }
 
@@ -131,8 +131,8 @@ class SearchTest extends BrowserKitTestCase
             ->type('es', 'search')
             ->press('Go!')
             ->seePageIs('http://localhost/home')
-            ->seeText('first title test')
-            ->seeText('second title test');
+            ->see('first title test')
+            ->see('second title test');
     }
 
     /**
@@ -161,7 +161,7 @@ class SearchTest extends BrowserKitTestCase
             ->type('first title', 'search')
             ->press('Go!')
             ->seePageIs('http://localhost/home')
-            ->seeText('first title test')
+            ->see('first title test')
             ->dontSee('second title test');
     }
 
@@ -176,7 +176,7 @@ class SearchTest extends BrowserKitTestCase
             ->type('title test', 'search')
             ->press('Go!')
             ->seePageIs('http://localhost/home')
-            ->seeText('first title test')
-            ->seeText('second title test');
+            ->see('first title test')
+            ->see('second title test');
     }
 }
