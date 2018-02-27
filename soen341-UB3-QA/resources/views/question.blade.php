@@ -166,29 +166,33 @@
     $(document).ready(function(){
         $(".like").click(function(){
             let idAttr = $(this).attr("id")
-            console.log(idAttr);
             let id = idAttr.substr(0, idAttr.length - 2);
-            console.log(id);
+
             let sid = "#" + id + "l";
-            console.log(sid);
-            let did = "/question/like/" + id + " " + sid;
-            console.log(did);
-            $.get(did, function(data, status){
-                $(sid).text(data);
+            let did = "/question/like/" + id;
+
+            $.get("/question/like/" + id, function(data, status){
+                if(status == "success"){
+                    $("#" + id + "l").text(data);
+                    $("#" + idAttr).prop("disabled", true);
+                    $("#" + id + "bdl").prop("disabled", false);
+                }
             });
         });
 
         $(".dislike").click(function(){
             let idAttr = $(this).attr("id")
-            console.log(idAttr);
             let id = idAttr.substr(0, idAttr.length - 3);
-            console.log(id);
+
             let sid = "#" + id + "dl";
-            console.log(sid);
-            let did = "/question/dislike/" + id + " " + sid;
-            console.log(did);
-            $.get(did, function(data, status){
-                $(sid).text(data);
+            let did = "/question/dislike/" + id;
+
+            $.get("/question/dislike/" + id, function(data, status){
+                if(status == "success"){
+                    $("#" + id + "dl").text(data);
+                    $("#" + idAttr).prop("disabled", true);
+                    $("#" + id + "bl").prop("disabled", false);
+                }
             });
         });
     });
