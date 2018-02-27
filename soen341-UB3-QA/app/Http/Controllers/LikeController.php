@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\reply;
 use App\question;
+use App\like;
+use App\dislike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,8 +16,17 @@ class LikeController extends Controller
 		$reply = Reply::find($rid);
 
         if(Auth::check()) {
-			$reply->likectr += 1;
-			$reply->save();
+			$liked = Like::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
+			if(count($liked) == 0){
+				$reply->likectr += 1;
+				$reply->save();
+
+				$like = new like;
+				$like->reply_id = $rid;
+				$like->user_id = Auth::id();
+
+				$like->save();
+			}
 		}
 
 		return "$reply->likectr";
