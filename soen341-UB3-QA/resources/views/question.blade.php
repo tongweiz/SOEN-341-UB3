@@ -173,9 +173,13 @@
 
             $.get("/question/like/" + id, function(data, status){
                 if(status == "success"){
-                    $("#" + id + "l").text(data);
+                    let str = /(\d+)\.(\d+)/.exec(data);
+                    $("#" + id + "l").text(str[1]);
+                    $("#" + id + "dl").text(str[2]);
                     $("#" + idAttr).prop("disabled", true);
+                    $("#" + idAttr).prop("style", "color: rgb(176,224,230);");
                     $("#" + id + "bdl").prop("disabled", false);
+                    $("#" + id + "bdl").prop("style", "color: rgb(30, 144, 255);");
                 }
             });
         });
@@ -189,9 +193,13 @@
 
             $.get("/question/dislike/" + id, function(data, status){
                 if(status == "success"){
-                    $("#" + id + "dl").text(data);
+                    let str = /(\d+)\.(\d+)/.exec(data);
+                    $("#" + id + "l").text(str[1]);
+                    $("#" + id + "dl").text(str[2]);
                     $("#" + idAttr).prop("disabled", true);
+                    $("#" + idAttr).prop("style", "color: rgb(176,224,230);");
                     $("#" + id + "bl").prop("disabled", false);
+                    $("#" + id + "bl").prop("style", "color: rgb(30, 144, 255);");
                 }
             });
         });

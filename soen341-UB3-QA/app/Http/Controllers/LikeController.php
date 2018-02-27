@@ -18,18 +18,24 @@ class LikeController extends Controller
         if(Auth::check()) {
 			$liked = Like::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
 			if(count($liked) == 0){
+
+				$disliked = Dislike::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
+				if(count($disliked) != 0){
+					$disliked[0]->delete();
+					$reply->dislikectr -= 1;
+				}
+
 				$reply->likectr += 1;
 				$reply->save();
 
 				$like = new like;
 				$like->reply_id = $rid;
 				$like->user_id = Auth::id();
-
 				$like->save();
 			}
 		}
 
-		return "$reply->likectr";
+		return "$reply->likectr.$reply->dislikectr";
     }
 	
 	public function dislike($rid)
@@ -37,11 +43,26 @@ class LikeController extends Controller
 		$reply = Reply::find($rid);
 
 		if(Auth::check()) {
-			$reply->dislikectr += 1;
-			$reply->save();
+			$disliked = Dislike::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
+			if(count($disliked) == 0){
+
+				$liked = Like::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
+				if(count($liked) != 0){
+					$liked[0]->delete();
+					$reply->likectr -= 1;
+				}
+
+				$reply->dislikectr += 1;
+				$reply->save();
+
+				$dislike = new dislike;
+				$dislike->reply_id = $rid;
+				$dislike->user_id = Auth::id();
+				$dislike->save();
+			}
 		}
 		
-		return "$reply->dislikectr";
+		return "$reply->likectr.$reply->dislikectr";
     }
 	
 	public function accept($rid)
