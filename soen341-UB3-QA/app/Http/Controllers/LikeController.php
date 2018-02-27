@@ -12,25 +12,25 @@ class LikeController extends Controller
     public function like($rid)
     {
 		$reply = Reply::find($rid);
+
         if(Auth::check()) {
 			$reply->likectr += 1;
-			
 			$reply->save();
 		}
-		
-		return redirect("question/$reply->question_id");
+
+		return "$reply->likectr";
     }
 	
 	public function dislike($rid)
     {
 		$reply = Reply::find($rid);
+
 		if(Auth::check()) {
 			$reply->dislikectr += 1;
-			
 			$reply->save();
 		}
 		
-		return redirect("question/$reply->question_id");
+		return "$reply->dislikectr";
     }
 	
 	public function accept($rid)

@@ -23,6 +23,17 @@
          Try to find something else for accept/reject icons please. Not too ugly right now without it-->
     <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
 
+    <style>
+            .like, .dislike {
+                background:none!important;
+                color:rgb(30, 144, 255);
+                border:none; 
+                padding:0!important;
+                font: inherit;
+                cursor: pointer;
+            }
+        </style>
+
 </head>
 
 <body>
@@ -93,15 +104,17 @@
                         </td>
                         <td class="rating" style="vertical-align:middle; "  width=15%>
                             <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="/question/like/{{$reply->id}}">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i></span> {{$reply->likectr}}
-                                </a>
+                                <button class="like" id="{{$reply->id}}bl">
+                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                </button>
+                                <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
                             </div>
                             <br />
                             <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="/question/dislike/{{$reply->id}}">
-                                    <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i> {{$reply->dislikectr}}
-                                </a>
+                                <button class="dislike" id="{{$reply->id}}bdl">
+                                    <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i>
+                                </button>
+                                <span id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
                             </div>
                         </td>
                         <!--<td class="w3-padding w3-xlarge w3-teal" style="vertical-align:middle; ">-->
@@ -148,6 +161,38 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".like").click(function(){
+            let idAttr = $(this).attr("id")
+            console.log(idAttr);
+            let id = idAttr.substr(0, idAttr.length - 2);
+            console.log(id);
+            let sid = "#" + id + "l";
+            console.log(sid);
+            let did = "/question/like/" + id + " " + sid;
+            console.log(did);
+            $.get(did, function(data, status){
+                $(sid).text(data);
+            });
+        });
+
+        $(".dislike").click(function(){
+            let idAttr = $(this).attr("id")
+            console.log(idAttr);
+            let id = idAttr.substr(0, idAttr.length - 3);
+            console.log(id);
+            let sid = "#" + id + "dl";
+            console.log(sid);
+            let did = "/question/dislike/" + id + " " + sid;
+            console.log(did);
+            $.get(did, function(data, status){
+                $(sid).text(data);
+            });
+        });
+    });
+</script>
 
 </body>
 
