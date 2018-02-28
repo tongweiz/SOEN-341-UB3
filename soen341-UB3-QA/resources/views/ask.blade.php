@@ -54,7 +54,7 @@
                             {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Enter the details of your question here']) !!}
                         </div>
                         {{--<button type="submit" class="btn btn-primary">Submit</button>--}}
-                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'name' => 'Submit']) !!}
                     {{--</form>--}}{!! Form::close() !!}
                 </div>
             </div>

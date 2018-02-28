@@ -183,7 +183,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
-            'created at' => '2018-02-02 12:20:00',
+            'created_at' => '2018-02-02 12:20:00',
         ]);
 
         $this->visit('/questions/1')
@@ -204,7 +204,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
-            'created at' => '2018-02-02 12:20:00',
+            'created_at' => '2018-02-02 12:20:00',
         ]);
 
         factory(Reply::class)->create([
@@ -238,7 +238,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
-            'created at' => '2018-02-02 12:20:00',
+            'created_at' => '2018-02-02 12:20:00',
         ]);
 
         factory(Reply::class)->create([
@@ -270,7 +270,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
-            'created at' => '2018-02-02 12:20:00',
+            'created_at' => '2018-02-02 12:20:00',
         ]);
 
         factory(Reply::class)->create([
@@ -296,7 +296,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
-            'created at' => '2018-02-02 12:20:00',
+            'created_at' => '2018-02-02 12:20:00',
         ]);
 
         factory(Reply::class)->create([
