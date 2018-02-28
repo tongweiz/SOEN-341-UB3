@@ -186,7 +186,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             'created_at' => '2018-02-02 12:20:00',
         ]);
 
-        $this->visit('/questions/1')
+        $this->visit('/question/1')
              ->see('first title test')
              ->see('user1')
              ->see('2018-02-02 12:20:00')
@@ -213,9 +213,10 @@ class QuestionControllerTest extends BrowserKitTestCase
             'user_id' => 2,
             'likectr' => 66,
             'dislikectr' => 124,
+            'status' => 0,
         ]);
 
-        $this->visit('/questions/1')
+        $this->visit('/question/1')
             ->see('first title test')
             ->see('user1')
             ->see('2018-02-02 12:20:00')
@@ -247,10 +248,11 @@ class QuestionControllerTest extends BrowserKitTestCase
             'user_id' => 2,
             'likectr' => 66,
             'dislikectr' => 124,
+            'status' => 0,
         ]);
 
         $this->actingAs($user)
-             ->visit('/questions/1')
+             ->visit('/question/1')
              ->see('first title test')
              ->see('user1')
              ->see('2018-02-02 12:20:00')
@@ -282,7 +284,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             'status' => 1,
         ]);
 
-        $this->visit('/questions/1')
+        $this->visit('/question/1')
              ->seeText('<i class="fa fa-ban <?php echo \'fa-2x\'; ?>"></i>');
     }
 
@@ -311,7 +313,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         $user = \App\User::find(2);
 
         $this->actingAs($user)
-             ->visit('/questions/1')
+             ->visit('/question/1')
              ->seeText('<i class="fa fa-ban <?php echo \'fa-2x\'; ?>"></i>');
     }
 
