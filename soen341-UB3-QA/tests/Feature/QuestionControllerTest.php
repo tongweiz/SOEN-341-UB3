@@ -362,7 +362,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             'user_id' => 2,
             'likectr' => 66,
             'dislikectr' => 124,
-            'status' => 1,
+            'status' => -1,
         ]);
 
         $user = \App\User::find(2);
@@ -391,16 +391,16 @@ class QuestionControllerTest extends BrowserKitTestCase
             'user_id' => 2,
             'likectr' => 66,
             'dislikectr' => 124,
-            'status' => 1,
+            'status' => 0,
         ]);
 
         $user = \App\User::find(1);
 
         $this->actingAs($user)
             ->visit('/question/1')
-            ->seeElement('i', ['class' => 'fa fa-ban fa-2x'])
-            ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x'])
-            ->seeElement('i', ['class' => ' fa fa-bars fa-2x']);
+            ->seeElement('i', ['class' => 'fa fa-ban'])
+            ->seeElement('i', ['class' => 'fa fa-check-circle'])
+            ->seeElement('i', ['class' => 'fa fa-bars fa-2x']);
     }
 
 }
