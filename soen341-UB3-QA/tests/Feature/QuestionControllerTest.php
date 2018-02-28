@@ -285,7 +285,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         ]);
 
         $this->visit('/question/1')
-             ->seeElement('<i class="fa fa-check-circle fa-2x"></i>');
+             ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
     }
 
     /**
@@ -314,7 +314,7 @@ class QuestionControllerTest extends BrowserKitTestCase
 
         $this->actingAs($user)
              ->visit('/question/1')
-             ->seeElement('<i class="fa fa-check-circle fa-2x"></i>');
+            ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
     }
 
 }
