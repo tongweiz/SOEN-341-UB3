@@ -93,13 +93,13 @@
                         </td>
                         <td class="rating" style="vertical-align:middle; "  width=15%>
                             <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="/question/like/{{$reply->id}}">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i></span> {{$reply->likectr}}
+                                <a href="/question/like/{{$reply->id}}" name="like">
+                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$reply->likectr}}
                                 </a>
                             </div>
                             <br />
                             <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="/question/dislike/{{$reply->id}}">
+                                <a href="/question/dislike/{{$reply->id}}" name="dislike">
                                     <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i> {{$reply->dislikectr}}
                                 </a>
                             </div>
@@ -107,13 +107,13 @@
                         <!--<td class="w3-padding w3-xlarge w3-teal" style="vertical-align:middle; ">-->
                         <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
 						@if($info['qOwner'])
-							<a href="/question/accept/{{$reply->id}}">
+							<a href="/question/accept/{{$reply->id}}" name="accept">
 								<i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>"></i>
 							</a>
-							<a href="/question/normalize/{{$reply->id}}">
+							<a href="/question/normalize/{{$reply->id}}" name="normal">
 								<i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>"></i>
 							</a>
-							<a href="/question/reject/{{$reply->id}}">
+							<a href="/question/reject/{{$reply->id}}" name="reject">
 								<i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>"></i>
 							</a>
 						@else
