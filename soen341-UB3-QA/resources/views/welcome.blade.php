@@ -33,26 +33,29 @@
             <h1 class="my-4"> <small> Discover User Questions! </small> </h1>
 
             <!-- Question Post -->
-            @foreach($question_data as $key => $data)
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h4 class="card-title">{{$data->title}}</h4> </br>
-                        <a href="/question/{{$data->id}}" class="btn btn-primary" name="Read">Read More &rarr;</a>
+            @if(count($question_data) > 0)
+                @foreach($question_data as $key => $data)
+                  <div class="card mb-4">
+                       <div class="card-body">
+                            <h4 class="card-title">{{$data->title}}</h4> </br>
+                            <a href="/question/{{$data->id}}" class="btn btn-primary" name="Read">Read More &rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted"> Posted on  {{$data->updated_at}} by {{$data->name}}</div>
                     </div>
-                    <div class="card-footer text-muted"> Posted on  {{$data->updated_at}} by {{$data->name}}</div>
-                </div>
-            @endforeach
+                @endforeach
 
-            <!-- Pagination (TO IMPLEMENT IF WE HAVE TIME)-->
-            <ul class="pagination justify-content-center mb-4">
-                <li class="page-item">
-                    <a class="page-link" href="#">&larr; Older</a>
-                </li>
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">Newer &rarr;</a>
-                </li>
-            </ul>
-
+                <!-- Pagination (TO IMPLEMENT IF WE HAVE TIME)-->
+                    <ul class="pagination justify-content-center mb-4">
+                        <li class="page-item">
+                            <a class="page-link" href="#">&larr; Older</a>
+                        </li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Newer &rarr;</a>
+                        </li>
+                    </ul>
+            @else
+                <p>No question has been asked on the website yet! </p>
+            @endif
         </div>
 
         @include('sidebar')

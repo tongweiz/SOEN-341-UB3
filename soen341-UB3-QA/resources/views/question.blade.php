@@ -44,7 +44,7 @@
             <!-- Author -->
             <p class="lead">
                 by
-                <a href="#">User #{{$info['question']->user_id}}</a>
+                <a href="#">{{$info['user'][0]->name}}</a>
             </p>
 
             <hr>

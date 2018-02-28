@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\BrowserKitTestCase;
 use App\Question;
 use App\User;
-use App\Reply;
 
 class ReplyTest extends BrowserKitTestCase
 {
@@ -52,7 +51,9 @@ class ReplyTest extends BrowserKitTestCase
              ->type('this is a reply', 'body')
              ->press('Submit')
              ->seePageIs('http://localhost/question/1')
-             ->see('No comments');
+             ->see('No comments')
+             ->dontSeeInDatabase('replies', [
+                    'content' => 'this is a reply']);
     }
 
     /**
@@ -70,6 +71,8 @@ class ReplyTest extends BrowserKitTestCase
             ->press('Submit')
             ->seePageIs('http://localhost/question/1')
             ->see('No comments')
+            ->dontSeeInDatabase('replies', [
+                'content' => ''])
             ->isAuthenticated();
     }
 

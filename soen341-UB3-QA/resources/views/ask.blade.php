@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Jux = Ask a Question </title>
+    <title> Jux - Ask a Question </title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -35,28 +35,21 @@
 
             <!-- Comments Form -->
             <div class="card my-4">
+                {!! Form::open(['url' => 'ask']) !!}
                 <div class="card-body">
-                    {{--<form>--}}{!! Form::open(['url' => 'ask']) !!}
-                        <div class="form-group">
-                            {!! Form::label('title','Title:') !!}
-                            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter your question title here']) !!}
-                            {{--<h4 class="mt-4">Title:</h4>  --}}
-                            {{--<textarea class="form-control" rows="1"></textarea>--}}
-                        </div>
-                    {{--</form>--}}
+                    <div class="form-group">
+                        {!! Form::label('title','Title:') !!}
+                        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter your question title here']) !!}
+                    </div>
                 </div>
                 <div class="card-body">
-                    {{--<form>--}}
-                        <div class="form-group">
-                            {{--<h4 class="mt-4">Contents:</h4>--}}
-                            {{--<textarea class="form-control" rows="10"></textarea>--}}
-                            {!! Form::label('content', 'Contents:') !!}
-                            {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Enter the details of your question here']) !!}
-                        </div>
-                        {{--<button type="submit" class="btn btn-primary">Submit</button>--}}
-                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-                    {{--</form>--}}{!! Form::close() !!}
+                    <div class="form-group">
+                        {!! Form::label('content', 'Contents:') !!}
+                        {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Enter the details of your question here']) !!}
+                    </div>
+                        {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'name' => 'Submit']) !!}
                 </div>
+                {!! Form::close() !!}
             </div>
 
 
