@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\reply;
 use App\question;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
