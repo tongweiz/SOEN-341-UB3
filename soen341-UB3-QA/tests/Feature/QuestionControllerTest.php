@@ -285,7 +285,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         ]);
 
         $this->visit('/question/1')
-             ->seeText('<i class="fa fa-ban <?php echo \'fa-2x\'; ?>"></i>');
+             ->seeText('<i class="fa fa-check-circle <?php echo \'fa-2x\'; ?>"></i>');
     }
 
     /**
@@ -314,7 +314,7 @@ class QuestionControllerTest extends BrowserKitTestCase
 
         $this->actingAs($user)
              ->visit('/question/1')
-             ->seeText('<i class="fa fa-ban <?php echo \'fa-2x\'; ?>"></i>');
+             ->seeText('<i class="fa fa-check-circle <?php echo \'fa-2x\'; ?>"></i>');
     }
 
 }
