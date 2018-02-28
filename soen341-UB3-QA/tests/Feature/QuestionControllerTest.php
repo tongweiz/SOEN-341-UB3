@@ -373,10 +373,10 @@ class QuestionControllerTest extends BrowserKitTestCase
     }
 
     /**
-     * This test checks if all symbols are displayed next to a reply
+     * This test checks if the normalize symbol is displayed next to a reply
      * when you are the owner of a question.
      */
-    public function testDisplayAllSymbolsAsOwner()
+    public function testDisplayNormalizeSymbolsAsOwner()
     {
         factory(Question::class)->create([
             'title' => 'first title test',
@@ -391,16 +391,71 @@ class QuestionControllerTest extends BrowserKitTestCase
             'user_id' => 2,
             'likectr' => 66,
             'dislikectr' => 124,
-            'status' => 0,
+            'status' => -1,
         ]);
 
         $user = \App\User::find(1);
 
         $this->actingAs($user)
             ->visit('/question/1')
-            ->seeElement('i', ['class' => 'fa fa-ban'])
-            ->seeElement('i', ['class' => 'fa fa-check-circle'])
-            ->seeElement('i', ['class' => 'fa fa-bars fa-2x']);
+            ->seeElement('i', ['class' => 'fa fa-bars']);
     }
 
+    /**
+     * This test checks if the accept symbol is displayed next to a reply
+     * when you are the owner of a question.
+     */
+    public function testDisplayAcceptSymbolsAsOwner()
+    {
+        factory(Question::class)->create([
+            'title' => 'first title test',
+            'content' => 'first content',
+            'user_id' => 1,
+            'created_at' => '2018-02-02 12:20:00',
+        ]);
+
+        factory(Reply::class)->create([
+            'content' => 'first reply',
+            'question_id' => 1,
+            'user_id' => 2,
+            'likectr' => 66,
+            'dislikectr' => 124,
+            'status' => -1,
+        ]);
+
+        $user = \App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/question/1')
+            ->seeElement('i', ['class' => 'fa fa-check-circle']);
+    }
+
+    /**
+     * This test checks if the reject symbol is displayed next to a reply
+     * when you are the owner of a question.
+     */
+    public function testDisplayRejectSymbolsAsOwner()
+    {
+        factory(Question::class)->create([
+            'title' => 'first title test',
+            'content' => 'first content',
+            'user_id' => 1,
+            'created_at' => '2018-02-02 12:20:00',
+        ]);
+
+        factory(Reply::class)->create([
+            'content' => 'first reply',
+            'question_id' => 1,
+            'user_id' => 2,
+            'likectr' => 66,
+            'dislikectr' => 124,
+            'status' => -1,
+        ]);
+
+        $user = \App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/question/1')
+            ->seeElement('i', ['class' => 'fa fa-ban fa-2x']);
+    }
 }
