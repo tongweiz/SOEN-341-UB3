@@ -23,6 +23,17 @@
          Try to find something else for accept/reject icons please. Not too ugly right now without it-->
     <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
 
+    <style>
+            .like, .dislike {
+                background:none!important;
+                color:rgb(30, 144, 255);
+                border:none; 
+                padding:0!important;
+                font: inherit;
+                cursor: pointer;
+            }
+        </style>
+
 </head>
 
 <body>
@@ -93,15 +104,17 @@
                         </td>
                         <td class="rating" style="vertical-align:middle; "  width=15%>
                             <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="/question/like/{{$reply->id}}" name="like">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$reply->likectr}}
-                                </a>
+                                <button class="like" id="{{$reply->id}}bl">
+                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                </button>
+                                <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
                             </div>
                             <br />
                             <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <a href="/question/dislike/{{$reply->id}}" name="dislike">
-                                    <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i> {{$reply->dislikectr}}
-                                </a>
+                                <button class="dislike" id="{{$reply->id}}bdl">
+                                    <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i>
+                                </button>
+                                <span id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
                             </div>
                         </td>
                         <!--<td class="w3-padding w3-xlarge w3-teal" style="vertical-align:middle; ">-->
@@ -148,6 +161,58 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".like").click(function(){
+            let idAttr = $(this).attr("id")
+            let id = idAttr.substr(0, idAttr.length - 2);
+
+            let sid = "#" + id + "l";
+            let did = "/question/like/" + id;
+
+            $.get("/question/like/" + id, function(data, status){
+                if(status == "success"){
+                    if(data == "#"){
+                        alert("You are not logged in!");
+                    } else {
+                        let str = /(\d+)\.(\d+)/.exec(data);
+                        $("#" + id + "l").text(str[1]);
+                        $("#" + id + "dl").text(str[2]);
+                        $("#" + idAttr).prop("disabled", true);
+                        $("#" + idAttr).prop("style", "color: rgb(176,224,230);");
+                        $("#" + id + "bdl").prop("disabled", false);
+                        $("#" + id + "bdl").prop("style", "color: rgb(30, 144, 255);");
+                    }
+                }
+            });
+        });
+
+        $(".dislike").click(function(){
+            let idAttr = $(this).attr("id")
+            let id = idAttr.substr(0, idAttr.length - 3);
+
+            let sid = "#" + id + "dl";
+            let did = "/question/dislike/" + id;
+
+            $.get("/question/dislike/" + id, function(data, status){
+                if(status == "success"){
+                    if(data == "#"){
+                        alert("You are not logged in!");
+                    } else {
+                        let str = /(\d+)\.(\d+)/.exec(data);
+                        $("#" + id + "l").text(str[1]);
+                        $("#" + id + "dl").text(str[2]);
+                        $("#" + idAttr).prop("disabled", true);
+                        $("#" + idAttr).prop("style", "color: rgb(176,224,230);");
+                        $("#" + id + "bl").prop("disabled", false);
+                        $("#" + id + "bl").prop("style", "color: rgb(30, 144, 255);");
+                    }
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 
