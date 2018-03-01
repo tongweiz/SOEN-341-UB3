@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\question;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -55,13 +56,19 @@ class QuestionController extends Controller
         ]);
 
 
+        if(Auth::check()) {
             $question = new Question;
             $question->user_id = Auth::id();
             $question->title = $request->get('title');
             $question->content = $request->get('content');
+            $question->Label_1 = $request->get('label_1');
+            $question->Label_2 = $request->get('label_2');
             $question->save();
 
-        return redirect('/home');
+            return redirect('/home');
+        }
+        else
+            return redirect('/ask');
 
     }
 
@@ -74,9 +81,10 @@ class QuestionController extends Controller
     public function show($id)
     {
 		$question = Question::find($id);
+		$user = User::where('id', $question->user_id)->get();
 		$replies = Reply::where('question_id', $id)->get();
 		$qOwner = ($question->user_id == Auth::id());
-        return view('question')->with('info', ['question'=>$question, 'replies'=>$replies, 'qOwner'=>$qOwner]);
+        return view('question')->with('info', ['question'=>$question, 'user' => $user, 'replies'=>$replies, 'qOwner'=>$qOwner]);
     }
 
     /**

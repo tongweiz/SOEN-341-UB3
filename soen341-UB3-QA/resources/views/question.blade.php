@@ -55,7 +55,7 @@
             <!-- Author -->
             <p class="lead">
                 by
-                <a href="#">User #{{$info['question']->user_id}}</a>
+                <a href="#">{{$info['user'][0]->name}}</a>
             </p>
 
             <hr>
@@ -120,13 +120,13 @@
                         <!--<td class="w3-padding w3-xlarge w3-teal" style="vertical-align:middle; ">-->
                         <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
 						@if($info['qOwner'])
-							<a href="/question/accept/{{$reply->id}}">
+							<a href="/question/accept/{{$reply->id}}" name="accept">
 								<i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>"></i>
 							</a>
-							<a href="/question/normalize/{{$reply->id}}">
+							<a href="/question/normalize/{{$reply->id}}" name="normal">
 								<i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>"></i>
 							</a>
-							<a href="/question/reject/{{$reply->id}}">
+							<a href="/question/reject/{{$reply->id}}" name="reject">
 								<i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>"></i>
 							</a>
 						@else

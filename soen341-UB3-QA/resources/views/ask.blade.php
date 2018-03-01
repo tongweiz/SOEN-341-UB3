@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Jux = Ask a Question </title>
+    <title> Jux - Ask a Question </title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -35,28 +35,39 @@
 
             <!-- Comments Form -->
             <div class="card my-4">
+                {!! Form::open(['url' => 'ask']) !!}
                 <div class="card-body">
-                    {{--<form>--}}{!! Form::open(['url' => 'ask']) !!}
-                        <div class="form-group">
-                            {!! Form::label('title','Title:') !!}
-                            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter your question title here']) !!}
-                            {{--<h4 class="mt-4">Title:</h4>  --}}
-                            {{--<textarea class="form-control" rows="1"></textarea>--}}
-                        </div>
+                    <div class="form-group">
+                        {!! Form::label('title','Title:') !!}
+                        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter your question title here']) !!}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {!! Form::label('content', 'Contents:') !!}
+                        {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Enter the details of your question here']) !!}
+                    </div>
                     {{--</form>--}}
                 </div>
                 <div class="card-body">
                     {{--<form>--}}
                         <div class="form-group">
-                            {{--<h4 class="mt-4">Contents:</h4>--}}
-                            {{--<textarea class="form-control" rows="10"></textarea>--}}
-                            {!! Form::label('content', 'Contents:') !!}
-                            {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Enter the details of your question here']) !!}
+                            {{--<h4 class="mt-4">Label 1:(optional)</h4>--}}
+                            {{--<textarea class="form-control" rows="1"></textarea>--}}
+                            {!! Form::label('label_1','Label 1:(optional)') !!}
+                            {!! Form::text('label_1', null, ['class' => 'form-control',
+                            'placeholder' => 'Enter the label 1 of your question here']) !!} 
                         </div>
-                        {{--<button type="submit" class="btn btn-primary">Submit</button>--}}
-                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-                    {{--</form>--}}{!! Form::close() !!}
+                        <div class="form-group">
+                            {{--<h4 class="mt-4">Label 2:(optional)</h4>--}}
+                            {{--<textarea class="form-control" rows="1"></textarea>--}}
+                            {!! Form::label('label_2','Label 2:(optional)') !!}
+                            {!! Form::text('label_2', null, ['class' => 'form-control', 
+                            'placeholder' => 'Enter the label 2 of your question here']) !!} 
+                        </div>
+                        {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'name' => 'Submit']) !!}
                 </div>
+                {!! Form::close() !!}
             </div>
 
 
