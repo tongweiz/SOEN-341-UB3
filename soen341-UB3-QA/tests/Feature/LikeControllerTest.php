@@ -30,6 +30,8 @@ class LikeControllerTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
+            'Label_1' => 'Hello',
+            'Label_2' => 'World',
             'created_at' => '2018-02-02 12:20:00',
         ]);
 
