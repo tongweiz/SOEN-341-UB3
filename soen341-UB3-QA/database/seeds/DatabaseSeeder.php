@@ -35,6 +35,8 @@ class DatabaseSeeder extends Seeder
             'title' => 'How come is the rainbow only 7 colors?',
             'content' => 'I dont understand why we always say that a rainbow is red, orange, yellow, green, blue, indigo, violet.
               When I look at a real rainbow I see a lot more colors.',
+            'Label_1' => '',
+            'Label_2' => '',
             'user_id' => '1',
             'created_at' => '2018-02-10 12:25:00',
             'updated_at' => '2018-02-10 12:25:00'
@@ -45,6 +47,8 @@ class DatabaseSeeder extends Seeder
             'title' => 'Why do giraffes have such tall necks?',
             'content' => 'I dont know of any other animal with that characteristic. 
                 I was wondering if it had maybe an evolutionary purpose?',
+            'Label_1' => 'giraffes',
+            'Label_2' => '',
             'user_id' => '2',
             'created_at' => '2018-02-12 20:15:00',
             'updated_at' => '2018-02-12 20:15:00'
@@ -55,6 +59,8 @@ class DatabaseSeeder extends Seeder
             'title' => 'Php database code in laravel wont run',
             'content' => 'I am doing a website in laravel and I dont understand how to access my tables in the controllers.
              My tables were done with the laravel class Schema if it helps.',
+            'Label_1' => '',
+            'Label_2' => 'laravel',
             'user_id' => '1',
             'created_at' => '2018-02-10 08:26:00',
             'updated_at' => '2018-02-10 08:40:00'
@@ -65,6 +71,8 @@ class DatabaseSeeder extends Seeder
             'title' => 'Should I eat pizza everyday if I want to lose weight?',
             'content' => 'I am trying to lose some weight but I have this bad habit of eating a lot of pizza. It
                 is okay for me to continue eating it?',
+            'Label_1' => 'pizza',
+            'Label_2' => 'weight',
             'user_id' => '2',
             'created_at' => '2018-02-12 20:15:00',
             'updated_at' => '2018-02-12 20:15:00'

@@ -17,6 +17,8 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('content');
+            $table->string('Label_1');
+            $table->string('Label_2');
             $table->integer('user_id')->references('id')->on('users');
             $table->timestamps();
         });
