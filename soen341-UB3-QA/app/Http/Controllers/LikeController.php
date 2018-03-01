@@ -33,9 +33,11 @@ class LikeController extends Controller
 				$like->user_id = Auth::id();
 				$like->save();
 			}
-		}
 
-		return "$reply->likectr.$reply->dislikectr";
+			return "$reply->likectr.$reply->dislikectr";
+		} else {
+			return "#";
+		}
     }
 	
 	public function dislike($rid)
@@ -60,9 +62,11 @@ class LikeController extends Controller
 				$dislike->user_id = Auth::id();
 				$dislike->save();
 			}
+
+			return "$reply->likectr.$reply->dislikectr";
+		} else {
+			return "#";
 		}
-		
-		return "$reply->likectr.$reply->dislikectr";
     }
 	
 	public function accept($rid)
