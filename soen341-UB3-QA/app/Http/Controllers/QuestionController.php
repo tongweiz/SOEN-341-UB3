@@ -61,8 +61,8 @@ class QuestionController extends Controller
             $question->user_id = Auth::id();
             $question->title = $request->get('title');
             $question->content = $request->get('content');
-            $question->Label_1 = $request->get('label_1');
-            $question->Label_2 = $request->get('label_2');
+            $question->label_1 = $request->get('label_1');
+            $question->label_2 = $request->get('label_2');
             $question->save();
 
             return redirect('/home');
