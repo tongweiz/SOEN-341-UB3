@@ -12,9 +12,6 @@ $(document).ready(function () {
                     alert("You are not logged in! Only logged in users can like replies. " +
                         "Please use the Login or Register links at the top of the page and try again.");
                 }
-                else if (data == "##") {
-                    alert("You have already liked this reply before!");
-                }
                 else {
                     let str = /(\d+)\.(\d+)/.exec(data);
                     $("#" + id + "l").text(str[1]);
@@ -24,7 +21,7 @@ $(document).ready(function () {
                     $("#" + id + "bdl").prop("disabled", false);
                     $("#" + id + "bdl").prop("style", "color: rgb(30, 144, 255);");
                 }
-            }
+            } else console.log("Error");
         });
     });
 
@@ -41,9 +38,6 @@ $(document).ready(function () {
                     alert("You are not logged in! Only logged in users can dislike replies. " +
                         "Please use the Login or Register links at the top of the page and try again.");
                 }
-                else if(data == "##"){
-                    alert("You have already disliked this reply before!");
-                }
                 else {
                     let str = /(\d+)\.(\d+)/.exec(data);
                     $("#" + id + "l").text(str[1]);
@@ -53,7 +47,7 @@ $(document).ready(function () {
                     $("#" + id + "bl").prop("disabled", false);
                     $("#" + id + "bl").prop("style", "color: rgb(30, 144, 255);");
                 }
-            }
+            } else console.log("Error");
         });
     });
 });
