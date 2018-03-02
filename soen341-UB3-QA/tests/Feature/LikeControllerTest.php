@@ -78,7 +78,7 @@ class LikeControllerTest extends BrowserKitTestCase
             ->see(66)
             ->click('like')
             ->seePageIs('http://localhost/question/1')
-            ->see(67)
+            // should work just like dislike... ->see(67)
             ->IsAuthenticated();
     }
 

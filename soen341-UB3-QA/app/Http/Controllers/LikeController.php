@@ -30,11 +30,15 @@ class LikeController extends Controller
 
 				$like = new like;
 				$like->reply_id = $rid;
+				$like->question_id = $reply->question_id;
 				$like->user_id = Auth::id();
 				$like->save();
-			}
 
-			return "$reply->likectr.$reply->dislikectr";
+                return "$reply->likectr.$reply->dislikectr";
+			}
+            else
+                //user has already liked this reply before
+                return "##";
 		} else {
 			return "#";
 		}
@@ -59,11 +63,15 @@ class LikeController extends Controller
 
 				$dislike = new dislike;
 				$dislike->reply_id = $rid;
+                $dislike->question_id = $reply->question_id;
 				$dislike->user_id = Auth::id();
 				$dislike->save();
-			}
 
-			return "$reply->likectr.$reply->dislikectr";
+                return "$reply->likectr.$reply->dislikectr";
+			}
+            else
+                //user has already disliked this reply before
+                return "##";
 		} else {
 			return "#";
 		}
