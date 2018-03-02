@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\question;
 use App\User;
+use App\Like;
+use App\Dislike;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -93,8 +95,10 @@ class QuestionController extends Controller
 		$question = Question::find($id);
 		$user = User::where('id', $question->user_id)->get();
 		$replies = Reply::where('question_id', $id)->get();
-		$qOwner = ($question->user_id == Auth::id());
-        return view('question')->with('info', ['question'=>$question, 'user' => $user, 'replies'=>$replies, 'qOwner'=>$qOwner]);
+        $qOwner = ($question->user_id == Auth::id());
+        $likes = Like::where('question_id', $id)->get();
+        $dislikes = Dislike::where('question_id', $id)->get();
+        return view('question')->with('info', ['question'=>$question, 'user' => $user, 'replies'=>$replies, 'qOwner'=>$qOwner, 'likes'=>$likes, 'dislikes'=>$dislikes]);
     }
 
     /**
