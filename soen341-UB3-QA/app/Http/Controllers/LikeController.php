@@ -32,7 +32,12 @@ class LikeController extends Controller
 				$like = new like;
 				$like->reply_id = $rid;
 				$like->user_id = Auth::id();
-				$like->save();
+				$like->question_id = $reply->question_id;
+				try{
+					$like->save();
+				} catch(Exception $e) {
+					return $e->getMessage();
+				}
 			}
 
 			return "$reply->likectr.$reply->dislikectr";
@@ -61,7 +66,12 @@ class LikeController extends Controller
 				$dislike = new dislike;
 				$dislike->reply_id = $rid;
 				$dislike->user_id = Auth::id();
-				$dislike->save();
+				$dislike->question_id = $reply->question_id;
+				try{
+					$dislike->save();
+				} catch(Exception $e) {
+					return $e->getMessage();
+				}
 			}
 
 			return "$reply->likectr.$reply->dislikectr";
