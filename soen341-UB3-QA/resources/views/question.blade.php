@@ -24,15 +24,14 @@
     <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
 
     <style>
-            .like, .dislike {
+            .click {
                 background:none!important;
-                color:rgb(30, 144, 255);
                 border:none; 
                 padding:0!important;
                 font: inherit;
                 cursor: pointer;
             }
-        </style>
+    </style>
 
 </head>
 
@@ -107,7 +106,7 @@
                                     <a style="color: <?php if(null !== Auth::user()) {$flag = FALSE; foreach($info['likes'] as $like) {
                                                             if($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {echo 'rgb(176,224,230)'; $flag = TRUE;}
                                                             } if($flag != TRUE) echo 'rgb(30, 144, 255)';} else echo 'rgb(30, 144, 255)'; ?>" 
-                                        class="like" id="{{$reply->id}}bl" name="like">
+                                        class="like click" id="{{$reply->id}}bl" name="like">
                                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                     </a>
                                     <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
@@ -117,7 +116,7 @@
                                     <a style="color: <?php if(null !== Auth::user()) {$flag = FALSE; foreach($info['dislikes'] as $like) {
                                                             if($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {echo 'rgb(176,224,230)'; $flag = TRUE;}
                                                             } if($flag != TRUE) echo 'rgb(30, 144, 255)';} else echo 'rgb(30, 144, 255)'; ?>" 
-                                        class="dislike" id="{{$reply->id}}bdl" name="dislike">
+                                        class="dislike click" id="{{$reply->id}}bdl" name="dislike">
                                         <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i>
                                     </a>
                                     <span id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
@@ -127,14 +126,14 @@
                         <!--<td class="w3-padding w3-xlarge w3-teal" style="vertical-align:middle; ">-->
                                 <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
 						            @if($info['qOwner'])
-							            <a href="/question/accept/{{$reply->id}}" name="accept">
-								            <i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>"></i>
+							            <a class="accept click" name="accept">
+								            <i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}a"></i>
 							            </a>
-							            <a href="/question/normalize/{{$reply->id}}" name="normal">
-								            <i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>"></i>
+							            <a class="normalize click" name="normal">
+								            <i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}n"></i>
 							            </a>
-							            <a href="/question/reject/{{$reply->id}}" name="reject">
-								            <i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>"></i>
+							            <a class="reject click" name="reject">
+								            <i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}r"></i>
 							            </a>
 						            @elseif($reply->status == -1)
 								        <i class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)"></i>
@@ -169,6 +168,7 @@
 
 <!--  script used for like and dislike replies! -->
 <script type="text/javascript" src="{{ URL::asset('js/like-dislike.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/accpt-norm-rejct.js') }}"></script>
 
 </body>
 
