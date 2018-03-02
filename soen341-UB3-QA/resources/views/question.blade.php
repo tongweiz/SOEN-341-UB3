@@ -96,49 +96,48 @@
                 <br>
                     @if(count($info['replies']) > 0)
 						@foreach($info['replies'] as $reply)
-                    <tr class="answer">
-                        <td class="answer-text" width=70%>
-                            <p>
-							{{$reply->content}}
-                            </p>
-                        </td>
-                        <td class="rating" style="vertical-align:middle; "  width=15%>
-                            <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <button class="like" id="{{$reply->id}}bl">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                </button>
-                                <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
-                            </div>
-                            <br />
-                            <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                <button class="dislike" id="{{$reply->id}}bdl">
-                                    <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i>
-                                </button>
-                                <span id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
-                            </div>
-                        </td>
+                            <tr class="answer">
+                                <td class="answer-text" width=70%>
+                                    <p> {{$reply->content}}</p>
+                                </td>
+
+                                <td class="rating" style="vertical-align:middle; "  width=15%>
+
+                                    <div style="color:teal; float:left; margin: 0 40% 0 50%;">
+                                    <button class="like" id="{{$reply->id}}bl" name="like">
+                                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                    </button>
+                                    <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
+                                    </div> <br />
+
+                                    <div style="color:teal; float:left; margin: 0 40% 0 50%;">
+                                    <button class="dislike" id="{{$reply->id}}bdl" name="dislike">
+                                        <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i>
+                                    </button>
+                                    <span id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
+                                    </div>
+                                </td>
+
                         <!--<td class="w3-padding w3-xlarge w3-teal" style="vertical-align:middle; ">-->
-                        <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
-						@if($info['qOwner'])
-							<a href="/question/accept/{{$reply->id}}" name="accept">
-								<i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>"></i>
-							</a>
-							<a href="/question/normalize/{{$reply->id}}" name="normal">
-								<i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>"></i>
-							</a>
-							<a href="/question/reject/{{$reply->id}}" name="reject">
-								<i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>"></i>
-							</a>
-						@else
-							@if($reply->status == -1)
-								<i class="fa fa-ban <?php echo 'fa-2x'; ?>"></i>
-							@elseif($reply->status == 1)
-								<i class="fa fa-check-circle <?php echo 'fa-2x'; ?>"></i>
-							@endif
-						@endif
-                        </td>
-                    </tr>
-					@endforeach
+                                <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
+						            @if($info['qOwner'])
+							            <a href="/question/accept/{{$reply->id}}" name="accept">
+								            <i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>"></i>
+							            </a>
+							            <a href="/question/normalize/{{$reply->id}}" name="normal">
+								            <i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>"></i>
+							            </a>
+							            <a href="/question/reject/{{$reply->id}}" name="reject">
+								            <i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>"></i>
+							            </a>
+						            @elseif($reply->status == -1)
+								        <i class="fa fa-ban <?php echo 'fa-2x'; ?>"></i>
+							        @elseif($reply->status == 1)
+								        <i class="fa fa-check-circle <?php echo 'fa-2x'; ?>"></i>
+							        @endif
+                                </td>
+                            </tr>
+                         @endforeach
 					@else
 						<p>No comments</p>
 					@endif
@@ -162,57 +161,8 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    $(document).ready(function(){
-        $(".like").click(function(){
-            let idAttr = $(this).attr("id")
-            let id = idAttr.substr(0, idAttr.length - 2);
-
-            let sid = "#" + id + "l";
-            let did = "/question/like/" + id;
-
-            $.get("/question/like/" + id, function(data, status){
-                if(status == "success"){
-                    if(data == "#"){
-                        alert("You are not logged in!");
-                    } else {
-                        let str = /(\d+)\.(\d+)/.exec(data);
-                        $("#" + id + "l").text(str[1]);
-                        $("#" + id + "dl").text(str[2]);
-                        $("#" + idAttr).prop("disabled", true);
-                        $("#" + idAttr).prop("style", "color: rgb(176,224,230);");
-                        $("#" + id + "bdl").prop("disabled", false);
-                        $("#" + id + "bdl").prop("style", "color: rgb(30, 144, 255);");
-                    }
-                }
-            });
-        });
-
-        $(".dislike").click(function(){
-            let idAttr = $(this).attr("id")
-            let id = idAttr.substr(0, idAttr.length - 3);
-
-            let sid = "#" + id + "dl";
-            let did = "/question/dislike/" + id;
-
-            $.get("/question/dislike/" + id, function(data, status){
-                if(status == "success"){
-                    if(data == "#"){
-                        alert("You are not logged in!");
-                    } else {
-                        let str = /(\d+)\.(\d+)/.exec(data);
-                        $("#" + id + "l").text(str[1]);
-                        $("#" + id + "dl").text(str[2]);
-                        $("#" + idAttr).prop("disabled", true);
-                        $("#" + idAttr).prop("style", "color: rgb(176,224,230);");
-                        $("#" + id + "bl").prop("disabled", false);
-                        $("#" + id + "bl").prop("style", "color: rgb(30, 144, 255);");
-                    }
-                }
-            });
-        });
-    });
-</script>
+<!--  script used for like and dislike replies! -->
+<script type="text/javascript" src="{{ URL::asset('js/like-dislike.js') }}"></script>
 
 </body>
 
