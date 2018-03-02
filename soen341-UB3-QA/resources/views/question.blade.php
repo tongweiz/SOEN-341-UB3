@@ -104,9 +104,9 @@
                                 <!-- need to be a tags instead of buttons because of tests. Also color rgb added here for consistency.-->
                                 <td class="rating" style="vertical-align:middle; "  width=15%>
                                     <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                    <a style="color: <?php $flag = FALSE; foreach($info['likes'] as $like) {
+                                    <a style="color: <?php if(null !== Auth::user()) {$flag = FALSE; foreach($info['likes'] as $like) {
                                                             if($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {echo 'rgb(176,224,230)'; $flag = TRUE;}
-                                                            } if($flag != TRUE) echo 'rgb(30, 144, 255)'; ?>" 
+                                                            } if($flag != TRUE) echo 'rgb(30, 144, 255)';} else echo 'rgb(30, 144, 255)'; ?>" 
                                         class="like" id="{{$reply->id}}bl" name="like">
                                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                     </a>
@@ -114,9 +114,9 @@
                                     </div> <br />
 
                                     <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                    <a style="color: <?php $flag = FALSE; foreach($info['dislikes'] as $like) {
+                                    <a style="color: <?php if(null !== Auth::user()) {$flag = FALSE; foreach($info['dislikes'] as $like) {
                                                             if($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {echo 'rgb(176,224,230)'; $flag = TRUE;}
-                                                            } if($flag != TRUE) echo 'rgb(30, 144, 255)'; ?>" 
+                                                            } if($flag != TRUE) echo 'rgb(30, 144, 255)';} else echo 'rgb(30, 144, 255)'; ?>" 
                                         class="dislike" id="{{$reply->id}}bdl" name="dislike">
                                         <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i>
                                     </a>
@@ -137,9 +137,9 @@
 								            <i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>"></i>
 							            </a>
 						            @elseif($reply->status == -1)
-								        <i class="fa fa-ban <?php echo 'fa-2x'; ?>"></i>
+								        <i class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)"></i>
 							        @elseif($reply->status == 1)
-								        <i class="fa fa-check-circle <?php echo 'fa-2x'; ?>"></i>
+								        <i class="fa fa-check-circle <?php echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)"></i>
 							        @endif
                                 </td>
                             </tr>
