@@ -101,19 +101,19 @@
                                     <p> {{$reply->content}}</p>
                                 </td>
 
+                                <!-- need to be a tags instead of buttons because of tests. Also color rgb added here for consistency.-->
                                 <td class="rating" style="vertical-align:middle; "  width=15%>
-
                                     <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                    <button class="like" id="{{$reply->id}}bl" name="like">
+                                    <a style="color:rgb(30, 144, 255)" class="like" id="{{$reply->id}}bl" name="like">
                                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                    </button>
+                                    </a>
                                     <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
                                     </div> <br />
 
                                     <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                    <button class="dislike" id="{{$reply->id}}bdl" name="dislike">
+                                    <a style="color:rgb(30, 144, 255)" class="dislike" id="{{$reply->id}}bdl" name="dislike">
                                         <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i>
-                                    </button>
+                                    </a>
                                     <span id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
                                     </div>
                                 </td>

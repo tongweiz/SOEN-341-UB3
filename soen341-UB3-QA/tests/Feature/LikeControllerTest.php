@@ -59,7 +59,7 @@ class LikeControllerTest extends BrowserKitTestCase
         $this->visit('/question/1')
             ->see('first title test')
             ->see(66)
-            ->press('like')
+            ->click('like')
             ->seePageIs('http://localhost/question/1')
             ->see(66)
             ->dontSeeIsAuthenticated();
@@ -76,7 +76,7 @@ class LikeControllerTest extends BrowserKitTestCase
             ->visit('/question/1')
             ->see('first title test')
             ->see(66)
-            ->press('like')
+            ->click('like')
             ->seePageIs('http://localhost/question/1')
             ->see(67)
             ->IsAuthenticated();
@@ -90,7 +90,7 @@ class LikeControllerTest extends BrowserKitTestCase
         $this->visit('/question/1')
             ->see('first title test')
             ->see(124)
-            ->press('dislike')
+            ->click('dislike')
             ->seePageIs('http://localhost/question/1')
             ->see(124)
             ->dontSeeIsAuthenticated();
@@ -107,7 +107,7 @@ class LikeControllerTest extends BrowserKitTestCase
             ->visit('/question/1')
             ->see('first title test')
             ->see(124)
-            ->press('dislike')
+            ->click('dislike')
             ->seePageIs('http://localhost/question/1')
             ->see(125)
             ->IsAuthenticated();
