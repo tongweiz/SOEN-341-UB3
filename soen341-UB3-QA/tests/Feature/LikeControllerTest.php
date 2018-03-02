@@ -78,7 +78,8 @@ class LikeControllerTest extends BrowserKitTestCase
             ->see(66)
             ->click('like')
             ->seePageIs('http://localhost/question/1')
-            ->see(67)
+            ->seeInDatabase('replies', [
+                'likectr' => 67])
             ->IsAuthenticated();
     }
 
