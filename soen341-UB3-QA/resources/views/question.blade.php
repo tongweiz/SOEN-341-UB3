@@ -16,6 +16,9 @@
     <!-- Custom styles for this template -->
     <link href="/css/blog-post.css" rel="stylesheet">
 
+    <!-- general background css -->
+    <link href="/css/general.css" rel="stylesheet">
+
     <!--Styles for icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -61,7 +64,11 @@
             <hr>
 
             <!-- Date/Time -->
-            <p>Posted on {{$info['question']->created_at}}</p>
+            Posted on the <span style="text-decoration: underline;">
+                            <?php $parts = explode('-', $info['question']->updated_at);
+                $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
+                echo substr($parts[2],0,2)."th of $month of $parts[0] at " . substr($parts[2],2)?> </span>
+            
 
             <hr>
             <table class="table" style="background-color: #FAFAFA;">
@@ -77,7 +84,7 @@
 
             <!-- Comments Form -->
             <div class="card my-4">
-                <h5 class="card-header">Leave a Comment:</h5>
+                <h5 class="card-header">Leave a Reply:</h5>
                 <div class="card-body">
                     <form method="POST" action="/question/reply/{{$info['question']->id}}">
                         {{ csrf_field() }}
@@ -90,7 +97,7 @@
             </div>
 
             <p>
-				{{count($info['replies'])}} answers
+				{{count($info['replies'])}} answer(s)
             </p>
             <table class="answers table" width=100% style="background-color: #FAFAFA;">
                 <br>
