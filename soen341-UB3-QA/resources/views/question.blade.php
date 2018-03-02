@@ -68,7 +68,7 @@
                             <?php $parts = explode('-', $info['question']->updated_at);
                 $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
                 echo substr($parts[2],0,2)."th of $month of $parts[0] at " . substr($parts[2],2)?> </span>
-            
+
 
             <hr>
             <table class="table" style="background-color: #FAFAFA;">
