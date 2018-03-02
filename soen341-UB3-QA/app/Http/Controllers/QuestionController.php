@@ -65,15 +65,10 @@ class QuestionController extends Controller
             $question->content = $request->get('content');
 
             //make sure labels have a value
-            if($request->get('label_1') == null)
-                $question->label_1 = '';
+            if($request->get('labels') == null)
+                $question->labels = '';
             else
-                $question->label_1 = $request->get('label_1');
-
-            if($request->get('label_2') == null)
-                $question->label_2 = '';
-            else
-                $question->label_2 = $request->get('label_2');
+                $question->labels = $request->get('labels');
 
             $question->save();
 

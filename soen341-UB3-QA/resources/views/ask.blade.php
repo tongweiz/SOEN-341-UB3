@@ -52,14 +52,11 @@
                 <div class="card-body">
                     {{--<form>--}}
                         <div class="form-group">
-                            {!! Form::label('label_1','Label 1:(optional)') !!}
-                            {!! Form::text('label_1', null, ['class' => 'form-control',
-                            'placeholder' => 'Enter the label 1 of your question here']) !!} 
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('label_2','Label 2:(optional)') !!}
-                            {!! Form::text('label_2', null, ['class' => 'form-control', 
-                            'placeholder' => 'Enter the label 2 of your question here']) !!} 
+                            {!! Form::label('labels','Labels: (optional)') !!}
+                            <font size="2" color="grey">&nbsp;Use "," to separate multiple labels.
+                            </font>
+                            {!! Form::text('labels', null, ['class' => 'form-control',
+                            'placeholder' => 'Enter the labels of your question here']) !!} 
                         </div>
                         {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'name' => 'Submit']) !!}
                 </div>

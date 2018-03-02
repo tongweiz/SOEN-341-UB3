@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Why do giraffes have such tall necks?',
             'content' => 'I dont know of any other animal with that characteristic. 
                 I was wondering if it had maybe an evolutionary purpose?',
-            'label_1' => 'giraffes',
+            'labels' => 'giraffes',
             'user_id' => '2',
             'created_at' => '2018-02-12 20:15:00',
             'updated_at' => '2018-02-12 20:15:00'
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Php database code in laravel wont run',
             'content' => 'I am doing a website in laravel and I dont understand how to access my tables in the controllers.
              My tables were done with the laravel class Schema if it helps.',
-            'label_2' => 'laravel',
+            'labels' => 'laravel',
             'user_id' => '1',
             'created_at' => '2018-02-10 08:26:00',
             'updated_at' => '2018-02-10 08:40:00'
@@ -67,8 +67,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Should I eat pizza everyday if I want to lose weight?',
             'content' => 'I am trying to lose some weight but I have this bad habit of eating a lot of pizza. It
                 is okay for me to continue eating it?',
-            'label_1' => 'pizza',
-            'label_2' => 'weight',
+            'labels' => 'pizza,weight',
             'user_id' => '2',
             'created_at' => '2018-02-12 20:15:00',
             'updated_at' => '2018-02-12 20:15:00'

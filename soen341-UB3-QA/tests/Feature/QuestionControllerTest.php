@@ -164,15 +164,13 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->visit('/ask')
             ->type('a title', 'title')
             ->type('some content', 'content')
-            ->type('label1', 'label_1')
-            ->type('label2', 'label_2')
+            ->type('label_1', 'labels')
             ->press('Submit')
             ->seePageIs('http://localhost/home')
             ->seeInDatabase('questions', [
                 'title' => 'a title',
                 'content' => 'some content',
-                'label_1' => 'label1',
-                'label_2' => 'label2',
+                'labels' => 'label_1',
                 'id' => 1])
             ->isAuthenticated();
     }
