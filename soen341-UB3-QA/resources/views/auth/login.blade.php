@@ -15,6 +15,9 @@
     <!-- Custom styles for this template -->
     <link href="/css/blog-home.css" rel="stylesheet">
 
+    <!-- general background css -->
+    <link href="/css/general.css" rel="stylesheet">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

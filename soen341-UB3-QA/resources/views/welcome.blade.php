@@ -16,6 +16,9 @@
     <!-- Custom styles for this template -->
     <link href="/css/blog-home.css" rel="stylesheet">
 
+    <!-- general background css -->
+    <link href="/css/general.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -37,10 +40,32 @@
                 @foreach($question_data as $key => $data)
                   <div class="card mb-4">
                        <div class="card-body">
+                           <!--Display question title -->
                             <h4 class="card-title">{{$data->title}}</h4> </br>
-                            <a href="/question/{{$data->id}}" class="btn btn-primary" name="Read">Read More &rarr;</a>
+
+                           <!--Display first sentence of question content-->
+                            <p class="card-text" style="margin-top: -20px; margin-bottom: 20px">
+                                <?php $parts = explode('.', $data->content); echo($parts[0] . '...')?></p>
+
+                           <!--Display labels of question (TO MODIFY WITH DB DATA)-->
+                           <span id="labels-styled">LABEL 1</span>  <span id="labels-styled">LABEL 2</span>
+
+                           <!--Display read more button-->
+                           <a href="/question/{{$data->id}}" class="btn btn-primary" name="Read" style="float: right;">Read More &rarr;</a>
                         </div>
-                        <div class="card-footer text-muted"> Posted on  {{$data->updated_at}} by {{$data->name}}</div>
+
+                      <!--Display who posted it and when -->
+                        <div class="card-footer text-muted">
+                            Posted on the <span style="text-decoration: underline;">
+                            <?php $parts = explode('-', $data->updated_at);
+                                  $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
+                                echo substr($parts[2],0,2)."th of $month of $parts[0] at " . substr($parts[2],2)?> </span>
+                            by <span style="text-decoration: underline;">{{$data->name}}</span>
+
+                            <!--Displaynumber of replies-->
+                            <span style="float: right"> #(MODIFY) replie(s)</span>
+                        </div>
+
                     </div>
                 @endforeach
 
