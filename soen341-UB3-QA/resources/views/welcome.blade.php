@@ -33,33 +33,37 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-            <h1 class="my-4"> <small> Discover User Questions! </small> </h1>
+            <h1 class="my-4">
+                <small> Discover User Questions!</small>
+            </h1>
 
             <!-- Question Post -->
             @if(count($question_data) > 0)
                 @foreach($question_data as $key => $data)
-                  <div class="card mb-4">
-                       <div class="card-body">
-                           <!--Display question title -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+
+                            <!--Display question title -->
                             <h4 class="card-title">{{$data->title}}</h4> </br>
 
-                           <!--Display first sentence of question content-->
+                            <!--Display first sentence of question content-->
                             <p class="card-text" style="margin-top: -20px; margin-bottom: 20px">
                                 <?php $parts = explode('.', $data->content); echo($parts[0] . '...')?></p>
 
-                           <!--Display labels of question (TO MODIFY WITH DB DATA)-->
-                           <span id="labels-styled">LABEL 1</span>  <span id="labels-styled">LABEL 2</span>
+                            <!--Display labels of question (TO MODIFY WITH DB DATA)-->
+                            <span id="labels-styled">LABEL 1</span> <span id="labels-styled">LABEL 2</span>
 
-                           <!--Display read more button-->
-                           <a href="/question/{{$data->id}}" class="btn btn-primary" name="Read" style="float: right;">Read More &rarr;</a>
+                            <!--Display read more button-->
+                            <a href="/question/{{$data->id}}" class="btn btn-primary" name="Read" style="float: right;">Read
+                                More &rarr;</a>
                         </div>
 
-                      <!--Display who posted it and when -->
+                        <!--Display who posted it and when -->
                         <div class="card-footer text-muted">
                             Posted on the <span style="text-decoration: underline;">
                             <?php $parts = explode('-', $data->updated_at);
-                                  $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
-                                echo substr($parts[2],0,2)."th of $month of $parts[0] at " . substr($parts[2],2)?> </span>
+                                $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
+                                echo substr($parts[2], 0, 2) . "th of $month of $parts[0] at " . substr($parts[2], 2)?> </span>
                             by <span style="text-decoration: underline;">{{$data->name}}</span>
 
                             <!--Displaynumber of replies-->
@@ -69,15 +73,15 @@
                     </div>
                 @endforeach
 
-                <!-- Pagination (TO IMPLEMENT IF WE HAVE TIME)-->
-                    <ul class="pagination justify-content-center mb-4">
-                        <li class="page-item">
-                            <a class="page-link" href="#">&larr; Older</a>
-                        </li>
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">Newer &rarr;</a>
-                        </li>
-                    </ul>
+            <!-- Pagination (TO IMPLEMENT IF WE HAVE TIME)-->
+                <ul class="pagination justify-content-center mb-4">
+                    <li class="page-item">
+                        <a class="page-link" href="#">&larr; Older</a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Newer &rarr;</a>
+                    </li>
+                </ul>
             @else
                 <p>No question has been asked on the website yet! </p>
             @endif

@@ -14,3 +14,12 @@ body{
     border-radius: 10px;
 
 }
+
+.like, .dislike {
+    background: none !important;
+    color: rgb(30, 144, 255);
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
+}

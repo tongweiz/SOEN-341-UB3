@@ -22,21 +22,6 @@
     <!--Styles for icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- This interferes with the look of the side bar in template needed for continuity.
-         Try to find something else for accept/reject icons please. Not too ugly right now without it-->
-    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
-
-    <style>
-            .like, .dislike {
-                background:none!important;
-                color:rgb(30, 144, 255);
-                border:none; 
-                padding:0!important;
-                font: inherit;
-                cursor: pointer;
-            }
-        </style>
-
 </head>
 
 <body>
@@ -67,17 +52,17 @@
             Posted on the <span style="text-decoration: underline;">
                             <?php $parts = explode('-', $info['question']->updated_at);
                 $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
-                echo substr($parts[2],0,2)."th of $month of $parts[0] at " . substr($parts[2],2)?> </span>
+                echo substr($parts[2], 0, 2) . "th of $month of $parts[0] at " . substr($parts[2], 2)?> </span>
 
 
             <hr>
             <table class="table" style="background-color: #FAFAFA;">
                 <tbody>
-                    <tr class="question" >
-                        <td width=70%>
-                            {{$info['question']->content}}
-                        </td>
-                    </tr>
+                <tr class="question">
+                    <td width=70%>
+                        {{$info['question']->content}}
+                    </td>
+                </tr>
                 </tbody>
             </table>
 
@@ -97,64 +82,80 @@
             </div>
 
             <p>
-				{{count($info['replies'])}} answer(s)
+                {{count($info['replies'])}} answer(s)
             </p>
             <table class="answers table" width=100% style="background-color: #FAFAFA;">
                 <br>
-                    @if(count($info['replies']) > 0)
-						@foreach($info['replies'] as $reply)
-                            <tr class="answer">
-                                <td class="answer-text" width=70%>
-                                    <p> {{$reply->content}}</p>
-                                </td>
+                @if(count($info['replies']) > 0)
+                    @foreach($info['replies'] as $reply)
+                        <tr class="answer">
+                            <td class="answer-text" width=70%>
+                                <p> {{$reply->content}}</p>
+                            </td>
 
-                                <!-- need to be a tags instead of buttons because of tests. Also color rgb added here for consistency.-->
-                                <td class="rating" style="vertical-align:middle; "  width=15%>
-                                    <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                    <a style="color: <?php if(null !== Auth::user()) {$flag = FALSE; foreach($info['likes'] as $like) {
-                                                            if($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {echo 'rgb(176,224,230)'; $flag = TRUE;}
-                                                            } if($flag != TRUE) echo 'rgb(30, 144, 255)';} else echo 'rgb(30, 144, 255)'; ?>" 
-                                        class="like" id="{{$reply->id}}bl" name="like">
+                            <!-- need to be a tags instead of buttons because of tests. Also color rgb added here for consistency.-->
+                            <td class="rating" style="vertical-align:middle; " width=15%>
+                                <div style="color:teal; float:left; margin: 0 40% 0 50%;">
+                                    <a style="color: <?php if (null !== Auth::user()) {
+                                        $flag = FALSE;
+                                        foreach ($info['likes'] as $like) {
+                                            if ($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {
+                                                echo 'rgb(176,224,230)';
+                                                $flag = TRUE;
+                                            }
+                                        }
+                                        if ($flag != TRUE) echo 'rgb(30, 144, 255)';
+                                    } else echo 'rgb(30, 144, 255)'; ?>"
+                                       class="like" id="{{$reply->id}}bl" name="like">
                                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                     </a>
                                     <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
-                                    </div> <br />
+                                </div>
+                                <br/>
 
-                                    <div style="color:teal; float:left; margin: 0 40% 0 50%;">
-                                    <a style="color: <?php if(null !== Auth::user()) {$flag = FALSE; foreach($info['dislikes'] as $like) {
-                                                            if($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {echo 'rgb(176,224,230)'; $flag = TRUE;}
-                                                            } if($flag != TRUE) echo 'rgb(30, 144, 255)';} else echo 'rgb(30, 144, 255)'; ?>" 
-                                        class="dislike" id="{{$reply->id}}bdl" name="dislike">
-                                        <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "aria-hidden="true"></i>
+                                <div style="color:teal; float:left; margin: 0 40% 0 50%;">
+                                    <a style="color: <?php if (null !== Auth::user()) {
+                                        $flag = FALSE;
+                                        foreach ($info['dislikes'] as $like) {
+                                            if ($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {
+                                                echo 'rgb(176,224,230)';
+                                                $flag = TRUE;
+                                            }
+                                        }
+                                        if ($flag != TRUE) echo 'rgb(30, 144, 255)';
+                                    } else echo 'rgb(30, 144, 255)'; ?>"
+                                       class="dislike" id="{{$reply->id}}bdl" name="dislike">
+                                        <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "
+                                           aria-hidden="true"></i>
                                     </a>
                                     <span id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
-                                    </div>
-                                </td>
+                                </div>
+                            </td>
 
-                        <!--<td class="w3-padding w3-xlarge w3-teal" style="vertical-align:middle; ">-->
-                                <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
-						            @if($info['qOwner'])
-							            <a href="/question/accept/{{$reply->id}}" name="accept">
-								            <i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>"></i>
-							            </a>
-							            <a href="/question/normalize/{{$reply->id}}" name="normal">
-								            <i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>"></i>
-							            </a>
-							            <a href="/question/reject/{{$reply->id}}" name="reject">
-								            <i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>"></i>
-							            </a>
-						            @elseif($reply->status == -1)
-								        <i class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)"></i>
-							        @elseif($reply->status == 1)
-								        <i class="fa fa-check-circle <?php echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)"></i>
-							        @endif
-                                </td>
-                            </tr>
-                         @endforeach
-					@else
-						<p>No comments</p>
-					@endif
-                </tbody>
+                            <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
+                                @if($info['qOwner'])
+                                    <a href="/question/accept/{{$reply->id}}" name="accept">
+                                        <i class="fa fa-check-circle <?php if ($reply->status == 1) echo 'fa-2x'; ?>"></i>
+                                    </a>
+                                    <a href="/question/normalize/{{$reply->id}}" name="normal">
+                                        <i class="fa fa-bars <?php if ($reply->status == 0) echo 'fa-2x'; ?>"></i>
+                                    </a>
+                                    <a href="/question/reject/{{$reply->id}}" name="reject">
+                                        <i class="fa fa-ban <?php if ($reply->status == -1) echo 'fa-2x'; ?>"></i>
+                                    </a>
+                                @elseif($reply->status == -1)
+                                    <i class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)"></i>
+                                @elseif($reply->status == 1)
+                                    <i class="fa fa-check-circle <?php echo 'fa-2x'; ?>"
+                                       style="color:rgb(106, 115, 124)"></i>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <p>No comments</p>
+                    @endif
+                    </tbody>
             </table>
             <hr>
         </div>

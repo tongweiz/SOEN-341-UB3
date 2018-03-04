@@ -6,116 +6,138 @@ use App\reply;
 use App\question;
 use App\like;
 use App\dislike;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
     public function like($rid)
     {
-		$reply = Reply::find($rid);
+        $reply = Reply::find($rid);
 
-        if(Auth::check()) {
-			$liked = Like::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
-			
-			if(count($liked) == 0){
+        //only authenticated users can like replies
+        if (Auth::check()) {
+            $liked = Like::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
 
-				$disliked = Dislike::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
-				if(count($disliked) != 0){
-					$disliked[0]->delete();
-					$reply->dislikectr -= 1;
-				}
+            //only save like if user didnt like this reply yet
+            if (count($liked) == 0) {
 
-				$reply->likectr += 1;
-				$reply->save();
+                $disliked = Dislike::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
 
-				$like = new like;
-				$like->reply_id = $rid;
-				$like->user_id = Auth::id();
-				$like->question_id = $reply->question_id;
-				try{
-					$like->save();
-				} catch(Exception $e) {
-					return $e->getMessage();
-				}
-			}
+                //if the user already disliked this reply, decrement dislike
+                if (count($disliked) != 0) {
+                    $disliked[0]->delete();
+                    $reply->dislikectr -= 1;
+                }
 
-			return "$reply->likectr.$reply->dislikectr";
-		} else {
-			return "#";
-		}
+                //increment like counter of reply
+                $reply->likectr += 1;
+                $reply->save();
+
+                //make a new like row in the database
+                $like = new like;
+                $like->reply_id = $rid;
+                $like->user_id = Auth::id();
+                $like->question_id = $reply->question_id;
+                try {
+                    $like->save();
+                } catch (Exception $e) {
+                    return $e->getMessage();
+                }
+            }
+
+            //return new number of like and dislike of that reply for display
+            return "$reply->likectr.$reply->dislikectr";
+        } else {
+            //no changes.
+            return "#";
+        }
     }
-	
-	public function dislike($rid)
+
+    public function dislike($rid)
     {
-		$reply = Reply::find($rid);
+        $reply = Reply::find($rid);
 
-		if(Auth::check()) {
-			$disliked = Dislike::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
-			if(count($disliked) == 0){
+        //only authenticated users can dislike replies
+        if (Auth::check()) {
+            $disliked = Dislike::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
 
-				$liked = Like::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
-				if(count($liked) != 0){
-					$liked[0]->delete();
-					$reply->likectr -= 1;
-				}
+            //only save dislike if user didnt dislike this reply yet
+            if (count($disliked) == 0) {
 
-				$reply->dislikectr += 1;
-				$reply->save();
+                $liked = Like::where(['reply_id' => $rid, 'user_id' => Auth::id()])->get();
 
-				$dislike = new dislike;
-				$dislike->reply_id = $rid;
-				$dislike->user_id = Auth::id();
-				$dislike->question_id = $reply->question_id;
-				try{
-					$dislike->save();
-				} catch(Exception $e) {
-					return $e->getMessage();
-				}
-			}
+                //if the user already liked this reply, decrement like
+                if (count($liked) != 0) {
+                    $liked[0]->delete();
+                    $reply->likectr -= 1;
+                }
 
-			return "$reply->likectr.$reply->dislikectr";
-		} else {
-			return "#";
-		}
+                //increment dislike counter of reply
+                $reply->dislikectr += 1;
+                $reply->save();
+
+                //make a new dislike row in the database
+                $dislike = new dislike;
+                $dislike->reply_id = $rid;
+                $dislike->user_id = Auth::id();
+                $dislike->question_id = $reply->question_id;
+                try {
+                    $dislike->save();
+                } catch (Exception $e) {
+                    return $e->getMessage();
+                }
+            }
+
+            //return new number of like and dislike of that reply for display
+            return "$reply->likectr.$reply->dislikectr";
+        } else {
+            //no changes
+            return "#";
+        }
     }
-	
-	public function accept($rid)
-	{
-		$reply = Reply::find($rid);
-		if(Auth::check()) {
-			$question = Question::find($reply->question_id);
-			if(Auth::id() == $question->user_id){
-				$reply->status = 1;
-				$reply->save();
-			}
-		}
-		return redirect("question/$reply->question_id");
-	}
-	
-	public function reject($rid)
-	{
-		$reply = Reply::find($rid);
-		if(Auth::check()) {
-			$question = Question::find($reply->question_id);
-			if(Auth::id() == $question->user_id){
-				$reply->status = -1;
-				$reply->save();
-			}
-		}
-		return redirect("question/$reply->question_id");
-	}
-	
-	public function normalize($rid)
-	{
-		$reply = Reply::find($rid);
-		if(Auth::check()) {
-			$question = Question::find($reply->question_id);
-			if(Auth::id() == $question->user_id){
-				$reply->status = 0;
-				$reply->save();
-			}
-		}
-		return redirect("question/$reply->question_id");
-	}
+
+    public function accept($rid)
+    {
+        $reply = Reply::find($rid);
+
+        if (Auth::check()) {
+            $question = Question::find($reply->question_id);
+            if (Auth::id() == $question->user_id) {
+                $reply->status = 1;
+                $reply->save();
+            }
+        }
+
+        return redirect("question/$reply->question_id");
+    }
+
+    public function reject($rid)
+    {
+        $reply = Reply::find($rid);
+
+        if (Auth::check()) {
+            $question = Question::find($reply->question_id);
+            if (Auth::id() == $question->user_id) {
+                $reply->status = -1;
+                $reply->save();
+            }
+        }
+
+        return redirect("question/$reply->question_id");
+    }
+
+    public function normalize($rid)
+    {
+        $reply = Reply::find($rid);
+
+        if (Auth::check()) {
+            $question = Question::find($reply->question_id);
+            if (Auth::id() == $question->user_id) {
+                $reply->status = 0;
+                $reply->save();
+            }
+        }
+
+        return redirect("question/$reply->question_id");
+    }
 }

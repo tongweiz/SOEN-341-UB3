@@ -50,18 +50,16 @@
                         {!! Form::label('content', 'Contents:') !!}
                         {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Enter the details of your question here']) !!}
                     </div>
-                    {{--</form>--}}
                 </div>
                 <div class="card-body">
-                    {{--<form>--}}
-                        <div class="form-group">
-                            {!! Form::label('labels','Labels: (optional)') !!}
-                            <font size="2" color="grey">&nbsp;Use "," to separate multiple labels.
-                            </font>
-                            {!! Form::text('labels', null, ['class' => 'form-control',
-                            'placeholder' => 'Enter the labels of your question here']) !!} 
-                        </div>
-                        {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'name' => 'Submit']) !!}
+                    <div class="form-group">
+                        {!! Form::label('labels','Labels: (optional)') !!}
+                        <font size="2" color="grey">&nbsp;Use "," to separate multiple labels.
+                        </font>
+                        {!! Form::text('labels', null, ['class' => 'form-control',
+                        'placeholder' => 'Enter the labels of your question here']) !!}
+                    </div>
+                    {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'name' => 'Submit']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>

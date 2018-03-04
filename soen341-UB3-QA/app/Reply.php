@@ -15,4 +15,14 @@ class Reply extends Model
     {
         return $this->belongsTo('app\Questions');
     }
+
+    public function likes()
+    {
+        return $this->hasMany('app\Likes');
+    }
+
+    public function dislikes()
+    {
+        return $this->hasMany('app\Dislikes');
+    }
 }
