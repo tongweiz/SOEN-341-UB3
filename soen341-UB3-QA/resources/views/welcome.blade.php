@@ -19,6 +19,20 @@
     <!-- general background css -->
     <link href="/css/general.css" rel="stylesheet">
 
+    <style>
+    .dropdown-menu
+    {
+        left: 50%;
+        right: auto;
+        text-align: center;
+        transform: translate(-50%, 0);
+    }
+
+    .click
+    {
+        cursor: pointer;
+    }
+    </style>
 </head>
 <body>
 
@@ -37,6 +51,26 @@
                 <small> Discover User Questions!</small>
             </h1>
 
+            <div class="btn-group">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="diro">Direction<span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li id="dir" class="asc"><a class="click orderD" id="asc">Ascending</a></li>
+                        <li><a class="click orderD" id="desc">Descending</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="ordo">Order By<span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li id="ord" class="date"><a class="click order" id="date">Date</a></li>
+                        <li><a class="click order" id="replies">Number of Replies</a></li>
+                        <li><a class="click order" id="title">Title</a></li>
+                        <li><a class="click order" id="updated">Last Updated<a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="questions">
             <!-- Question Post -->
             @if(count($question_data) > 0)
                 @foreach($question_data as $key => $data)
@@ -67,11 +101,13 @@
                             by <span style="text-decoration: underline;">{{$data->name}}</span>
 
                             <!--Displaynumber of replies-->
-                            <span style="float: right"> #(MODIFY) replie(s)</span>
+                            <span style="float: right"> #{{$data->nb_replies}} replie(s)</span>
                         </div>
 
                     </div>
                 @endforeach
+
+            </div>
 
             <!-- Pagination (TO IMPLEMENT IF WE HAVE TIME)-->
                 <ul class="pagination justify-content-center mb-4">
@@ -101,6 +137,9 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
+
+<!-- script to order questions -->
+<script type="text/javascript" src="{{ URL::asset('js/order-questions.js') }}"></script>
 
 </body>
 
