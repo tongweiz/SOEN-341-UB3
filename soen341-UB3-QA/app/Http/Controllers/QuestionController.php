@@ -22,7 +22,7 @@ class QuestionController extends Controller
     {
         //get question data
         $question_data = DB::table('questions')->join('users', 'users.id', '=', 'questions.user_id')
-            ->select('questions.id', 'questions.title', 'questions.content', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
+            ->select('questions.id', 'questions.title', 'questions.content', 'questions.user_id', 'questions.nb_replies', 'questions.created_at', 'questions.updated_at', 'users.name')
             ->get();
 
         //return view with necessary information
@@ -48,6 +48,7 @@ class QuestionController extends Controller
             $question->user_id = Auth::id();
             $question->title = $request->get('title');
             $question->content = $request->get('content');
+            $question->nb_replies = 0;
 
             //make sure labels have a value
             if ($request->get('labels') == null)

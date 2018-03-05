@@ -67,7 +67,7 @@
                             by <span style="text-decoration: underline;">{{$data->name}}</span>
 
                             <!--Displaynumber of replies-->
-                            <span style="float: right"> #(MODIFY) replie(s)</span>
+                            <span style="float: right"> #{{$data->nb_replies}} replie(s)</span>
                         </div>
 
                     </div>
