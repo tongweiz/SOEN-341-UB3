@@ -153,7 +153,7 @@ class LikeControllerTest extends BrowserKitTestCase
              ->seeElement('a', ['name' => 'accept'])
              ->click('accept')
              ->seePageIs('http://localhost/question/1')
-             ->waitFor('.selector');
+             ->waitFor('.selector')
              ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
     }
 
@@ -240,7 +240,7 @@ class LikeControllerTest extends BrowserKitTestCase
             ->seeElement('a', ['name' => 'reject'])
             ->click('reject')
             ->seePageIs('http://localhost/question/1')
-            ->waitFor('.selector');
+            ->waitFor('.selector')
             ->seeElement('i', ['class' => 'fa fa-ban fa-2x']);
     }
 }
