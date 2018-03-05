@@ -41,14 +41,15 @@
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
 
-                                    <ul class="dropdown-menu ">
-                                        <li><a style="color: #212529; font-size: 20px; padding: 10px"
-                                               href="#">History </a></li>
+                                    <ul class="dropdown-menu">
+                                        <li><a style="color: #212529; font-size: 20px; padding: 10px;"
+                                               href="{{ route('profile') }}" class="dropdown-item"> Profile </a></li>
                                         <li>
                                             <a style="color: #212529; padding: 10px; font-size: 20px;"
                                                href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();"
+                                               class="dropdown-item">
                                                 Logout
                                             </a>
 
