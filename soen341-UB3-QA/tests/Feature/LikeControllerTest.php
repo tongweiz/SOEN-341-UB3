@@ -133,10 +133,10 @@ class LikeControllerTest extends BrowserKitTestCase
         $user = User::find(2);
 
         $this->actingAs($user)
-             ->visit('/question/1')
-             ->see('first title test')
-             ->dontSeeElement('a', ['name' => 'accept'])
-             ->isAuthenticated();
+            ->visit('/question/1')
+            ->see('first title test')
+            ->dontSeeElement('a', ['name' => 'accept'])
+            ->isAuthenticated();
     }
 
     /**
@@ -148,12 +148,14 @@ class LikeControllerTest extends BrowserKitTestCase
         $user = User::find(1);
 
         $this->actingAs($user)
-             ->visit('/question/1')
-             ->see('first title test')
-             ->seeElement('a', ['name' => 'accept'])
-             ->click('accept')
-             ->seePageIs('http://localhost/question/1')
-             ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
+            ->visit('/question/1')
+            ->see('first title test')
+            ->seeElement('a', ['name' => 'accept'])
+            ->click('accept')
+            ->seePageIs('http://localhost/question/1');
+
+        $this->visit('/home')
+            ->seeInDatabase('replies', ['question_id' => 1, 'id' => 1, 'status' => 1]);
     }
 
     /**
@@ -238,7 +240,10 @@ class LikeControllerTest extends BrowserKitTestCase
             ->see('first title test')
             ->seeElement('a', ['name' => 'reject'])
             ->click('reject')
-            ->seePageIs('http://localhost/question/1')
-            ->seeElement('i', ['class' => 'fa fa-ban fa-2x']);
+            ->seePageIs('http://localhost/question/1');
+
+        $this->visit('/home')
+            ->seeInDatabase('replies', ['question_id' => 1, 'id' => 1, 'status' => -1]);
+
     }
 }

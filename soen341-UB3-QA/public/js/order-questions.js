@@ -30,14 +30,14 @@ $(document).ready(function () {
                             'Posted on the <span style="text-decoration: underline;">' +
                             questions[i].created_at + '</span> by <span style="text-decoration: underline;">' + questions[i].name + '</span>' +
 
-                            '<span style="float: right"> #' + questions[i].nb_replies + ' replie(s)</span>' +
+                            '<span style="float: right"> ' + questions[i].nb_replies + ' replies</span>' +
                         '</div>' +
 
                     '</div>';
                     }
 
                     document.getElementById("questions").innerHTML = innerHTML;
-                    $('#ordo').text("Ordered by " + id);
+                    $('#ordo').text(id);
                     $('#ord').attr("class", id);
                 }
             } else console.log("Error");

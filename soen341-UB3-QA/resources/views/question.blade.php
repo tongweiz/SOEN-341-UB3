@@ -25,7 +25,7 @@
     <style>
             .click {
                 background:none!important;
-                border:none; 
+                border:none;
                 padding:0!important;
                 font: inherit;
                 cursor: pointer;
@@ -53,7 +53,7 @@
             <!-- Author -->
             <p class="lead">
                 by
-                <a href="#">{{$info['user'][0]->name}}</a>
+                {{$info['user'][0]->name}}
             </p>
 
             <hr>
