@@ -31,6 +31,7 @@ class LikeControllerTest extends BrowserKitTestCase
             'content' => 'first content',
             'user_id' => 1,
             'labels' => 'Hello',
+            'nb_replies' => 1,
             'created_at' => '2018-02-02 12:20:00',
         ]);
 
@@ -132,10 +133,10 @@ class LikeControllerTest extends BrowserKitTestCase
         $user = User::find(2);
 
         $this->actingAs($user)
-             ->visit('/question/1')
-             ->see('first title test')
-             ->dontSeeElement('a', ['name' => 'accept'])
-             ->isAuthenticated();
+            ->visit('/question/1')
+            ->see('first title test')
+            ->dontSeeElement('a', ['name' => 'accept'])
+            ->isAuthenticated();
     }
 
     /**
@@ -147,12 +148,14 @@ class LikeControllerTest extends BrowserKitTestCase
         $user = User::find(1);
 
         $this->actingAs($user)
-             ->visit('/question/1')
-             ->see('first title test')
-             ->seeElement('a', ['name' => 'accept'])
-             ->click('accept')
-             ->seePageIs('http://localhost/question/1')
-             ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
+            ->visit('/question/1')
+            ->see('first title test')
+            ->seeElement('a', ['name' => 'accept'])
+            ->click('accept')
+            ->seePageIs('http://localhost/question/1');
+
+       // $this->visit('/home')
+            //->seeInDatabase('replies', ['status' => 1]);
     }
 
     /**
@@ -235,9 +238,12 @@ class LikeControllerTest extends BrowserKitTestCase
         $this->actingAs($user)
             ->visit('/question/1')
             ->see('first title test')
-            ->seeElement('a', ['name' => 'reject'])
+            ->seeElement('a', ['id' => 'reject'])
             ->click('reject')
-            ->seePageIs('http://localhost/question/1')
-            ->seeElement('i', ['class' => 'fa fa-ban fa-2x']);
+            ->seePageIs('http://localhost/question/1');
+
+      //  $this->visit('/home')
+          //   ->seeInDatabase('replies', ['status' => -1]);
+
     }
 }

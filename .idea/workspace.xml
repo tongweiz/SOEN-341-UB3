@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="99200b8a-aa6d-4489-a813-71b52c565507" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/QuestionController.php" afterPath="$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/QuestionController.php" />
+      <change beforePath="$PROJECT_DIR$/soen341-UB3-QA/resources/views/sidebar.blade.php" afterPath="$PROJECT_DIR$/soen341-UB3-QA/resources/views/sidebar.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,47 +20,89 @@
       <file leaf-file-name="welcome.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/welcome.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="41" column="114" lean-forward="false" selection-start-line="41" selection-start-column="114" selection-end-line="41" selection-end-column="114" />
+            <state relative-caret-position="1241">
+              <caret line="73" column="27" lean-forward="false" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
               <folding>
-                <marker date="1518657156688" expanded="true" signature="512:520" ph="..." />
-                <marker date="1518657156688" expanded="true" signature="797:828" ph="..." />
-                <marker date="1518657156688" expanded="true" signature="963:975" ph="..." />
-                <marker date="1518657156688" expanded="true" signature="1024:1056" ph="..." />
-                <marker date="1518657156688" expanded="true" signature="1202:1219" ph="..." />
-                <marker date="1518657156688" expanded="true" signature="1227:1238" ph="..." />
-                <marker date="1518657156688" expanded="true" signature="1738:1747" ph="..." />
-                <marker date="1518657156688" expanded="true" signature="1835:1843" ph="..." />
+                <marker date="1520195184068" expanded="true" signature="601:609" ph="..." />
+                <marker date="1520195184068" expanded="true" signature="908:933" ph="..." />
+                <marker date="1520195184068" expanded="true" signature="960:991" ph="..." />
+                <marker date="1520195184068" expanded="true" signature="1198:1210" ph="..." />
+                <marker date="1520195184068" expanded="true" signature="1813:1822" ph="..." />
+                <marker date="1520195184068" expanded="true" signature="2558:2569" ph="..." />
+                <marker date="1520195184068" expanded="true" signature="3393:3402" ph="..." />
+                <marker date="1520195184068" expanded="true" signature="3490:3498" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sidebar.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sidebar.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/sidebar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="27" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="44" />
+            <state relative-caret-position="119">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
-                <marker date="1518654545234" expanded="true" signature="245:276" ph="..." />
-                <marker date="1518654545234" expanded="true" signature="337:478" ph="..." />
-                <marker date="1518654545234" expanded="true" signature="349:476" ph="..." />
-                <marker date="1518654545234" expanded="true" signature="369:475" ph="..." />
-                <marker date="1518654545234" expanded="true" signature="552:607" ph="..." />
-                <marker date="1518654545234" expanded="true" signature="669:684" ph="..." />
-                <marker date="1518654545234" expanded="true" signature="923:937" ph="..." />
-                <marker date="1518654545234" expanded="true" signature="2293:2311" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="245:276" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="337:478" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="349:476" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="369:475" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="552:604" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="552:624" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="686:701" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="935:954" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="1019:1038" ph="..." />
+                <marker date="1520198625051" expanded="true" signature="1145:1159" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuestionController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/QuestionController.php">
+      <file leaf-file-name="header.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/header.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-              <folding />
+            <state relative-caret-position="272">
+              <caret line="34" column="119" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="119" />
+              <folding>
+                <marker date="1520195184053" expanded="true" signature="240:258" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="275:303" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="804:822" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1075:1094" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1413:1429" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1527:1546" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1919:1939" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="2455:2472" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="2842:2859" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="3001:3015" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/auth/register.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1520195184053" expanded="true" signature="637:651" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="670:701" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="737:745" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="762:782" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1169:1188" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1219:1233" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1285:1327" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1577:1590" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1652:1672" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="1786:1810" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="2020:2063" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="2327:2341" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="2393:2414" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="2528:2553" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="2763:2809" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="3118:3142" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="3256:3284" ph="..." />
+                <marker date="1520195184053" expanded="true" signature="4342:4350" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,8 +110,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="34" column="2" lean-forward="false" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+            <state relative-caret-position="612">
+              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -120,6 +162,7 @@
         <option value="$PROJECT_DIR$/soen341-UB3-QA/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/soen341-UB3-QA/routes/web.php" />
         <option value="$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/QuestionController.php" />
+        <option value="$PROJECT_DIR$/soen341-UB3-QA/resources/views/sidebar.blade.php" />
       </list>
     </option>
   </component>
@@ -226,8 +269,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,10 +287,39 @@
               <item name="soen341-UB3-QA" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="SOEN-341-UB3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SOEN-341-UB3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="soen341-UB3-QA" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SOEN-341-UB3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SOEN-341-UB3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="soen341-UB3-QA" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SOEN-341-UB3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SOEN-341-UB3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="soen341-UB3-QA" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="auth" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SOEN-341-UB3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SOEN-341-UB3" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="soen341-UB3-QA" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -257,6 +327,165 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/README.md</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/images/Database_ER.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/.env.example</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/QuestionController.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/ReplyController.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/SearchController.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/User.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/bootstrap/app.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/composer.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/composer.lock</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/database/migrations/2018_01_29_205551_create_questions_table.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/database/seeds/DatabaseSeeder.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/phpunit.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/public/css/blog-home.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/resources/views/ask.blade.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/resources/views/auth/login.blade.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/resources/views/auth/register.blade.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/resources/views/header.blade.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/resources/views/question.blade.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/resources/views/sidebar.blade.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/resources/views/welcome.blade.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/routes/web.php</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/misc.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.travis.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/images/MVC_diagram.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/images/background_texture.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/images/burndown_chart_sprint1.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/images/burndown_chart_sprint2.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/Dislike.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/LikeController.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/Like.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/Question.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/Reply.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/database/factories/QuestionFactory.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/database/factories/ReplyFactory.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/database/migrations/2018_02_27_074841_create_likes_table.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/database/migrations/2018_02_27_074852_create_dislikes_table.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/public/assets/background_texture.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/public/css/general.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/public/js/like-dislike.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/tests/BrowserKitTestCase.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/tests/Feature/AuthTest.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/tests/Feature/LikeControllerTest.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/tests/Feature/QuestionControllerTest.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/tests/Feature/ReplyTest.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/tests/Feature/SearchTest.php</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/question.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/app/reply.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/resources/views/details.blade.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/soen341-UB3-QA/tests/Feature/ExampleTest.php</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -288,7 +517,8 @@
       <workItem from="1518416268864" duration="3050000" />
       <workItem from="1518445413405" duration="6082000" />
       <workItem from="1518654404995" duration="5247000" />
-      <workItem from="1518671231368" duration="642000" />
+      <workItem from="1518671231368" duration="933000" />
+      <workItem from="1520195137896" duration="3126000" />
     </task>
     <task id="LOCAL-00001" summary="Link the home page to corresponding question page">
       <created>1518659166442</created>
@@ -297,11 +527,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518659166442</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed QuestionController@index database query">
+      <created>1518671942461</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1518671942461</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17870000" />
+    <option name="totallyTimeSpent" value="21287000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -336,7 +573,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Link the home page to corresponding question page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Link the home page to corresponding question page" />
+    <MESSAGE value="Fixed QuestionController@index database query" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed QuestionController@index database query" />
   </component>
   <component name="WindowStateProjectService">
     <state width="404" height="450" key="Git.Branch.Popup" />
@@ -348,48 +586,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1518657156688" expanded="true" signature="512:520" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="797:828" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="963:975" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1024:1056" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1202:1219" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1227:1238" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1738:1747" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1835:1843" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="27" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="44" />
-          <folding>
-            <marker date="1518654545234" expanded="true" signature="245:276" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="337:478" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="349:476" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="369:475" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="552:607" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="669:684" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="923:937" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="2293:2311" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/QuestionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="10" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -427,14 +623,14 @@
         <state relative-caret-position="680">
           <caret line="40" column="48" lean-forward="false" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
           <folding>
-            <marker date="1518657156688" expanded="true" signature="512:520" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="797:828" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="963:975" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1024:1056" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1202:1219" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1227:1238" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1738:1747" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1835:1843" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="601:609" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="908:933" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="960:991" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="1198:1210" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="1813:1822" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="2558:2569" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="3393:3402" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="3490:3498" ph="..." />
           </folding>
         </state>
       </provider>
@@ -451,14 +647,16 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1518654545234" expanded="true" signature="245:276" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="337:478" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="349:476" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="369:475" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="552:607" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="669:684" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="923:937" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="2293:2311" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="245:276" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="337:478" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="349:476" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="369:475" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="552:604" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="552:624" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="686:701" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="935:954" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="1019:1038" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="1145:1159" ph="..." />
           </folding>
         </state>
       </provider>
@@ -468,14 +666,14 @@
         <state relative-caret-position="680">
           <caret line="40" column="48" lean-forward="false" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
           <folding>
-            <marker date="1518657156688" expanded="true" signature="512:520" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="797:828" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="963:975" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1024:1056" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1202:1219" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1227:1238" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1738:1747" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1835:1843" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="601:609" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="908:933" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="960:991" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="1198:1210" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="1813:1822" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="2558:2569" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="3393:3402" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="3490:3498" ph="..." />
           </folding>
         </state>
       </provider>
@@ -622,7 +820,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/app/reply.php">
+    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/app/Reply.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -637,7 +835,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/app/question.php">
+    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/app/Question.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -724,53 +922,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/sidebar.blade.php">
+    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="27" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="44" />
+        <state relative-caret-position="1241">
+          <caret line="73" column="27" lean-forward="false" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
           <folding>
-            <marker date="1518654545234" expanded="true" signature="245:276" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="337:478" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="349:476" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="369:475" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="552:607" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="669:684" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="923:937" ph="..." />
-            <marker date="1518654545234" expanded="true" signature="2293:2311" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="601:609" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="908:933" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="960:991" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="1198:1210" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="1813:1822" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="2558:2569" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="3393:3402" ph="..." />
+            <marker date="1520195184068" expanded="true" signature="3490:3498" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/routes/console.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/QuestionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="33" column="6" lean-forward="false" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/auth/register.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1520195184053" expanded="true" signature="637:651" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="670:701" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="737:745" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="762:782" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1169:1188" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1219:1233" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1285:1327" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1577:1590" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1652:1672" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1786:1810" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="2020:2063" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="2327:2341" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="2393:2414" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="2528:2553" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="2763:2809" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="3118:3142" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="3256:3284" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="4342:4350" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="34" column="2" lean-forward="false" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+        <state relative-caret-position="612">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/welcome.blade.php">
+    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/header.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="41" column="114" lean-forward="false" selection-start-line="41" selection-start-column="114" selection-end-line="41" selection-end-column="114" />
+        <state relative-caret-position="272">
+          <caret line="34" column="119" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="119" />
           <folding>
-            <marker date="1518657156688" expanded="true" signature="512:520" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="797:828" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="963:975" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1024:1056" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1202:1219" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1227:1238" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1738:1747" ph="..." />
-            <marker date="1518657156688" expanded="true" signature="1835:1843" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="240:258" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="275:303" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="804:822" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1075:1094" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1413:1429" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1527:1546" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="1919:1939" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="2455:2472" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="2842:2859" ph="..." />
+            <marker date="1520195184053" expanded="true" signature="3001:3015" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/app/Http/Controllers/QuestionController.php">
+    <entry file="file://$PROJECT_DIR$/soen341-UB3-QA/resources/views/sidebar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-          <folding />
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <marker date="1520198625051" expanded="true" signature="245:276" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="337:478" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="349:476" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="369:475" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="552:604" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="552:624" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="686:701" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="935:954" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="1019:1038" ph="..." />
+            <marker date="1520198625051" expanded="true" signature="1145:1159" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

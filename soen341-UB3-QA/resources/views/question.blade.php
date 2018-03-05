@@ -22,6 +22,16 @@
     <!--Styles for icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <style>
+            .click {
+                background:none!important;
+                border:none;
+                padding:0!important;
+                font: inherit;
+                cursor: pointer;
+            }
+    </style>
+
 </head>
 
 <body>
@@ -43,7 +53,7 @@
             <!-- Author -->
             <p class="lead">
                 by
-                <a href="#">{{$info['user'][0]->name}}</a>
+                {{$info['user'][0]->name}}
             </p>
 
             <hr>
@@ -106,7 +116,7 @@
                                         }
                                         if ($flag != TRUE) echo 'rgb(30, 144, 255)';
                                     } else echo 'rgb(30, 144, 255)'; ?>"
-                                       class="like" id="{{$reply->id}}bl" name="like">
+                                       class="like click" id="{{$reply->id}}bl" name="like">
                                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                     </a>
                                     <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
@@ -124,7 +134,7 @@
                                         }
                                         if ($flag != TRUE) echo 'rgb(30, 144, 255)';
                                     } else echo 'rgb(30, 144, 255)'; ?>"
-                                       class="dislike" id="{{$reply->id}}bdl" name="dislike">
+                                       class="dislike click" id="{{$reply->id}}bdl" name="dislike">
                                         <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "
                                            aria-hidden="true"></i>
                                     </a>
@@ -134,15 +144,15 @@
 
                             <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
                                 @if($info['qOwner'])
-                                    <a href="/question/accept/{{$reply->id}}" name="accept">
-                                        <i class="fa fa-check-circle <?php if ($reply->status == 1) echo 'fa-2x'; ?>"></i>
-                                    </a>
-                                    <a href="/question/normalize/{{$reply->id}}" name="normal">
-                                        <i class="fa fa-bars <?php if ($reply->status == 0) echo 'fa-2x'; ?>"></i>
-                                    </a>
-                                    <a href="/question/reject/{{$reply->id}}" name="reject">
-                                        <i class="fa fa-ban <?php if ($reply->status == -1) echo 'fa-2x'; ?>"></i>
-                                    </a>
+                                <a class="accept click" name="accept" id="accept">
+								    <i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}a"></i>
+							    </a>
+						        <a class="normalize click" name="normal" id="normal">
+						            <i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}n"></i>
+					            </a>
+							    <a class="reject click" name="reject" id="reject">
+						            <i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}r"></i>
+					            </a>
                                 @elseif($reply->status == -1)
                                     <i class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)"></i>
                                 @elseif($reply->status == 1)
@@ -177,6 +187,9 @@
 
 <!--  script used for like and dislike replies! -->
 <script type="text/javascript" src="{{ URL::asset('js/like-dislike.js') }}"></script>
+
+<!-- script used for the accept/reject/normalize buttons! -->
+<script type="text/javascript" src="{{ URL::asset('js/accpt-norm-rejct.js') }}"></script>
 
 </body>
 

@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             'content' => 'I dont understand why we always say that a rainbow is red, orange, yellow, green, blue, indigo, violet.
               When I look at a real rainbow I see a lot more colors.',
             'user_id' => '1',
+            'nb_replies' => 1,
             'created_at' => '2018-02-10 12:25:00',
             'updated_at' => '2018-02-10 12:25:00'
         ]);
@@ -47,6 +48,7 @@ class DatabaseSeeder extends Seeder
                 I was wondering if it had maybe an evolutionary purpose?',
             'labels' => 'giraffes',
             'user_id' => '2',
+            'nb_replies' => 1,
             'created_at' => '2018-02-12 20:15:00',
             'updated_at' => '2018-02-12 20:15:00'
         ]);
@@ -58,6 +60,7 @@ class DatabaseSeeder extends Seeder
              My tables were done with the laravel class Schema if it helps.',
             'labels' => 'laravel',
             'user_id' => '1',
+            'nb_replies' => 0,
             'created_at' => '2018-02-10 08:26:00',
             'updated_at' => '2018-02-10 08:40:00'
         ]);
@@ -69,6 +72,7 @@ class DatabaseSeeder extends Seeder
                 is okay for me to continue eating it?',
             'labels' => 'pizza,weight',
             'user_id' => '2',
+            'nb_replies' => 0,
             'created_at' => '2018-02-12 20:15:00',
             'updated_at' => '2018-02-12 20:15:00'
         ]);

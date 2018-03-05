@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->string('content');
             $table->string('labels')->default('');
             $table->integer('user_id')->references('id')->on('users');
+            $table->integer('nb_replies');
             $table->timestamps();
         });
     }
