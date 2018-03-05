@@ -151,7 +151,7 @@ class LikeControllerTest extends BrowserKitTestCase
              ->visit('/question/1')
              ->see('first title test')
              ->seeElement('a', ['name' => 'accept'])
-             ->click('accept')
+             ->click('#testAc')
              ->seePageIs('http://localhost/question/1')
              ->visit('/question/1')
              ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
@@ -238,7 +238,7 @@ class LikeControllerTest extends BrowserKitTestCase
             ->visit('/question/1')
             ->see('first title test')
             ->seeElement('a', ['name' => 'reject'])
-            ->click('reject')
+            ->click('#testRe')
             ->seePageIs('http://localhost/question/1')
             ->visit('/question/1')
             ->seeElement('i', ['class' => 'fa fa-ban fa-2x']);
