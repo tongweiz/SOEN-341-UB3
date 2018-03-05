@@ -144,13 +144,13 @@
 
                             <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
                                 @if($info['qOwner'])
-                                <a class="accept click" name="accept" id="testAc">
+                                <a class="accept click" name="accept">
 								    <i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}a"></i>
 							    </a>
-						        <a class="normalize click" name="normal" id="testNo">
+						        <a class="normalize click" name="normal">
 						            <i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}n"></i>
 					            </a>
-							    <a class="reject click" name="reject" id="testRe">
+							    <a class="reject click" name="reject">
 						            <i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}r"></i>
 					            </a>
                                 @elseif($reply->status == -1)
