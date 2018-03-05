@@ -155,7 +155,7 @@ class LikeControllerTest extends BrowserKitTestCase
             ->seePageIs('http://localhost/question/1');
 
         $this->visit('/home')
-            ->seeInDatabase('replies', ['question_id' => 1, 'id' => 1, 'status' => 1]);
+            ->seeInDatabase('replies', ['status' => 1]);
     }
 
     /**
@@ -243,7 +243,7 @@ class LikeControllerTest extends BrowserKitTestCase
             ->seePageIs('http://localhost/question/1');
 
         $this->visit('/home')
-            ->seeInDatabase('replies', ['question_id' => 1, 'id' => 1, 'status' => -1]);
+            ->seeInDatabase('replies', ['status' => -1]);
 
     }
 }
