@@ -105,10 +105,11 @@ class LikeController extends Controller
             if (Auth::id() == $question->user_id) {
                 $reply->status = 1;
                 $reply->save();
+                return "$reply->status";
             }
         }
 
-        return redirect("question/$reply->question_id");
+        return "#";
     }
 
     public function reject($rid)
@@ -120,10 +121,11 @@ class LikeController extends Controller
             if (Auth::id() == $question->user_id) {
                 $reply->status = -1;
                 $reply->save();
+                return "$reply->status";
             }
         }
 
-        return redirect("question/$reply->question_id");
+        return "#";
     }
 
     public function normalize($rid)
@@ -135,9 +137,10 @@ class LikeController extends Controller
             if (Auth::id() == $question->user_id) {
                 $reply->status = 0;
                 $reply->save();
+                return "$reply->status";
             }
         }
 
-        return redirect("question/$reply->question_id");
+        return "#";
     }
 }
