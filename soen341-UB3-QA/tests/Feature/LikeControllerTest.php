@@ -238,12 +238,12 @@ class LikeControllerTest extends BrowserKitTestCase
         $this->actingAs($user)
             ->visit('/question/1')
             ->see('first title test')
-            ->seeElement('a', ['name' => 'reject'])
+            ->seeElement('a', ['id' => 'reject'])
             ->click('reject')
             ->seePageIs('http://localhost/question/1');
 
         $this->visit('/home')
-            ->seeInDatabase('replies', ['status' => -1]);
+             ->seeInDatabase('replies', ['status' => -1]);
 
     }
 }
