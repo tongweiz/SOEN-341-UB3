@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\reply;
+use App\question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,9 @@ class ReplyController extends Controller
         ]);
 
         $qid = $id;
+
+        $question = Question::find($qid);
+
         if (Auth::check()) {
             $reply = new reply;
             $reply->question_id = $qid;
@@ -30,6 +34,9 @@ class ReplyController extends Controller
             $reply->dislikectr = 0;
             $reply->status = 0;
 
+            $question->nb_replies += 1;
+
+            $question->save();
             $reply->save();
         }
         return redirect("question/$qid");

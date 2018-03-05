@@ -38,6 +38,9 @@ Route::get('/question/accept/{id}', 'LikeController@accept');
 Route::get('/question/reject/{id}', 'LikeController@reject');
 Route::get('/question/normalize/{id}', 'LikeController@normalize');
 
+//to order questions
+Route::get('/home/{order}/{direction}', 'QuestionController@order');
+
 //login, register
 Auth::routes();
 

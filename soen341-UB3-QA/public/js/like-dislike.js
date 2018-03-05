@@ -12,6 +12,9 @@ $(document).ready(function () {
                     alert("You are not logged in! Only logged in users can like replies. " +
                         "Please use the Login or Register links at the top of the page and try again.");
                 }
+                else if (data == "##") {
+                    alert("You can't like your own replies!");
+                }
                 else {
                     let str = /(\d+)\.(\d+)/.exec(data);
                     $("#" + id + "l").text(str[1]);
@@ -37,6 +40,9 @@ $(document).ready(function () {
                 if (data == "#") {
                     alert("You are not logged in! Only logged in users can dislike replies. " +
                         "Please use the Login or Register links at the top of the page and try again.");
+                }
+                else if (data == "##") {
+                    alert("You can't dislike your own replies!");
                 }
                 else {
                     let str = /(\d+)\.(\d+)/.exec(data);
