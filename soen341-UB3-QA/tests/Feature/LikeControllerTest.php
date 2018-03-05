@@ -148,7 +148,7 @@ class LikeControllerTest extends BrowserKitTestCase
         $user = User::find(1);
 
         $this->actingAs($user)
-             ->isAuthenticated();
+             ->isAuthenticated()
              ->visit('/question/1')
              ->see('first title test')
              ->seeElement('a', ['name' => 'accept'])
