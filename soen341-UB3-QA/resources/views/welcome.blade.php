@@ -84,15 +84,21 @@
                         <div class="card-body">
 
                             <!--Display question title -->
-                            <h4 class="card-title">{{$data->title}}</h4> </br>
-
+                            <h4 class="card-title">{{$data->title}}</h4> </br>                            
                             <!--Display first sentence of question content-->
                             <p class="card-text" style="margin-top: -20px; margin-bottom: 20px">
                                 <?php $parts = explode('.', $data->content); echo($parts[0] . '...')?></p>
 
-                            <!--Display labels of question (TO MODIFY WITH DB DATA)-->
-                            <span id="labels-styled">LABEL 1</span> <span id="labels-styled">LABEL 2</span>
-
+                            <!--Display labels of question-->
+                            @if((!$data->labels) == "")
+                                <?php $parts = explode(',', $data->labels)?>
+                                @foreach($parts as $label)
+                                <span id="labels-styled">
+                                    {{$label}}
+                                </span>
+                                @endforeach
+                            @endif
+                            
                             <!--Display read more button-->
                             <a href="/question/{{$data->id}}" class="btn btn-primary" name="Read" style="float: right;">Read
                                 More &rarr;</a>

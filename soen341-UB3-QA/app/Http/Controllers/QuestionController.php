@@ -22,7 +22,10 @@ class QuestionController extends Controller
     {
         //get question data
         $question_data = DB::table('questions')->join('users', 'users.id', '=', 'questions.user_id')
-            ->select('questions.id', 'questions.title', 'questions.content', 'questions.user_id', 'questions.nb_replies', 'questions.created_at', 'questions.updated_at', 'users.name')
+
+            ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
+                'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
+           
             ->get();
 
         //return view with necessary information
