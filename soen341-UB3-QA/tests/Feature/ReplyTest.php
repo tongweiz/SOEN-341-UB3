@@ -29,6 +29,7 @@ class ReplyTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
+            'nb_replies' => 1,
         ]);
 
         factory(User::class)->create([

@@ -29,12 +29,14 @@ class SearchTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
+           'nb_replies' => 0,
         ]);
 
         factory(Question::class)->create([
             'title' => 'second title test',
             'content' => 'second content',
             'user_id' => 1,
+            'nb_replies' => 0,
         ]);
     }
 
