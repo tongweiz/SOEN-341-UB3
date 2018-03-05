@@ -145,15 +145,14 @@ class LikeControllerTest extends BrowserKitTestCase
      */
     public function testSuccessAccept()
     {
-        $user = User::find(1);
+        $user = User::find(2);
 
         $this->actingAs($user)
              ->visit('/question/1')
              ->see('first title test')
              ->seeElement('a', ['name' => 'accept'])
-             ->click('#testAc')
+             ->click('accept')
              ->seePageIs('http://localhost/question/1')
-             ->visit('/question/1')
              ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
     }
 
@@ -232,15 +231,14 @@ class LikeControllerTest extends BrowserKitTestCase
      */
     public function testSuccessReject()
     {
-        $user = User::find(1);
+        $user = User::find(2);
 
         $this->actingAs($user)
             ->visit('/question/1')
             ->see('first title test')
             ->seeElement('a', ['name' => 'reject'])
-            ->click('#testRe')
+            ->click('reject')
             ->seePageIs('http://localhost/question/1')
-            ->visit('/question/1')
             ->seeElement('i', ['class' => 'fa fa-ban fa-2x']);
     }
 }
