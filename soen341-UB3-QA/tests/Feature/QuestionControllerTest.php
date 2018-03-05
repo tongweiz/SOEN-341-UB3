@@ -88,6 +88,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'second title test',
             'content' => 'second content',
             'user_id' => 1,
+            'nb_replies' => 0,
         ]);
 
         $user = \App\User::find(1);
