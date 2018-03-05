@@ -41,7 +41,7 @@ class QuestionControllerTest extends BrowserKitTestCase
     {
         //no question is being showed because database is empty
         $this->visit('/home')
-             ->see('No question has been asked on the website yet!');
+             ->see('No questions were asked yet!');
     }
 
     /**
