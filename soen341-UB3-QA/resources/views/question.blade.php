@@ -23,13 +23,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-            .click {
-                background:none!important;
-                border:none;
-                padding:0!important;
-                font: inherit;
-                cursor: pointer;
-            }
+        .click {
+            background: none !important;
+            border: none;
+            padding: 0 !important;
+            font: inherit;
+            cursor: pointer;
+        }
     </style>
 
 </head>
@@ -70,7 +70,15 @@
                 <tbody>
                 <tr class="question">
                     <td width=70%>
-                        {{$info['question']->content}}
+                        {{$info['question']->content}} </br></br>
+
+                        <!--Display labels of question-->
+                        @if(($info['question']->labels) != "")
+                            <?php $parts = explode(',', $info['question']->labels)?>
+                            @foreach($parts as $label)
+                                <span id="labels-styled" style="margin-bottom: 10px;">{{$label}}</span>
+                            @endforeach
+                        @endif
                     </td>
                 </tr>
                 </tbody>
@@ -144,15 +152,18 @@
 
                             <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
                                 @if($info['qOwner'])
-                                <a class="accept click" name="accept" id="accept">
-								    <i class="fa fa-check-circle <?php if($reply->status == 1) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}a"></i>
-							    </a>
-						        <a class="normalize click" name="normal" id="normal">
-						            <i class="fa fa-bars <?php if($reply->status == 0) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}n"></i>
-					            </a>
-							    <a class="reject click" name="reject" id="reject">
-						            <i class="fa fa-ban <?php if($reply->status == -1) echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)" id="{{$reply->id}}r"></i>
-					            </a>
+                                    <a class="accept click" name="accept" id="accept">
+                                        <i class="fa fa-check-circle <?php if ($reply->status == 1) echo 'fa-2x'; ?>"
+                                           style="color:rgb(106, 115, 124)" id="{{$reply->id}}a"></i>
+                                    </a>
+                                    <a class="normalize click" name="normal" id="normal">
+                                        <i class="fa fa-bars <?php if ($reply->status == 0) echo 'fa-2x'; ?>"
+                                           style="color:rgb(106, 115, 124)" id="{{$reply->id}}n"></i>
+                                    </a>
+                                    <a class="reject click" name="reject" id="reject">
+                                        <i class="fa fa-ban <?php if ($reply->status == -1) echo 'fa-2x'; ?>"
+                                           style="color:rgb(106, 115, 124)" id="{{$reply->id}}r"></i>
+                                    </a>
                                 @elseif($reply->status == -1)
                                     <i class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)"></i>
                                 @elseif($reply->status == 1)
