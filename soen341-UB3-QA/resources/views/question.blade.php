@@ -22,6 +22,9 @@
     <!--Styles for icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!--Token needed for ajax call when editing user info-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <style>
         .click {
             background: none !important;
@@ -48,19 +51,19 @@
         <div class="col-lg-8">
 
             <!-- Title -->
-            <h1 class="mt-4">{{$info['question']->title}}</h1>
+            <h1 class="mt-4">{{$question->title}}</h1>
 
             <!-- Author -->
             <p class="lead">
                 by
-                {{$info['user'][0]->name}}
+                {{$user[0]->name}}
             </p>
 
             <hr>
 
             <!-- Date/Time -->
             Posted on the <span style="text-decoration: underline;">
-                            <?php $parts = explode('-', $info['question']->updated_at);
+                            <?php $parts = explode('-', $question->updated_at);
                 $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
                 echo substr($parts[2], 0, 2) . "th of $month of $parts[0] at " . substr($parts[2], 2)?> </span>
 
@@ -70,11 +73,11 @@
                 <tbody>
                 <tr class="question">
                     <td width=70%>
-                        {{$info['question']->content}} </br></br>
+                        {{$question->content}} </br></br>
 
                         <!--Display labels of question-->
-                        @if(($info['question']->labels) != "")
-                            <?php $parts = explode(',', $info['question']->labels)?>
+                        @if(($question->labels) != "")
+                            <?php $parts = explode(',', $question->labels)?>
                             @foreach($parts as $label)
                                 <span id="labels-styled" style="margin-bottom: 10px;">{{$label}}</span>
                             @endforeach
@@ -89,7 +92,7 @@
             <div class="card my-4">
                 <h5 class="card-header">Leave a Reply:</h5>
                 <div class="card-body">
-                    <form method="POST" action="/question/reply/{{$info['question']->id}}">
+                    <form method="POST" action="/question/reply/{{$question->id}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <textarea name="body" class="form-control" rows="3"></textarea>
@@ -100,12 +103,12 @@
             </div>
 
             <p>
-                {{count($info['replies'])}} answer(s)
+                {{count($replies)}} answer(s)
             </p>
             <table class="answers table" width=100% style="background-color: #FAFAFA;">
                 <br>
-                @if(count($info['replies']) > 0)
-                    @foreach($info['replies'] as $reply)
+                @if(count($replies) > 0)
+                    @foreach($replies as $reply)
                         <tr class="answer">
                             <td class="answer-text" width=70%>
                                 <p> {{$reply->content}}</p>
@@ -116,7 +119,7 @@
                                 <div style="color:teal; float:left; margin: 0 40% 0 50%;">
                                     <a style="color: <?php if (null !== Auth::user()) {
                                         $flag = FALSE;
-                                        foreach ($info['likes'] as $like) {
+                                        foreach ($likes as $like) {
                                             if ($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {
                                                 echo 'rgb(176,224,230)';
                                                 $flag = TRUE;
@@ -134,7 +137,7 @@
                                 <div style="color:teal; float:left; margin: 0 40% 0 50%;">
                                     <a style="color: <?php if (null !== Auth::user()) {
                                         $flag = FALSE;
-                                        foreach ($info['dislikes'] as $like) {
+                                        foreach ($dislikes as $like) {
                                             if ($like->user_id == Auth::user()->id && $like->reply_id == $reply->id) {
                                                 echo 'rgb(176,224,230)';
                                                 $flag = TRUE;
@@ -151,7 +154,7 @@
                             </td>
 
                             <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
-                                @if($info['qOwner'])
+                                @if($qOwner)
                                     <a class="accept click" name="accept" id="accept">
                                         <i class="fa fa-check-circle <?php if ($reply->status == 1) echo 'fa-2x'; ?>"
                                            style="color:rgb(106, 115, 124)" id="{{$reply->id}}a"></i>
@@ -181,7 +184,7 @@
             <hr>
         </div>
 
-        @include('sidebar')
+        @include('sidebar_without_labels')
 
     </div>
     <!-- /.row -->
@@ -201,6 +204,9 @@
 
 <!-- script used for the accept/reject/normalize buttons! -->
 <script type="text/javascript" src="{{ URL::asset('js/accpt-norm-rejct.js') }}"></script>
+
+<!-- Script with function to list questions with labels -->
+<script type="text/javascript" src="{{ URL::asset('js/filter-labels.js') }}"></script>
 
 </body>
 

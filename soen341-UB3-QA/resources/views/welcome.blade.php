@@ -19,6 +19,10 @@
     <!-- general background css -->
     <link href="/css/general.css" rel="stylesheet">
 
+    <!--Token needed for ajax call when editing user info-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <style>
         .dropdown-menu {
             left: 50%;
@@ -32,7 +36,7 @@
         }
     </style>
 </head>
-<body>
+<body id="welcome_body">
 
 <!-- Navigation -->
 @include('header')
@@ -75,27 +79,30 @@
 
             </div>
 
-                <!-- Question Post -->
-                @include('common_questions')
+            <!-- Question Post -->
+            @include('common_questions')
 
         </div>
-            @include('sidebar')
+        @include('sidebar_with_labels')
     </div>
 
-        <!-- /.row -->
+    <!-- /.row -->
 
-    </div>
-    <!-- /.container -->
+</div>
+<!-- /.container -->
 
-    <!-- Footer -->
+<!-- Footer -->
 @include('footer')
 
 <!-- Bootstrap core JavaScript -->
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
 
-    <!-- script to order questions -->
-    <script type="text/javascript" src="{{ URL::asset('js/order-questions.js') }}"></script>
+<!-- script to order questions -->
+<script type="text/javascript" src="{{ URL::asset('js/order-questions.js') }}"></script>
+
+<!-- Script with function to list questions with labels -->
+<script type="text/javascript" src="{{ URL::asset('js/filter-labels.js') }}"></script>
 
 </body>
 

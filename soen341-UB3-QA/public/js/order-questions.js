@@ -13,7 +13,7 @@ $(document).ready(function () {
                     innerHTML = "";
 
                     for(let i = 0; i < questions.length; i++){
-                        innerHTML += '<div class="card mb-4">' + 
+                        innerHTML += '<div class="card mb-4">' +
                         '<div class="card-body">' +
 
                             '<h4 class="card-title">' + questions[i].title + '</h4> </br>' +
@@ -58,7 +58,7 @@ $(document).ready(function () {
                     innerHTML = "";
 
                     for(let i = 0; i < questions.length; i++){
-                        innerHTML += '<div class="card mb-4">' + 
+                        innerHTML += '<div class="card mb-4">' +
                         '<div class="card-body">' +
 
                             '<h4 class="card-title">' + questions[i].title + '</h4> </br>' +
