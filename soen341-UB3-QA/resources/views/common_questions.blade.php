@@ -19,12 +19,14 @@
 
                     <!--Display labels of question-->
                     @if((!$data->labels) == "")
-                        <?php $parts = explode(',', $data->labels)?>
+                        <?php $parts = explode(',', $data->labels);
+                        $trimed_parts = array_map('trim', $parts); $parts = array_unique($trimed_parts);
+                        $duplicates = array();?>
+
                         @foreach($parts as $label)
-                            <span id="labels-styled">{{$label}}
-                         </span>
-                    @endforeach
-                @endif
+                            <span id="labels-styled">{{$label}}</span>
+                        @endforeach
+                    @endif
 
                 <!--Display read more button-->
                     <a href="/question/{{$data->id}}" class="btn btn-primary" name="Read" style="float: right;">Read

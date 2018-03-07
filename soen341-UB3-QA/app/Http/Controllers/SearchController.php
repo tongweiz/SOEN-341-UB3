@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
 use App\question;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
@@ -17,6 +18,11 @@ class SearchController extends Controller
         $question_data = Question::where('title', 'LIKE', '%' . $search . '%')
             ->join('users', 'users.id', '=', 'questions.user_id')->get();
 
-        return view('welcome', ['question_data' => $question_data]);
+        $label_data = DB::table('questions')->join('users', 'users.id', '=', 'questions.user_id')
+            ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
+                'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
+            ->get();
+
+        return view('welcome', ['question_data' => $question_data, 'label_data' => $label_data]);
     }
 }

@@ -13,15 +13,14 @@
 //home page with question listing
 Route::get('/', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
 Route::get('/home', array('as' => 'welcome', 'uses' => 'QuestionController@index'));
+Route::post('/home/{label}', array('as' => 'welcome', 'uses' => 'QuestionController@filterLabel'));
 
 //home page search
 Route::post('/home', array('as' => 'welcome', 'uses' => 'SearchController@search'));
 
 //to get to ask page and store new question
 Route::post('/ask', 'QuestionController@store');
-Route::get('/ask', array('as' => 'ask', function () {
-    return view('ask');
-}));
+Route::get('/ask', array('as' => 'ask', 'uses' => 'QuestionController@showNewQuestion'));
 
 //to show question page of a specific question
 Route::get('/question/{id}', 'QuestionController@show');

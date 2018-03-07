@@ -18,6 +18,9 @@
 
     <!-- general background css -->
     <link href="/css/general.css" rel="stylesheet">
+
+    <!--Token needed for ajax call when editing user info-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -85,7 +88,7 @@
 
         </div>
 
-        @include('sidebar')
+        @include('sidebar_without_labels')
 
     </div>
     <!-- /.row -->
@@ -99,6 +102,9 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script with function to list questions with labels -->
+<script type="text/javascript" src="{{ URL::asset('js/filter-labels.js') }}"></script>
 
 </body>
 
