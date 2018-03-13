@@ -72,7 +72,7 @@
 
                     <!-- print labels-->
                         @foreach($arr_labels as $label1)
-                            <a href="#" class="filter_labels" style="margin: 20px;">{{$label1}}</a>
+                            <a href="#" class="filter_labels" style="margin: 20px;" name="{{$label1}}">{{$label1}}</a>
                         @endforeach
                     </p>
 

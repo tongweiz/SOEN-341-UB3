@@ -46,7 +46,7 @@ class QuestionControllerTest extends BrowserKitTestCase
 
     /**
      * This test shows that all questions in the database will be showed on the home
-     * page listing as a guest. Question title and who posted it are shown.
+     * page listing as a guest. Question title, content and who posted it are shown.
      */
     public function testListingAllQuestionsAsGuest()
     {
@@ -68,12 +68,14 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->see('first title test')
             ->see('first content')
             ->see('user1')
-            ->see('second title test');
+            ->see('second title test')
+            ->see('second content')
+            ->see('user1');
     }
 
     /**
      * This test shows that all questions in the database will be showed on the home
-     * page listing as an authenticated user. Question title and who posted it are shown.
+     * page listing as an authenticated user. Question title, content and who posted it are shown.
      */
     public function testListingAllQuestionsAsUser()
     {
@@ -99,7 +101,36 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->see('first content')
             ->see('user1')
             ->see('second title test')
+            ->see('second content')
+            ->see('user1')
             ->isAuthenticated();
+    }
+
+    /**
+     * This test shows that the labels of questions appear on the sidebar
+     */
+    public function testListingAllLabels()
+    {
+        factory(Question::class)->create([
+            'title' => 'first title test',
+            'content' => 'first content',
+            'labels' => 'label1, label3',
+            'user_id' => 1,
+            'nb_replies' => 0,
+        ]);
+
+        factory(Question::class)->create([
+            'title' => 'second title test',
+            'content' => 'second content',
+            'labels' => 'label2',
+            'user_id' => 1,
+            'nb_replies' => 0,
+        ]);
+
+        $this->visit('/home')
+            ->seeLink('label1')
+            ->seeLink('label2')
+            ->seeLink('label3');
     }
 
     /*
@@ -111,6 +142,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         $this->visit('/ask')
              ->type('This is a title', 'title')
              ->type('This is the associated content', 'content')
+             ->type('label1', 'labels')
              ->press('Submit')
              ->seePageIs('http://localhost/ask')
              ->dontSeeInDatabase('questions', [
@@ -129,6 +161,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->visit('/ask')
             ->type('', 'title')
             ->type('some content', 'content')
+            ->type('label1', 'labels')
             ->press('Submit')
             ->seePageIs('http://localhost/ask')
             ->dontSeeInDatabase('questions', [
@@ -148,6 +181,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->visit('/ask')
             ->type('a title', 'title')
             ->type('', 'content')
+            ->type('label1', 'labels')
             ->press('Submit')
             ->seePageIs('http://localhost/ask')
             ->dontSeeInDatabase('questions', [
@@ -155,10 +189,33 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->isAuthenticated();
     }
 
+
     /**
-     * Test valid question gets saved properly.
+     * Test valid question gets saved properly when the labels are not
+     * given by the user.
      */
-    public function testSuccessValidNewQuestion()
+    public function testSuccessValidNewQuestionNoLabels()
+    {
+        $user = \App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/ask')
+            ->type('a title', 'title')
+            ->type('some content', 'content')
+            ->press('Submit')
+            ->seePageIs('http://localhost/home')
+            ->seeInDatabase('questions', [
+                'title' => 'a title',
+                'content' => 'some content',
+                'labels' => '',
+                'id' => 1])
+            ->isAuthenticated();
+    }
+
+    /**
+     * Test valid question gets saved properly when all fields are filled.
+     */
+    public function testSuccessValidNewQuestionAllFields()
     {
         $user = \App\User::find(1);
 
@@ -175,6 +232,99 @@ class QuestionControllerTest extends BrowserKitTestCase
                 'labels' => 'label_1',
                 'id' => 1])
             ->isAuthenticated();
+    }
+
+    /**
+     * Test valid question gets saved properly when more than one
+     * label is given during question creation.
+     */
+    public function testSuccessValidNewQuestionMultipleLabels()
+    {
+        $user = \App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/ask')
+            ->type('a title', 'title')
+            ->type('some content', 'content')
+            ->type('label1,label2', 'labels')
+            ->press('Submit')
+            ->seePageIs('http://localhost/home')
+            ->seeInDatabase('questions', [
+                'title' => 'a title',
+                'content' => 'some content',
+                'labels' => 'label1,label2',
+                'id' => 1])
+            ->isAuthenticated();
+    }
+
+    /**
+     * Tests shows that when a label is clicked, it only shows the
+     * one question with that specific label
+     */
+    public function testDisplayQuestionWithSpecificLabel()
+    {
+        factory(Question::class)->create([
+            'title' => 'first title test',
+            'content' => 'first content',
+            'labels' => 'label1, label3',
+            'user_id' => 1,
+            'nb_replies' => 0,
+        ]);
+
+        factory(Question::class)->create([
+            'title' => 'second title test',
+            'content' => 'second content',
+            'labels' => 'label2',
+            'user_id' => 1,
+            'nb_replies' => 0,
+        ]);
+
+        $this->visit('/home')
+            ->click('label1')
+            ->see('first title test')
+            ->see('first content')
+            ->dontSee('second title test')
+            ->dontSee('second content');
+    }
+
+    /**
+     * Tests shows that when a label is clicked, it only shows
+     * all questions with that specific label
+     */
+    public function testDisplaySeveralQuestionsWithSpecificLabel()
+    {
+        factory(Question::class)->create([
+            'title' => 'first title test',
+            'content' => 'first content',
+            'labels' => 'label1, label3',
+            'user_id' => 1,
+            'nb_replies' => 0,
+        ]);
+
+        factory(Question::class)->create([
+            'title' => 'second title test',
+            'content' => 'second content',
+            'labels' => 'label1',
+            'user_id' => 1,
+            'nb_replies' => 0,
+        ]);
+
+        factory(Question::class)->create([
+            'title' => 'third title test',
+            'content' => 'third content',
+            'labels' => 'label26',
+            'user_id' => 1,
+            'nb_replies' => 0,
+        ]);
+
+        $this->visit('/home')
+            ->click('label1')
+            ->see('first title test')
+            ->see('first content')
+            ->see('second title test')
+            ->see('second content')
+            ->dontSee('third title test')
+            ->dontSee('third content');
     }
 
     /**
