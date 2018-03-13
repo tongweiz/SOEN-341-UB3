@@ -1,15 +1,17 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Browser;
 
 use App\Reply;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\BrowserKitTestCase;
+use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
 use App\Question;
 use App\User;
+use Exception;
 
-class QuestionControllerTest extends BrowserKitTestCase
+class QuestionControllerTest extends DuskTestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;
@@ -260,6 +262,9 @@ class QuestionControllerTest extends BrowserKitTestCase
     /**
      * Tests shows that when a label is clicked, it only shows the
      * one question with that specific label
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayQuestionWithSpecificLabel()
     {
@@ -279,12 +284,14 @@ class QuestionControllerTest extends BrowserKitTestCase
             'nb_replies' => 0,
         ]);
 
-        $this->visit('/home')
-            ->click('label1')
-            ->see('first title test')
-            ->see('first content')
-            ->dontSee('second title test')
-            ->dontSee('second content');
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/home')
+                ->clickLink('label1')
+                ->assertSee('first title test')
+                ->assertSee('first content')
+                ->assertDontSee('second title test')
+                ->assertDontSee('second content');
+        });
     }
 
     /**
