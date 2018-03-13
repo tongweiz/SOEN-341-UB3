@@ -60,7 +60,7 @@
     @else
         <div class="card mb-4 ">
             <div class="card-body">
-                <p> No questions were asked yet! </p>
+                <p> No questions were asked yet!</p>
             </div>
         </div>
     @endif

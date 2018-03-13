@@ -38,17 +38,25 @@ class QuestionControllerTest extends DuskTestCase
     /**
      * This test shows that no questions will be showed on the home page
      * if the database is empty.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testListingNoQuestions()
     {
         //no question is being showed because database is empty
-        $this->visit('/home')
-             ->see('No questions were asked yet!');
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/home')
+                ->assertSee('No questions were asked yet!');
+        });
     }
 
     /**
      * This test shows that all questions in the database will be showed on the home
      * page listing as a guest. Question title, content and who posted it are shown.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testListingAllQuestionsAsGuest()
     {
@@ -66,18 +74,24 @@ class QuestionControllerTest extends DuskTestCase
             'nb_replies' => 0,
         ]);
 
-        $this->visit('/home')
-            ->see('first title test')
-            ->see('first content')
-            ->see('user1')
-            ->see('second title test')
-            ->see('second content')
-            ->see('user1');
+
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/home')
+                ->assertSee('first title test')
+                ->assertSee('first content')
+                ->assertSee('user1')
+                ->assertSee('second title test')
+                ->assertSee('second content')
+                ->assertSee('user1');
+        });
     }
 
     /**
      * This test shows that all questions in the database will be showed on the home
      * page listing as an authenticated user. Question title, content and who posted it are shown.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testListingAllQuestionsAsUser()
     {
@@ -95,21 +109,24 @@ class QuestionControllerTest extends DuskTestCase
             'nb_replies' => 0,
         ]);
 
-        $user = \App\User::find(1);
-
-        $this->actingAs($user)
-            ->visit('/home')
-            ->see('first title test')
-            ->see('first content')
-            ->see('user1')
-            ->see('second title test')
-            ->see('second content')
-            ->see('user1')
-            ->isAuthenticated();
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(1))
+                ->visit('/home')
+                ->assertSee('first title test')
+                ->assertSee('first content')
+                ->assertSee('user1')
+                ->assertSee('second title test')
+                ->assertSee('second content')
+                ->assertSee('user1')
+                ->assertAuthenticatedAs(\App\User::find(1));
+        });
     }
 
     /**
      * This test shows that the labels of questions appear on the sidebar
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testListingAllLabels()
     {
@@ -129,134 +146,174 @@ class QuestionControllerTest extends DuskTestCase
             'nb_replies' => 0,
         ]);
 
-        $this->visit('/home')
-            ->seeLink('label1')
-            ->seeLink('label2')
-            ->seeLink('label3');
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/home')
+                ->seeLink('label1')
+                ->seeLink('label2')
+                ->seeLink('label3');
+        });
     }
 
-    /*
+    /**
      * This test shows that when not authenticated, a user's question
      * will not be added to the database.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testFailureAddQuestionNotAuthenticated()
     {
-        $this->visit('/ask')
-             ->type('This is a title', 'title')
-             ->type('This is the associated content', 'content')
-             ->type('label1', 'labels')
-             ->press('Submit')
-             ->seePageIs('http://localhost/ask')
-             ->dontSeeInDatabase('questions', [
-                'title' => 'This is a title']);
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/ask')
+                ->type('title', 'This is a title')
+                ->type('content', 'This is the associated content')
+                ->type('labels', 'label1')
+                ->press('Submit')
+                ->assertPathIs('http://localhost/ask');
+        });
+
+        $this->browse(function (Browser $browser) {
+            $this->assertDatabaseMissing('questions', [
+                'content' => 'This is the associated content']);
+        });
     }
 
     /**
      * This test shows that when authenticated, question still needs a title
      * to be valid.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testFailureAddQuestionNoTitle()
     {
-        $user = \App\User::find(1);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(1))
+                ->visit('/ask')
+                ->type('title', '')
+                ->type('content', 'some content')
+                ->type('labels', 'label1')
+                ->press('Submit')
+                ->assertPathIs('http://localhost/ask')
+                ->assertAuthenticatedAs(\App\User::find(1));
+        });
 
-        $this->actingAs($user)
-            ->visit('/ask')
-            ->type('', 'title')
-            ->type('some content', 'content')
-            ->type('label1', 'labels')
-            ->press('Submit')
-            ->seePageIs('http://localhost/ask')
-            ->dontSeeInDatabase('questions', [
-                'content' => 'some content'])
-            ->isAuthenticated();
+        $this->browse(function (Browser $browser) {
+            $this->assertDatabaseMissing('questions', [
+                'content' => 'some content']);
+        });
     }
 
     /**
      * This test shows that when authenticated, question still needs a content
      * to be valid.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testFailureAddQuestionNoContent()
     {
-        $user = \App\User::find(1);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(1))
+                ->visit('/ask')
+                ->type('title', 'a title')
+                ->type('content', '')
+                ->type('labels', 'label1')
+                ->press('Submit')
+                ->assertPathIs('http://localhost/ask')
+                ->assertAuthenticatedAs(\App\User::find(1));
+        });
 
-        $this->actingAs($user)
-            ->visit('/ask')
-            ->type('a title', 'title')
-            ->type('', 'content')
-            ->type('label1', 'labels')
-            ->press('Submit')
-            ->seePageIs('http://localhost/ask')
-            ->dontSeeInDatabase('questions', [
-                'title' => 'a title'])
-            ->isAuthenticated();
+        $this->browse(function (Browser $browser) {
+            $this->assertDatabaseMissing('questions', [
+                'title' => 'a title']);
+        });
     }
 
 
     /**
      * Test valid question gets saved properly when the labels are not
      * given by the user.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testSuccessValidNewQuestionNoLabels()
     {
-        $user = \App\User::find(1);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(1))
+                ->visit('/ask')
+                ->type('title', 'a title')
+                ->type('content', 'some content')
+                ->press('Submit')
+                ->assertPathIs('http://localhost/home')
+                ->assertAuthenticatedAs(\App\User::find(1));
+        });
 
-        $this->actingAs($user)
-            ->visit('/ask')
-            ->type('a title', 'title')
-            ->type('some content', 'content')
-            ->press('Submit')
-            ->seePageIs('http://localhost/home')
-            ->seeInDatabase('questions', [
+        $this->browse(function (Browser $browser) {
+            $this->assertDatabaseHas('questions', [
                 'title' => 'a title',
                 'content' => 'some content',
                 'labels' => '',
-                'id' => 1])
-            ->isAuthenticated();
+                'id' => 1]);
+        });
     }
 
     /**
      * Test valid question gets saved properly when all fields are filled.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testSuccessValidNewQuestionAllFields()
     {
-        $user = \App\User::find(1);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(1))
+                ->visit('/ask')
+                ->type('title', 'a title')
+                ->type('content', 'some content')
+                ->type('labels', 'label_1')
+                ->press('Submit')
+                ->assertPathIs('http://localhost/home')
+                ->assertAuthenticatedAs(\App\User::find(1));
+        });
 
-        $this->actingAs($user)
-            ->visit('/ask')
-            ->type('a title', 'title')
-            ->type('some content', 'content')
-            ->type('label_1', 'labels')
-            ->press('Submit')
-            ->seePageIs('http://localhost/home')
-            ->seeInDatabase('questions', [
+        $this->browse(function (Browser $browser) {
+            $this->assertDatabaseHas('questions', [
                 'title' => 'a title',
                 'content' => 'some content',
                 'labels' => 'label_1',
-                'id' => 1])
-            ->isAuthenticated();
+                'id' => 1]);
+        });
     }
 
     /**
      * Test valid question gets saved properly when more than one
      * label is given during question creation.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testSuccessValidNewQuestionMultipleLabels()
     {
-        $user = \App\User::find(1);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(1))
+                ->visit('/ask')
+                ->type('title', 'a title')
+                ->type('content', 'some content')
+                ->type('labels', 'label1,label2')
+                ->press('Submit')
+                ->assertPathIs('http://localhost/home')
+                ->assertAuthenticatedAs(\App\User::find(1));
+        });
 
-        $this->actingAs($user)
-            ->visit('/ask')
-            ->type('a title', 'title')
-            ->type('some content', 'content')
-            ->type('label1,label2', 'labels')
-            ->press('Submit')
-            ->seePageIs('http://localhost/home')
-            ->seeInDatabase('questions', [
+        $this->browse(function (Browser $browser) {
+            $this->assertDatabaseHas('questions', [
                 'title' => 'a title',
                 'content' => 'some content',
                 'labels' => 'label1,label2',
-                'id' => 1])
-            ->isAuthenticated();
+                'id' => 1]);
+        });
     }
 
     /**
@@ -297,6 +354,9 @@ class QuestionControllerTest extends DuskTestCase
     /**
      * Tests shows that when a label is clicked, it only shows
      * all questions with that specific label
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplaySeveralQuestionsWithSpecificLabel()
     {
@@ -324,19 +384,24 @@ class QuestionControllerTest extends DuskTestCase
             'nb_replies' => 0,
         ]);
 
-        $this->visit('/home')
-            ->click('label1')
-            ->see('first title test')
-            ->see('first content')
-            ->see('second title test')
-            ->see('second content')
-            ->dontSee('third title test')
-            ->dontSee('third content');
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/home')
+                ->clickLink('label1')
+                ->assertSee('first title test')
+                ->assertSee('first content')
+                ->assertSee('second title test')
+                ->assertSee('second content')
+                ->assertDontSee('third title test')
+                ->assertDontSee('third content');
+        });
     }
 
     /**
      * Tests whether all the necessary question information is displayed as a guest.
      * Question has no replies.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayQuestionInfoWithoutRepliesAsAGuest()
     {
@@ -348,17 +413,22 @@ class QuestionControllerTest extends DuskTestCase
             'nb_replies' => 0,
         ]);
 
-        $this->visit('/question/1')
-             ->see('first title test')
-             ->see('user1')
-            // ->see('02th of March of 2018 at  23:01:36')
-             ->see('first content')
-             ->see('No comments');
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/question/1')
+                ->assertSee('first title test')
+                ->assertSee('user1')
+                ->assertSee('first content')
+                ->assertSee('No comments')
+                ->assertSee('02th of February of 2018 at  12:20:00');
+        });
     }
 
     /**
      * Tests whether all the necessary question information is displayed.
      * Question has replies.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayQuestionInfoWithRepliesAsAGuest()
     {
@@ -379,25 +449,28 @@ class QuestionControllerTest extends DuskTestCase
             'status' => 0,
         ]);
 
-        $this->visit('/question/1')
-            ->see('first title test')
-            ->see('user1')
-           // ->see('02th of March of 2018 at  23:01:37')
-            ->see('first content')
-            ->see('first reply')
-            ->see(66)
-            ->see(124);
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/question/1')
+                ->assertSee('first title test')
+                ->assertSee('user1')
+                ->assertSee('first content')
+                ->assertSee('No comments')
+                ->assertSee('02th of February of 2018 at  12:20:00')
+                ->assertSee(66)
+                ->assertSee(124);
+        });
     }
 
     /**
      * Tests whether all the necessary question information is displayed as
      * an authenticated user.
      * Question has no replies.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayQuestionInfoAsAUser()
     {
-        $user = \App\User::find(2);
-
         factory(Question::class)->create([
             'title' => 'first title test',
             'content' => 'first content',
@@ -415,20 +488,25 @@ class QuestionControllerTest extends DuskTestCase
             'status' => 0,
         ]);
 
-        $this->actingAs($user)
-             ->visit('/question/1')
-             ->see('first title test')
-             ->see('user1')
-            // ->see('02th of March of 2018 at  23:01:38')
-             ->see('first content')
-             ->see('first reply')
-             ->see(66)
-             ->see(124);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(2))
+                ->visit('/question/1')
+                ->assertSee('first title test')
+                ->assertSee('user1')
+                ->assertSee('02th of February of 2018 at 12:20:00')
+                ->assertSee('first content')
+                ->assertSee('first reply')
+                ->assertSee(66)
+                ->assertSee(124);
+        });
     }
 
     /**
      * Test to check if you see accepted symbol next to the replies
      * as a guest.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayAcceptedIconAsGuest()
     {
@@ -449,13 +527,18 @@ class QuestionControllerTest extends DuskTestCase
             'status' => 1,
         ]);
 
-        $this->visit('/question/1')
-             ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/question/1')
+                ->assertVisible('.fa fa-check-circle fa-2x');
+        });
     }
 
     /**
      * Test to check if you see accepted symbol next to the replies
      * as not the owner of the question.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayAcceptedIconAsNotTheOwner()
     {
@@ -476,16 +559,19 @@ class QuestionControllerTest extends DuskTestCase
             'status' => 1,
         ]);
 
-        $user = \App\User::find(2);
-
-        $this->actingAs($user)
-             ->visit('/question/1')
-            ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(2))
+                ->visit('/question/1')
+                ->assertVisible('.fa fa-check-circle fa-2x');
+        });
     }
 
     /**
      * Test to check if you see rejected symbol next to the replies
      * as a guest.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayRejectedIconAsGuest()
     {
@@ -506,13 +592,18 @@ class QuestionControllerTest extends DuskTestCase
             'status' => -1,
         ]);
 
-        $this->visit('/question/1')
-            ->seeElement('i', ['class' => 'fa fa-ban fa-2x']);
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/question/1')
+                ->assertVisible('.fa fa-ban fa-2x');
+        });
     }
 
     /**
      * Test to check if you see rejected symbol next to the replies
      * as not the owner of the question.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayRejectedIconAsNotTheOwner()
     {
@@ -533,16 +624,19 @@ class QuestionControllerTest extends DuskTestCase
             'status' => -1,
         ]);
 
-        $user = \App\User::find(2);
-
-        $this->actingAs($user)
-            ->visit('/question/1')
-            ->seeElement('i', ['class' => 'fa fa-ban fa-2x']);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(2))
+                ->visit('/question/1')
+                ->assertVisible('.fa fa-ban fa-2x');
+        });
     }
 
     /**
      * This test checks if the normalize symbol is displayed next to a reply
      * when you are the owner of a question.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayNormalizeSymbolsAsOwner()
     {
@@ -563,16 +657,19 @@ class QuestionControllerTest extends DuskTestCase
             'status' => 0,
         ]);
 
-        $user = \App\User::find(1);
-
-        $this->actingAs($user)
-            ->visit('/question/1')
-            ->seeElement('i', ['class' => 'fa fa-bars fa-2x']);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(1))
+                ->visit('/question/1')
+                ->assertVisible('.fa fa-bars fa-2x');
+        });
     }
 
     /**
      * This test checks if the accept symbol is displayed next to a reply
      * when you are the owner of a question.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayAcceptSymbolsAsOwner()
     {
@@ -593,16 +690,19 @@ class QuestionControllerTest extends DuskTestCase
             'status' => 1,
         ]);
 
-        $user = \App\User::find(1);
-
-        $this->actingAs($user)
-            ->visit('/question/1')
-            ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(1))
+                ->visit('/question/1')
+                ->assertVisible('.fa fa-check-circle fa-2x');
+        });
     }
 
     /**
      * This test checks if the reject symbol is displayed next to a reply
      * when you are the owner of a question.
+     *
+     * @throws Exception if operation fail
+     * @throws \Throwable if operation fail
      */
     public function testDisplayRejectSymbolsAsOwner()
     {
@@ -623,10 +723,10 @@ class QuestionControllerTest extends DuskTestCase
             'status' => -1,
         ]);
 
-        $user = \App\User::find(1);
-
-        $this->actingAs($user)
-            ->visit('/question/1')
-            ->seeElement('i', ['class' => 'fa fa-ban fa-2x']);
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs(\App\User::find(1))
+                ->visit('/question/1')
+                ->assertVisible('.fa fa-ban fa-2x');
+        });
     }
 }

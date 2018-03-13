@@ -8,6 +8,13 @@ use Illuminate\Contracts\Console\Kernel;
 trait CreatesApplication
 {
     /**
+     * The base URL of the application.
+     *
+     * @var string
+     */
+    public $baseUrl = 'http://localhost';
+
+    /**
      * Creates the application.
      *
      * @return \Illuminate\Foundation\Application
