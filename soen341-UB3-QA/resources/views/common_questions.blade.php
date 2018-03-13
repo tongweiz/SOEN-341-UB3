@@ -36,7 +36,7 @@
                 <!--Display who posted it and when -->
                 <div class="card-footer text-muted">
                     Posted on the <span style="text-decoration: underline;">
-                            <?php $parts = explode('-', $data->updated_at);
+                            <?php $parts = explode('-', $data->created_at);
                         $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
                         echo substr($parts[2], 0, 2) . "th of $month of $parts[0] at " . substr($parts[2], 2)?> </span>
                     by <span style="text-decoration: underline;">{{$data->name}}</span>
