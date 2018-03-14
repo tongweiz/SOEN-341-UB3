@@ -37,7 +37,7 @@
                             @else
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"
-                                       aria-expanded="false" aria-haspopup="true" style="font-size: 20px">
+                                       aria-expanded="false" aria-haspopup="true" style="font-size: 20px" id="auth_user_name">
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
 
