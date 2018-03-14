@@ -62,8 +62,8 @@
             <hr>
 
             <!-- Date/Time -->
-            Updated on the <span style="text-decoration: underline;">
-                            <?php $parts = explode('-', $question->updated_at);
+            Posted on the <span style="text-decoration: underline;">
+                            <?php $parts = explode('-', $question->created_at);
                 $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
                 echo substr($parts[2], 0, 2) . "th of $month of $parts[0] at " . substr($parts[2], 2)?> </span>
 
@@ -105,10 +105,10 @@
             <p>
                 {{count($replies)}} answer(s)
             </p>
-            <table class="answers table" width=100% style="background-color: #FAFAFA;">
-                <br>
                 @if(count($replies) > 0)
                     @foreach($replies as $reply)
+                    <table class="answers table" width=100% style="background-color: #FAFAFA;">
+                        <br>
                         <tr class="answer">
                             <td class="answer-text" width=70%>
                                 <p> {{$reply->content}}</p>
@@ -175,12 +175,32 @@
                                 @endif
                             </td>
                         </tr>
+
+                        <!-- reply information -->
+                        <tr>
+                            <td style="border-top-style: none;">
+                                <font size="2" color="grey">
+                                        Replied on the 
+                                        <span style="text-decoration: underline;">
+                                        <?php $parts = explode('-', $reply->created_at );
+                                        $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
+                                        echo substr($parts[2], 0, 2) . "th of $month of $parts[0] at " . substr($parts[2], 2)?> </span>
+                                             by
+                                        <span style="text-decoration: underline;">
+                                        <?php  
+                                            foreach ($name_data as $value) {
+                                                if($value->id == $reply->user_id)
+                                                    {echo $value->name;}
+                                         }?></span>        
+                                </font>
+                            </td>
+                        <tr>
+                    </table>
                     @endforeach
                 @else
                     <p>No comments</p>
                     @endif
                     </tbody>
-            </table>
             <hr>
         </div>
 

@@ -85,9 +85,14 @@ class QuestionController extends Controller
         $label_data = DB::table('questions')
             ->select('questions.labels')->get();
 
+        //get nameInfo. from the db for reply display
+        $name_data = DB::table('users')
+            ->select('users.id', 'users.name')
+            ->get();
+
         return view('question',
             ['question' => $question, 'user' => $user, 'replies' => $replies, 'qOwner' => $qOwner, 'likes' => $likes, 'dislikes' => $dislikes,
-                'label_data' => $label_data]);
+                'label_data' => $label_data, 'name_data' => $name_data]);
     }
 
     /**
