@@ -105,8 +105,8 @@
             <p>
                 {{count($replies)}} answer(s)
             </p>
-                @if(count($replies) > 0)
-                    @foreach($replies as $reply)
+            @if(count($replies) > 0)
+                @foreach($replies as $reply)
                     <table class="answers table" width=100% style="background-color: #FAFAFA;">
                         <br>
                         <tr class="answer">
@@ -180,31 +180,36 @@
                         <tr>
                             <td style="border-top-style: none;">
                                 <font size="2" color="grey">
-                                        Replied on the 
-                                        <span style="text-decoration: underline;">
-                                        <?php $parts = explode('-', $reply->created_at );
+                                    Replied on the
+                                    <span style="text-decoration: underline;">
+                                        <?php $parts = explode('-', $reply->created_at);
                                         $month = (DateTime::createFromFormat('!m', $parts[1]))->format('F');
                                         echo substr($parts[2], 0, 2) . "th of $month of $parts[0] at " . substr($parts[2], 2)?> </span>
-                                             by
-                                        <span style="text-decoration: underline;">
-                                        <?php  
-                                            foreach ($name_data as $value) {
-                                                if($value->id == $reply->user_id)
-                                                    {echo $value->name;}
-                                         }?></span>        
+                                    by
+                                    <span style="text-decoration: underline;">
+                                        <?php
+                                        foreach ($name_data as $value) {
+                                            if ($value->id == $reply->user_id) {
+                                                echo $value->name;
+                                            }
+                                        }?></span>
                                 </font>
                             </td>
                         <tr>
                     </table>
-                    @endforeach
-                @else
-                    <p>No comments</p>
-                    @endif
-                    </tbody>
-            <hr>
+                @endforeach
+            @else
+                <p>No comments</p>
+                @endif
+                </tbody>
+                <hr>
         </div>
 
-        @include('sidebar_without_labels')
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            @include('sidebar_search')
+            @include('sidebar_newquestion')
+        </div>
 
     </div>
     <!-- /.row -->

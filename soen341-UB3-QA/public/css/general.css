@@ -15,6 +15,15 @@ body{
 
 }
 
+.label-filtering-selected{
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 10px;
+    padding: 5px;
+
+}
+
 .like, .dislike {
     background: none !important;
     color: rgb(30, 144, 255);

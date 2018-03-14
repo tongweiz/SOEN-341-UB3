@@ -88,7 +88,10 @@
 
         </div>
 
-        @include('sidebar_without_labels')
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            @include('sidebar_search')
+        </div>
 
     </div>
     <!-- /.row -->

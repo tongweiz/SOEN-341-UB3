@@ -83,7 +83,13 @@
             @include('common_questions')
 
         </div>
-        @include('sidebar_with_labels')
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            @include('sidebar_search')
+            @include('sidebar_newquestion')
+            @include('sidebar_labels')
+        </div>
     </div>
 
     <!-- /.row -->
