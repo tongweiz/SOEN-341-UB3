@@ -19,6 +19,7 @@ before_script:
 - composer self-update
 - php artisan migrate
 - php artisan key:generate
+- export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 - ./vendor/laravel/dusk/bin/chromedriver-linux &
 - php artisan serve &
