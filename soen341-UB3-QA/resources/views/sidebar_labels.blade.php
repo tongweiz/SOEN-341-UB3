@@ -3,51 +3,17 @@
 
 <body>
 
-
-<!-- Sidebar Widgets Column -->
-<div class="col-md-4">
-
-    <!-- Search Widget -->
-    <div class="card my-4">
-        <h5 class="card-header">Search </h5>
-        <div class="card-body">
-            {!! Form::open(['url' => 'home']) !!}
-            <div class="input-group">
-                {!! Form::text('search', '', array('class'=>'form-control',
-                    'style'=>'margin-right:10px;', 'placeholder'=>'Search for...')) !!}
-                <span class="input-group-btn">
-                    {!! Form::submit('Go!', ['class' => 'btn btn-secondary', 'name' => "Go!"]) !!}
-                </span>
-            </div>
-            {!! Form::close() !!}
-        </div>
-    </div>
-
-    <!-- Asking Questions sidebar -->
-    <div class="card my-4">
-        <h5 class="card-header">Have a Question of your own?</h5>
-        <div class="card-body">
-            <div>
-                @if (Route::has('login'))
-
-                    @guest
-                        <a href="{{ route('register') }}" class="btn btn-primary">Ask it here!</a>
-
-                    @else
-                        <a href="{{ route('ask') }}" class="btn btn-primary">Ask it here!</a>
-
-                    @endguest
-                @endif
-            </div>
-        </div>
-    </div>
-
     <!-- Categories Widget -->
     <div class="card my-4">
         <h5 class="card-header">Filter By Labels </h5>
         <div class="card-body">
             <div class="row">
                 <div style="margin-left: 20px;">
+
+                    <font size="2" color="grey">
+                    <p>Click on a label once to filter the questions.
+                       Click on it again to go back to the unfiltered list.</p>
+                    </font>
 
                     <p>
                     <?php $arr_labels = [];?>
@@ -71,18 +37,24 @@
                     @endif
 
                     <!-- print labels-->
+
+                        <!-- background_color_label = 1 means that a white label was clicked and 0 means a blue label was clicked-->
                         @foreach($arr_labels as $label1)
-                            <a href="#" class="filter_labels" style="margin: 20px;">{{$label1}}</a>
+                            @if($background_color_label == 0)
+                                <a href="#" class="filter_labels label-filtering-selected">{{$label1}}</a>
+                            @elseif ($background_color_label == 1 && $label_clicked == $label1)
+                                <a href="#" class="filter_labels label-filtering-selected" style="background: powderblue;">{{$label1}}</a>
+                            @else
+                                <a href="#" class="filter_labels label-filtering-selected">{{$label1}}</a>
+                            @endif
                         @endforeach
+
                     </p>
 
                 </div>
             </div>
         </div>
     </div>
-
-
-</div>
 
 </body>
 </html>

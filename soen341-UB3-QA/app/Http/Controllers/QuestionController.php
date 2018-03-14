@@ -27,7 +27,8 @@ class QuestionController extends Controller
             ->get();
 
         //return view with necessary information
-        return view('welcome', ['question_data' => $question_data, 'label_data' => $question_data]);
+        return view('welcome', ['question_data' => $question_data, 'label_data' => $question_data,
+            'background_color_label' => '', 'label_clicked' => '']);
     }
 
     /**
@@ -150,7 +151,7 @@ class QuestionController extends Controller
         $label_data = DB::table('questions')
             ->select('questions.labels')->get();
 
-        return view ('ask', ['label_data' => $label_data]);
+        return view('ask', ['label_data' => $label_data]);
     }
 
     /**
@@ -159,20 +160,30 @@ class QuestionController extends Controller
      * @param $label
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function filterLabel($label){
-        //get all questions
-        $question_data = DB::table('questions')->join('users', 'users.id', '=', 'questions.user_id')
-            ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
-                'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
-            ->where('questions.labels', 'like', "%$label%")->get();
+    public function filterLabel($label)
+    {
+        //questions will not be filtered
+        if ($_POST['color'] == 0) {
+            $question_data = DB::table('questions')->join('users', 'users.id', '=', 'questions.user_id')
+                ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
+                    'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')->get();
+        } else {
+            //if a new label was clicked, return the question of that label
+            $question_data = DB::table('questions')->join('users', 'users.id', '=', 'questions.user_id')
+                ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
+                    'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
+                ->where('questions.labels', 'like', "%$label%")->get();
+        }
 
-         $label_data = DB::table('questions')->join('users', 'users.id', '=', 'questions.user_id')
+        $label_data = DB::table('questions')->join('users', 'users.id', '=', 'questions.user_id')
             ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
                 'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
             ->get();
 
         //return view to ajax
-        $returnHTML = view('welcome',['question_data' => $question_data, 'label_data' => $label_data])->render();
-        return response()->json( array('success' => true, 'html'=>$returnHTML) );
+        $returnHTML = view('welcome', ['question_data' => $question_data, 'label_data' => $label_data,
+            'background_color_label' => $_POST['color'], 'label_clicked' => $label])->render();
+
+        return response()->json(array('success' => true, 'html' => $returnHTML));
     }
 }

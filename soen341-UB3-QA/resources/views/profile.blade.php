@@ -43,19 +43,12 @@
 
         </div>
 
+        <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
 
-            <!-- Asking Questions sidebar -->
-            <div class="card my-4">
-                <h5 class="card-header">Have another question to ask?</h5>
-                <div class="card-body">
-                    <div>
-                        <a href="{{ route('ask') }}" class="btn btn-primary">Ask it here!</a>
-                    </div>
-                </div>
-            </div>
+        @include('sidebar_newquestion')
 
-            <!-- Edit Profile Widget -->
+        <!-- Edit Profile Widget -->
             <div class="card my-4 ">
                 <h5 class="card-header">Who are you? </h5>
                 <div class="card-body">
