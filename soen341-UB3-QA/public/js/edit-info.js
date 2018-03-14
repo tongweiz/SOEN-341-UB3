@@ -99,8 +99,8 @@ $(document).ready(function () {
             //success message
             document.getElementById("error_msg").style.visibility = "visible";
             document.getElementById("error_msg").innerHTML = "Your new information have been successfully saved!"
-            // }
-            // });
+
+            document.getElementById("auth_user_name").innerHTML = name;
         }
     });
 
