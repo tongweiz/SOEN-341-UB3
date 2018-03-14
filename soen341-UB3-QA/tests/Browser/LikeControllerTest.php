@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Browser;
 
 use App\Reply;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\BrowserKitTestCase;
 use App\Question;
 use App\User;
+use Laravel\Dusk\Browser;
 
 class LikeControllerTest extends BrowserKitTestCase
 {
