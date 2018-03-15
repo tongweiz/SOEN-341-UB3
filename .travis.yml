@@ -12,7 +12,7 @@ services:
 - mysql
 
 install:
-- travis_retry composer install --no-interaction --prefer-dist --no-suggest
+- composer install --no-interaction
 - composer self-update
 
 before_script:
