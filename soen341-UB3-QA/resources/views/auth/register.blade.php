@@ -23,12 +23,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
-<body>
+<body class="Site">
 
 @include('header')
 <script src="{{ asset('js/app.js') }}"></script>
 
-<div class="container">
+<div class="container Site-content">
     <div class="row">
         <div class="col-md-8 col-md-offset-2" style="margin-left: 20%; ">
             <div class="panel panel-default card my-4">

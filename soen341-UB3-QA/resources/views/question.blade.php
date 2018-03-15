@@ -37,13 +37,13 @@
 
 </head>
 
-<body>
+<body class="Site">
 
 <!-- Navigation -->
 @include('header')
 
 <!-- Page Content -->
-<div class="container">
+<div class="container Site-content">
 
     <div class="row">
 
