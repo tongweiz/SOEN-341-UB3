@@ -1,4 +1,9 @@
+sudo: required
+dist: trusty
 language: php
+
+addons:
+   chrome: stable
 
 php:
 - 7.1.9
@@ -13,6 +18,8 @@ before_script:
 - composer self-update
 - php artisan migrate
 - php artisan key:generate
+- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+- php artisan serve &
 
 script:
-- vendor/bin/phpunit
+- php artisan dusk
