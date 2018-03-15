@@ -1,4 +1,9 @@
+sudo: required
+dist: trusty
 language: php
+
+addons:
+   chrome: stable
 
 php:
 - 7.1.9
@@ -6,13 +11,18 @@ php:
 services:
 - mysql
 
+install:
+- travis_retry composer install --no-interaction --prefer-dist --no-suggest
+- composer self-update
+
 before_script:
 - cd soen341-UB3-QA
 - mysql -e 'create database projectub3'
-- composer install --no-interaction
-- composer self-update
 - php artisan migrate
 - php artisan key:generate
+- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+- php artisan serve &
 
 script:
 - vendor/bin/phpunit
+- php artisan dusk
