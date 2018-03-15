@@ -58,19 +58,19 @@
                 <h5 style="margin-top: 5px; margin-right: 10px"> Order By: </h5>
                 <div class="dropdown" style="margin-right: 50px">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="ordo">
-                        ...<span class="caret"></span></button>
+                        Date Created<span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li id="ord" class="date"><a class="click order" id="date">Date</a></li>
-                        <li><a class="click order" id="replies">Number of Replies</a></li>
-                        <li><a class="click order" id="title">Title</a></li>
-                        <li><a class="click order" id="updated">Last Updated</a></li>
+                        <li id="ord" class="date"><a class="click order" id="Date Created">Date Created</a></li>
+                        <li><a class="click order" id="Number of Replies">Number of Replies</a></li>
+                        <li><a class="click order" id="Title">Title</a></li>
+                        <li><a class="click order" id="Last Updated">Last Updated</a></li>
                     </ul>
                 </div>
 
                 <h5 style="margin-top: 5px; margin-right: 10px"> Direction: </h5>
                 <div class="dropdown" style="margin-right: 50px">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="diro">
-                        ...<span class="caret"></span></button>
+                        Ascending<span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li id="dir" class="asc"><a class="click orderD" id="asc">Ascending</a></li>
                         <li><a class="click orderD" id="desc">Descending</a></li>
