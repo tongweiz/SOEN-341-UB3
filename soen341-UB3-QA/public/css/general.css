@@ -1,0 +1,44 @@
+body{
+    background-image: url(../assets/background_texture.jpg);
+    z-index:-1;
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#labels-styled{
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid;
+    background: #80aaff;
+    border-radius: 10px;
+
+}
+
+.label-filtering-selected{
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 10px;
+    padding: 5px;
+
+}
+
+.like, .dislike {
+    background: none !important;
+    color: rgb(30, 144, 255);
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
+}
+
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
+}
