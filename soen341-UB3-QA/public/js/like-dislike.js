@@ -1,3 +1,6 @@
+loggedFlag = false;
+sameFlag = false;
+
 $(document).ready(function () {
     $(".like").click(function () {
         let idAttr = $(this).attr("id");
@@ -8,12 +11,14 @@ $(document).ready(function () {
 
         $.get("/question/like/" + id, function (data, status) {
             if (status == "success") {
-                if (data == "#") {
+                if (data == "#" && loggedFlag == false) {
                     alert("You are not logged in! Only logged in users can like replies. " +
                         "Please use the Login or Register links at the top of the page and try again.");
+                    loggedFlag = true;
                 }
-                else if (data == "##") {
+                else if (data == "##" && sameFlag == false) {
                     alert("You can't like your own replies!");
+                    sameFlag = true;
                 }
                 else {
                     let str = /(\d+)\.(\d+)/.exec(data);
@@ -37,12 +42,14 @@ $(document).ready(function () {
 
         $.get("/question/dislike/" + id, function (data, status) {
             if (status == "success") {
-                if (data == "#") {
+                if (data == "#" && loggedFlag == false) {
                     alert("You are not logged in! Only logged in users can dislike replies. " +
                         "Please use the Login or Register links at the top of the page and try again.");
+                    loggedFlag = true;
                 }
-                else if (data == "##") {
+                else if (data == "##" && sameFlag == false) {
                     alert("You can't dislike your own replies!");
+                    sameFlag = true;
                 }
                 else {
                     let str = /(\d+)\.(\d+)/.exec(data);

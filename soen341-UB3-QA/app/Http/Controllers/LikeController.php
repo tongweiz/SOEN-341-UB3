@@ -16,7 +16,7 @@ class LikeController extends Controller
 
         //only authenticated users can like replies
         if (Auth::check()) {
-            //checks if user is the same the the one who posted the reply
+            //checks if user is the same as the one who posted the reply
             if(Auth::id() == $reply->user_id)
                 return "##";
             else {

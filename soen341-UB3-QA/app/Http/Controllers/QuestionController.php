@@ -21,9 +21,11 @@ class QuestionController extends Controller
     public function index()
     {
         //get question data
-        $question_data = DB::table('questions')->join('users', 'users.id', '=', 'questions.user_id')
+        $question_data = DB::table('questions')
+            ->join('users', 'users.id', '=', 'questions.user_id')
             ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
                 'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
+            ->orderBy('created_at', 'asc')
             ->get();
 
         //return view with necessary information
@@ -105,44 +107,47 @@ class QuestionController extends Controller
         ($direction == "asc") ? $dir = 'asc' : $dir = 'desc';
 
         switch ($order) {
-            case 'date':
+            case 'Date Created':
                 $question_data = DB::table('questions')
                     ->join('users', 'users.id', '=', 'questions.user_id')
-                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.user_id', 'questions.nb_replies', 'questions.created_at', 'questions.updated_at', 'users.name')
+                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
+                        'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
                     ->orderBy('created_at', "$dir")
                     ->get();
                 break;
-            case 'replies':
+            case 'Number of Replies':
                 $question_data = DB::table('questions')
                     ->join('users', 'users.id', '=', 'questions.user_id')
-                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.user_id', 'questions.nb_replies', 'questions.created_at', 'questions.updated_at', 'users.name')
+                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
+                        'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
                     ->orderBy('nb_replies', "$dir")
                     ->get();
                 break;
-            case 'title':
+            case 'Title':
                 $question_data = DB::table('questions')
                     ->join('users', 'users.id', '=', 'questions.user_id')
-                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.user_id', 'questions.nb_replies', 'questions.created_at', 'questions.updated_at', 'users.name')
+                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
+                            'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
                     ->orderBy('title', "$dir")
                     ->get();
                 break;
-            case 'updated':
+            case 'Last Updated':
                 $question_data = DB::table('questions')
                     ->join('users', 'users.id', '=', 'questions.user_id')
-                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.user_id', 'questions.nb_replies', 'questions.created_at', 'questions.updated_at', 'users.name')
+                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
+                        'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
                     ->orderBy('updated_at', "$dir")
                     ->get();
                 break;
             default:
                 $question_data = DB::table('questions')
                     ->join('users', 'users.id', '=', 'questions.user_id')
-                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.user_id', 'questions.nb_replies', 'questions.created_at', 'questions.updated_at', 'users.name')
+                    ->select('questions.id', 'questions.title', 'questions.content', 'questions.nb_replies',
+                        'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
                     ->get();
         }
 
-        //encode and return necessary information
-        $data = json_encode($question_data);
-        return "$data";
+        return view('common_questions', ['question_data' => $question_data]);
     }
 
     public function showNewQuestion()
