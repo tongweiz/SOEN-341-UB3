@@ -14,10 +14,10 @@ services:
 before_script:
 - cd soen341-UB3-QA
 - mysql -e 'create database projectub3'
-- php artisan migrate
-- php artisan key:generate
 - composer install --no-interaction
 - composer self-update
+- php artisan migrate
+- php artisan key:generate
 - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 - php artisan serve &
 
