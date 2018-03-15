@@ -23,6 +23,6 @@ class SearchController extends Controller
                 'questions.labels', 'questions.user_id', 'questions.created_at', 'questions.updated_at', 'users.name')
             ->get();
 
-        return view('welcome', ['question_data' => $question_data, 'label_data' => $label_data]);
+        return view('welcome', ['question_data' => $question_data, 'label_data' => $label_data, 'background_color_label' => '', 'label_clicked' => '']);
     }
 }
