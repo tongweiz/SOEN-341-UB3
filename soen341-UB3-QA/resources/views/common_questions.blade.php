@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body>
+<body class="Site">
 
 <!-- Question Post -->
-<div id="questions">
+<div id="questions" class="Site-content">
     @if(count($question_data) > 0)
         @foreach($question_data as $key => $data)
             <div class="card mb-4">
