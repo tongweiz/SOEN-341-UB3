@@ -157,7 +157,7 @@
                                 @if($qOwner)
                                     <a class="accept click" name="accept" id="accept">
                                         <i class="fa fa-check-circle <?php if ($reply->status == 1) echo 'fa-2x'; ?>"
-                                           style="color:rgb(106, 115, 124)" id="{{$reply->id}}a"></i>
+                                           style="color:rgb(45, 188, 16)" id="{{$reply->id}}a"></i>
                                     </a>
                                     <a class="normalize click" name="normal" id="normal">
                                         <i class="fa fa-bars <?php if ($reply->status == 0) echo 'fa-2x'; ?>"
@@ -165,13 +165,13 @@
                                     </a>
                                     <a class="reject click" name="reject" id="reject">
                                         <i class="fa fa-ban <?php if ($reply->status == -1) echo 'fa-2x'; ?>"
-                                           style="color:rgb(106, 115, 124)" id="{{$reply->id}}r"></i>
+                                           style="color:rgb(255, 0, 0)" id="{{$reply->id}}r"></i>
                                     </a>
                                 @elseif($reply->status == -1)
-                                    <i class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(106, 115, 124)"></i>
+                                    <i class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(255, 0, 0)"></i>
                                 @elseif($reply->status == 1)
                                     <i class="fa fa-check-circle <?php echo 'fa-2x'; ?>"
-                                       style="color:rgb(106, 115, 124)"></i>
+                                       style="color:rgb(45, 188, 16)"></i>
                                 @endif
                             </td>
                         </tr>
