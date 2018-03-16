@@ -126,7 +126,7 @@
                                             }
                                         }
                                         if ($flag != TRUE) echo 'rgb(30, 144, 255)';
-                                    } else echo 'rgb(30, 144, 255)'; ?>"
+                                    } else echo 'rgb(30, 144, 255)'; ?>" onClick="this.style.color='green';"
                                        class="like click" id="{{$reply->id}}bl" name="like">
                                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                     </a>
@@ -144,7 +144,7 @@
                                             }
                                         }
                                         if ($flag != TRUE) echo 'rgb(30, 144, 255)';
-                                    } else echo 'rgb(30, 144, 255)'; ?>"
+                                    } else echo 'rgb(30, 144, 255)'; ?>" onClick="this.style.color='red';"
                                        class="dislike click" id="{{$reply->id}}bdl" name="dislike">
                                         <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "
                                            aria-hidden="true"></i>
