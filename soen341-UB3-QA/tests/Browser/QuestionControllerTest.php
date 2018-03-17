@@ -68,7 +68,9 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->see('first title test')
             ->see('first content')
             ->see('user1')
-            ->see('second title test');
+            ->see('second title test')
+            ->see('second content')
+            ->see('user1');
     }
 
     /**
@@ -99,6 +101,8 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->see('first content')
             ->see('user1')
             ->see('second title test')
+            ->see('second content')
+            ->see('user1')
             ->isAuthenticated();
     }
 
@@ -111,6 +115,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         $this->visit('/ask')
             ->type('This is a title', 'title')
             ->type('This is the associated content', 'content')
+            ->type('label1', 'labels')
             ->press('Submit')
             ->seePageIs('http://localhost/ask')
             ->dontSeeInDatabase('questions', [
@@ -129,6 +134,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->visit('/ask')
             ->type('', 'title')
             ->type('some content', 'content')
+            ->type('label1', 'labels')
             ->press('Submit')
             ->seePageIs('http://localhost/ask')
             ->dontSeeInDatabase('questions', [
@@ -148,6 +154,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->visit('/ask')
             ->type('a title', 'title')
             ->type('', 'content')
+            ->type('label1', 'labels')
             ->press('Submit')
             ->seePageIs('http://localhost/ask')
             ->dontSeeInDatabase('questions', [
@@ -156,9 +163,31 @@ class QuestionControllerTest extends BrowserKitTestCase
     }
 
     /**
-     * Test valid question gets saved properly.
+     * Test valid question gets saved properly when the labels are not
+     * given by the user.
      */
-    public function testSuccessValidNewQuestion()
+    public function testSuccessValidNewQuestionNoLabels()
+    {
+        $user = \App\User::find(1);
+
+        $this->actingAs($user)
+             ->visit('/ask')
+             ->type('a title', 'title')
+             ->type('some content', 'content')
+             ->press('Submit')
+             ->seePageIs('http://localhost/home')
+             ->seeInDatabase('questions', [
+                 'title' => 'a title',
+                 'content' => 'some content',
+                 'labels' => '',
+                 'id' => 1])
+             ->isAuthenticated();
+    }
+
+    /**
+     * Test valid question gets saved properly with multiple labels.
+     */
+    public function testSuccessValidNewQuestionAllFields()
     {
         $user = \App\User::find(1);
 
@@ -166,13 +195,13 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->visit('/ask')
             ->type('a title', 'title')
             ->type('some content', 'content')
-            ->type('label_1', 'labels')
+            ->type('label_1,label_2', 'labels')
             ->press('Submit')
             ->seePageIs('http://localhost/home')
             ->seeInDatabase('questions', [
                 'title' => 'a title',
                 'content' => 'some content',
-                'labels' => 'label_1',
+                'labels' => 'label_1,label_2',
                 'id' => 1])
             ->isAuthenticated();
     }
@@ -194,7 +223,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         $this->visit('/question/1')
             ->see('first title test')
             ->see('user1')
-            // ->see('02th of March of 2018 at  23:01:36')
+            ->see('02th of February of 2018 at  12:20:00');
             ->see('first content')
             ->see('No comments');
     }
@@ -225,7 +254,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         $this->visit('/question/1')
             ->see('first title test')
             ->see('user1')
-            // ->see('02th of March of 2018 at  23:01:37')
+            ->see('02th of February of 2018 at  12:20:00')
             ->see('first content')
             ->see('first reply')
             ->see(66)
@@ -262,7 +291,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->visit('/question/1')
             ->see('first title test')
             ->see('user1')
-            // ->see('02th of March of 2018 at  23:01:38')
+            ->see('02th of February of 2018 at 12:20:00')
             ->see('first content')
             ->see('first reply')
             ->see(66)
