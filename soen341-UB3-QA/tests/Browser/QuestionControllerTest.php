@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Browser;
 
 use App\Reply;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -41,7 +41,7 @@ class QuestionControllerTest extends BrowserKitTestCase
     {
         //no question is being showed because database is empty
         $this->visit('/home')
-             ->see('No questions were asked yet!');
+            ->see('No questions were asked yet!');
     }
 
     /**
@@ -109,11 +109,11 @@ class QuestionControllerTest extends BrowserKitTestCase
     public function testFailureAddQuestionNotAuthenticated()
     {
         $this->visit('/ask')
-             ->type('This is a title', 'title')
-             ->type('This is the associated content', 'content')
-             ->press('Submit')
-             ->seePageIs('http://localhost/ask')
-             ->dontSeeInDatabase('questions', [
+            ->type('This is a title', 'title')
+            ->type('This is the associated content', 'content')
+            ->press('Submit')
+            ->seePageIs('http://localhost/ask')
+            ->dontSeeInDatabase('questions', [
                 'title' => 'This is a title']);
     }
 
@@ -192,11 +192,11 @@ class QuestionControllerTest extends BrowserKitTestCase
         ]);
 
         $this->visit('/question/1')
-             ->see('first title test')
-             ->see('user1')
+            ->see('first title test')
+            ->see('user1')
             // ->see('02th of March of 2018 at  23:01:36')
-             ->see('first content')
-             ->see('No comments');
+            ->see('first content')
+            ->see('No comments');
     }
 
     /**
@@ -225,7 +225,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         $this->visit('/question/1')
             ->see('first title test')
             ->see('user1')
-           // ->see('02th of March of 2018 at  23:01:37')
+            // ->see('02th of March of 2018 at  23:01:37')
             ->see('first content')
             ->see('first reply')
             ->see(66)
@@ -259,14 +259,14 @@ class QuestionControllerTest extends BrowserKitTestCase
         ]);
 
         $this->actingAs($user)
-             ->visit('/question/1')
-             ->see('first title test')
-             ->see('user1')
+            ->visit('/question/1')
+            ->see('first title test')
+            ->see('user1')
             // ->see('02th of March of 2018 at  23:01:38')
-             ->see('first content')
-             ->see('first reply')
-             ->see(66)
-             ->see(124);
+            ->see('first content')
+            ->see('first reply')
+            ->see(66)
+            ->see(124);
     }
 
     /**
@@ -293,7 +293,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         ]);
 
         $this->visit('/question/1')
-             ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
+            ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
     }
 
     /**
@@ -322,7 +322,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         $user = \App\User::find(2);
 
         $this->actingAs($user)
-             ->visit('/question/1')
+            ->visit('/question/1')
             ->seeElement('i', ['class' => 'fa fa-check-circle fa-2x']);
     }
 

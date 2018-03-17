@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Browser;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -8,6 +8,7 @@ use Tests\BrowserKitTestCase;
 use App\Question;
 use App\User;
 
+//the search tests do not use javascript so it will continue to use BrowserKitTestCase
 class SearchTest extends BrowserKitTestCase
 {
     use DatabaseMigrations;
@@ -17,21 +18,18 @@ class SearchTest extends BrowserKitTestCase
     public function setUp()
     {
         parent::setUp();
-
         //create new user
         factory(User::class)->create([
             'name' => 'user1',
             'email' => 'user1@gmail.com',
             'password' => 'secret1234',
         ]);
-
-       factory(Question::class)->create([
+        factory(Question::class)->create([
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
-           'nb_replies' => 0,
+            'nb_replies' => 0,
         ]);
-
         factory(Question::class)->create([
             'title' => 'second title test',
             'content' => 'second content',

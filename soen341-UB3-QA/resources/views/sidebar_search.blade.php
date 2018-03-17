@@ -6,6 +6,7 @@
     <!-- Search Widget -->
     <div class="card my-4">
         <h5 class="card-header">Search </h5>
+
         <div class="card-body">
             {!! Form::open(['url' => 'home']) !!}
             <div class="input-group">
@@ -17,6 +18,7 @@
             </div>
             {!! Form::close() !!}
         </div>
+
     </div>
 
 </body>

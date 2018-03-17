@@ -8,10 +8,14 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ExampleTest extends DuskTestCase
 {
+    //to migrate db before each test
+    use DatabaseMigrations;
+
     /**
      * A basic browser test example.
      *
      * @return void
+     * @throws
      */
     public function testBasicExample()
     {
