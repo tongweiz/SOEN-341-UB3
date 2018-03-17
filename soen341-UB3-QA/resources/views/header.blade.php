@@ -68,6 +68,16 @@
             @endif
         </div>
 
+        <div style="margin-left:20px">
+            @if (Route::has('login'))
+                @guest
+                    <a href="{{ route('register') }}" class="btn btn-primary">Ask a Question!</a>
+                @else
+                    <a href="{{ route('ask') }}" class="btn btn-primary">Ask a Question!</a>
+                @endguest
+            @endif
+        </div>
+
     </div>
 </nav>
 

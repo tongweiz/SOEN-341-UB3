@@ -208,7 +208,6 @@
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
             @include('sidebar_search')
-            @include('sidebar_newquestion')
         </div>
 
     </div>

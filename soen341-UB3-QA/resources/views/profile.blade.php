@@ -46,8 +46,6 @@
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
 
-        @include('sidebar_newquestion')
-
         <!-- Edit Profile Widget -->
             <div class="card my-4 ">
                 <h5 class="card-header">Who are you? </h5>
