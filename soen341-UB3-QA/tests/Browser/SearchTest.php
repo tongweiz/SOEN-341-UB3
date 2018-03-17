@@ -87,12 +87,12 @@ class SearchTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/home')
+                ->assertSee("Questions!")
                 ->type('search', 'first')
                 ->press('Go!')
                 ->assertPathIs('/home')
-                ->dump();
-                //->assertSee('first title test')
-                //->assertDontSee('second title test');
+                ->assertSee('first title test')
+                ->assertDontSee('second title test');
         });
     }
 
