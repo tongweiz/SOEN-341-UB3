@@ -46,10 +46,11 @@ class ReplyTest extends DuskTestCase
      * Reply not added.
      * @throws
      */
-    public function testReplyFailureNotAuthenticated()
+   /* public function testReplyFailureNotAuthenticated()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/question/1')
+                ->dump()
                 ->type('body', 'this is a reply')
                 ->press('Submit')
                 ->assertPathIs('/question/1')
@@ -57,7 +58,7 @@ class ReplyTest extends DuskTestCase
                 ->assertDatabaseMissing('replies', [
                     'content' => 'this is a reply']);
         });
-    }
+    }*/
 
     /**
      * Test the case where a user is authenticated but wants to send an empty reply.
@@ -65,7 +66,7 @@ class ReplyTest extends DuskTestCase
      * Reply not added.
      * @throws
      */
-    public function testReplyFailureEmptyBody()
+    /*public function testReplyFailureEmptyBody()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(2))
@@ -77,7 +78,7 @@ class ReplyTest extends DuskTestCase
                 ->assertDatabaseMissing('replies', [
                     'content' => '']);
         });
-    }
+    }*/
 
     /**
      * Test the case where a user is authenticated and creates a reply successfully.
@@ -85,7 +86,7 @@ class ReplyTest extends DuskTestCase
      * Reply is added to page and database.
      * @throws
      */
-    public function testReplySuccessfullReply()
+    /*public function testReplySuccessfullReply()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(2))
@@ -104,5 +105,5 @@ class ReplyTest extends DuskTestCase
                     'dislikectr' => 0,
                     'status' => 0]);
         });
-    }
+    }*/
 }
