@@ -41,11 +41,16 @@
                         <!-- background_color_label = 1 means that a white label was clicked and 0 means a blue label was clicked-->
                         @foreach($arr_labels as $label1)
                             @if($background_color_label == 0)
-                                <a href="#" class="filter_labels label-filtering-selected">{{$label1}}</a>
+                                <a dusk="filter-labels-{{$label1}}"
+                                   href="#" class="filter_labels label-filtering-selected">{{$label1}}</a>
+
                             @elseif ($background_color_label == 1 && $label_clicked == $label1)
-                                <a href="#" class="filter_labels label-filtering-selected" style="background: powderblue;">{{$label1}}</a>
+                                <a dusk="filter-labels-{{$label1}}"
+                                   href="#" class="filter_labels label-filtering-selected" style="background: powderblue;">{{$label1}}</a>
+
                             @else
-                                <a href="#" class="filter_labels label-filtering-selected">{{$label1}}</a>
+                                <a dusk="filter-labels-{{$label1}}"
+                                   href="#" class="filter_labels label-filtering-selected">{{$label1}}</a>
                             @endif
                         @endforeach
 
