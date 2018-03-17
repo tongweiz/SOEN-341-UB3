@@ -223,7 +223,7 @@ class QuestionControllerTest extends BrowserKitTestCase
         $this->visit('/question/1')
             ->see('first title test')
             ->see('user1')
-            ->see('02th of February of 2018 at  12:20:00');
+            ->see('02th of February of 2018 at  12:20:00')
             ->see('first content')
             ->see('No comments');
     }
@@ -291,7 +291,7 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->visit('/question/1')
             ->see('first title test')
             ->see('user1')
-            ->see('02th of February of 2018 at 12:20:00')
+            ->see('02th of February of 2018')
             ->see('first content')
             ->see('first reply')
             ->see(66)
