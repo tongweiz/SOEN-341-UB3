@@ -51,7 +51,7 @@
         <div class="col-lg-8">
 
             <!-- Title -->
-            <h1 class="mt-4">{{$question->title}}</h1>
+            <h1 dusk="title-1" class="mt-4">{{$question->title}}</h1>
 
             <!-- Author -->
             <p class="lead">
@@ -140,7 +140,7 @@
                                        class="like click" id="{{$reply->id}}bl" dusk="like" name="like">
                                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                     </a>
-                                    <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
+                                    <span dusk="numlike-{{$reply->id}}" id="{{$reply->id}}l">{{$reply->likectr}}</span>
                                 </div>
                                 <br/>
 
@@ -159,7 +159,7 @@
                                         <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "
                                            aria-hidden="true"></i>
                                     </a>
-                                    <span id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
+                                    <span dusk="numdislike-{{$reply->id}}" id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
                                 </div>
                             </td>
 
