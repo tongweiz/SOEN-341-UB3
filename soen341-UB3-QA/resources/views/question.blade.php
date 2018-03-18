@@ -51,7 +51,7 @@
         <div class="col-lg-8">
 
             <!-- Title -->
-            <h1 dusk="title-1" class="mt-4">{{$question->title}}</h1>
+            <h1 class="mt-4">{{$question->title}}</h1>
 
             <!-- Author -->
             <p class="lead">
