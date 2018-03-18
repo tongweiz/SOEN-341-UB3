@@ -97,7 +97,17 @@
                         <div class="form-group">
                             <textarea name="body" class="form-control" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                        <div>
+                            <div>
+                              @guest
+                                 <a href="{{ route('login') }}" class="btn btn-primary">Submit</a>
+                              @else
+                                 <button type="submit" class="btn btn-primary">Submit</button>
+                              @endguest
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
