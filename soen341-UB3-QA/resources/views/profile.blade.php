@@ -59,28 +59,31 @@
                                 <ul style="list-style-type: none; padding: 0; margin: 0;">
                                     <li><p style="margin-bottom: 0; font-weight: bold;"> Name: </p>
                                         <input id="username-input" type="text" value="{{$data->name}}"
-                                               style="margin-bottom: 15px;" disabled>
+                                               style="margin-bottom: 15px;" disabled dusk="name-input">
                                     </li>
 
                                     <li><p style="margin-bottom: 0; font-weight: bold;"> Email: </p>
                                         <input id="email-input" type="text" value="{{$data->email}}"
-                                               style="margin-bottom: 15px;" disabled>
+                                               style="margin-bottom: 15px;" disabled dusk="email-input">
                                     </li>
 
                                     <li><p style="margin-bottom: 0; font-weight: bold;"> Password: </p>
                                         <input id="password-input" type="password" value="**ENCRYPTED**"
-                                               style="margin-bottom: 15px;" disabled>
+                                               style="margin-bottom: 15px;" disabled dusk="password-input">
                                     </li>
                                 </ul>
                             </div>
                         </div>
 
                         <span class="input-group-btn">
-                            <button type="button" id="edit-info" class="btn btn-secondary edit-info-js"> Edit </button>
-                            <button type="button" id="save-info" class="btn btn-secondary save-info-js"
+                            <button dusk="edit-button" type="button" id="edit-info"
+                                    class="btn btn-secondary edit-info-js"> Edit </button>
+
+                            <button dusk="save-button" type="button" id="save-info" class="btn btn-secondary save-info-js"
                                     name="{{$data->id}}"
                                     disabled style="margin-left: 25px"> Save </button>
-                            <button type="button" id="cancel-info" class="btn btn-secondary cancel-info-js"
+
+                            <button dusk="cancel-button" type="button" id="cancel-info" class="btn btn-secondary cancel-info-js"
                                     disabled style="margin-left: 25px"> Cancel </button>
                         </span>
 
