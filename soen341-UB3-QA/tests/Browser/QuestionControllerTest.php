@@ -76,14 +76,14 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->see('user1')
             ->see('test1')
             ->see('0 replies')
-            ->see('Posted on the 17th of March of 2018 at 12:20:00 by user1')
+            ->see('Posted on the 17th of March of 2018 at 12:20:00')
             ->see('second title test')
             ->see('second content')
             ->see('user1')
             ->see('test2')
             ->see('test3')
             ->see('0 replies')
-            ->see('Posted on the 17th of March of 2018 at 12:20:00 by user1');
+            ->see('Posted on the 17th of March of 2018 at 12:20:00');
     }
 
     /**
@@ -120,14 +120,14 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->see('user1')
             ->see('test1')
             ->see('0 replies')
-            ->see('Posted on the 17th of March of 2018 at 12:20:00 by user1')
+            ->see('Posted on the 17th of March of 2018 at 12:20:00')
             ->see('second title test')
             ->see('second content')
             ->see('user1')
             ->see('test2')
             ->see('test3')
             ->see('0 replies')
-            ->see('Posted on the 17th of March of 2018 at 12:20:00 by user1')
+            ->see('Posted on the 17th of March of 2018 at 12:20:00')
             ->isAuthenticated();
     }
 
