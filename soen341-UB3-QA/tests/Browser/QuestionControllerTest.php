@@ -54,6 +54,9 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
+            'labels' => 'test1',
+            'created_at' => '2018-03-17 12:20:00',
+            'updated_at' => '2018-03-17 12:20:00',
             'nb_replies' => 0,
         ]);
 
@@ -61,6 +64,9 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'second title test',
             'content' => 'second content',
             'user_id' => 1,
+            'labels' => 'test2,test3',
+            'created_at' => '2018-03-17 12:20:00',
+            'updated_at' => '2018-03-17 12:20:00',
             'nb_replies' => 0,
         ]);
 
@@ -68,9 +74,16 @@ class QuestionControllerTest extends BrowserKitTestCase
             ->see('first title test')
             ->see('first content')
             ->see('user1')
+            ->see('test1')
+            ->see('0 replies')
+            ->see('Posted on the 17th of March of 2018 at 12:20:00 by user1')
             ->see('second title test')
             ->see('second content')
-            ->see('user1');
+            ->see('user1')
+            ->see('test2')
+            ->see('test3')
+            ->see('0 replies')
+            ->see('Posted on the 17th of March of 2018 at 12:20:00 by user1');
     }
 
     /**
@@ -83,6 +96,9 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
+            'labels' => 'test1',
+            'created_at' => '2018-03-17 12:20:00',
+            'updated_at' => '2018-03-17 12:20:00',
             'nb_replies' => 0,
         ]);
 
@@ -90,19 +106,28 @@ class QuestionControllerTest extends BrowserKitTestCase
             'title' => 'second title test',
             'content' => 'second content',
             'user_id' => 1,
+            'labels' => 'test2,test3',
+            'created_at' => '2018-03-17 12:20:00',
+            'updated_at' => '2018-03-17 12:20:00',
             'nb_replies' => 0,
         ]);
 
         $user = \App\User::find(1);
 
-        $this->actingAs($user)
-            ->visit('/home')
+        $this->actingAs($user)->visit('/home')
             ->see('first title test')
             ->see('first content')
             ->see('user1')
+            ->see('test1')
+            ->see('0 replies')
+            ->see('Posted on the 17th of March of 2018 at 12:20:00 by user1')
             ->see('second title test')
             ->see('second content')
             ->see('user1')
+            ->see('test2')
+            ->see('test3')
+            ->see('0 replies')
+            ->see('Posted on the 17th of March of 2018 at 12:20:00 by user1')
             ->isAuthenticated();
     }
 

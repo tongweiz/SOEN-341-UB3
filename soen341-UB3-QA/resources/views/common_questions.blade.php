@@ -11,7 +11,7 @@
                 <div class="card-body">
 
                     <!--Display question title -->
-                    <h4 class="card-title">{{$data->title}}</h4> </br>
+                    <h4 dusk="{{$data->title}}-{{$key}}" class="card-title">{{$data->title}}</h4> </br>
 
                     <!--Display first sentence of question content-->
                     <p class="card-text" style="margin-top: -20px; margin-bottom: 20px">
