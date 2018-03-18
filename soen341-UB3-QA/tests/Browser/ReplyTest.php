@@ -39,7 +39,7 @@ class ReplyTest extends BrowserKitTestCase
 
     /**
      * Test the case where a user is not authenticated
-     * Stays on page.
+     * Redirected to login page.
      * Reply not added.
      */
     public function testReplyFailureNotAuthenticated()
@@ -47,9 +47,8 @@ class ReplyTest extends BrowserKitTestCase
         $this->dontSeeIsAuthenticated();
         $this->visit('/question/1')
             ->type('this is a reply', 'body')
-            ->press('Submit')
-            ->seePageIs('http://localhost/question/1')
-            ->see('No comments')
+            ->click('submit')
+            ->seePageIs('http://localhost/login')
             ->dontSeeInDatabase('replies', [
                 'content' => 'this is a reply']);
     }

@@ -100,11 +100,11 @@
 
                         <div>
                             <div>
-                              @guest
-                                 <a href="{{ route('login') }}" class="btn btn-primary">Submit</a>
-                              @else
-                                 <button type="submit" class="btn btn-primary">Submit</button>
-                              @endguest
+                               @guest
+                                  <a href="{{ route('login') }}" name="submit" class="btn btn-primary">Submit</a>
+                               @else
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                               @endguest
                             </div>
                         </div>
 
