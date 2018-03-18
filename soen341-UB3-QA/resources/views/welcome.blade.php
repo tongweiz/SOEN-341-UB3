@@ -57,23 +57,23 @@
 
                 <h5 style="margin-top: 5px; margin-right: 10px"> Order By: </h5>
                 <div class="dropdown" style="margin-right: 50px">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="ordo">
+                    <button dusk="dropdown1" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="ordo">
                         Date Created<span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li id="ord" class="date"><a class="click order" id="Date Created">Date Created</a></li>
-                        <li><a class="click order" id="Number of Replies">Number of Replies</a></li>
-                        <li><a class="click order" id="Title">Title</a></li>
-                        <li><a class="click order" id="Last Updated">Last Updated</a></li>
+                        <li id="ord" class="date"><a dusk="datecreated" class="click order" id="Date Created">Date Created</a></li>
+                        <li><a dusk="numreplies" class="click order" id="Number of Replies">Number of Replies</a></li>
+                        <li><a dusk="title" class="click order" id="Title">Title</a></li>
+                        <li><a dusk="lastupdated" class="click order" id="Last Updated">Last Updated</a></li>
                     </ul>
                 </div>
 
                 <h5 style="margin-top: 5px; margin-right: 10px"> Direction: </h5>
                 <div class="dropdown" style="margin-right: 50px">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="diro">
+                    <button dusk="dropdown2" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="diro">
                         Ascending<span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li id="dir" class="asc"><a class="click orderD" id="asc">Ascending</a></li>
-                        <li><a class="click orderD" id="desc">Descending</a></li>
+                        <li id="dir" class="asc"><a dusk="ascending" class="click orderD" id="asc">Ascending</a></li>
+                        <li><a dusk="descending" class="click orderD" id="desc">Descending</a></li>
                     </ul>
                 </div>
 
