@@ -165,7 +165,7 @@
 
                             <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
                                 @if($qOwner)
-                                    <a class="accept click" dusk="accept-owner-{{$reply->id}}" name="accept" id="accept">
+                                    <a dusk="accept-owner-{{$reply->id}}" class="accept click"  name="accept" id="accept">
                                         <i class="fa fa-check-circle <?php if ($reply->status == 1) echo 'fa-2x'; ?>"
                                            style="color:rgb(45, 188, 16)" id="{{$reply->id}}a"></i>
                                     </a>

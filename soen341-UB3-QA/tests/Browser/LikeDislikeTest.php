@@ -2,12 +2,12 @@
 
 namespace Tests\Browser;
 
-use App\Reply;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use App\Question;
 use App\User;
+use App\Reply;
 use Exception;
 
 class LikeDislikeTest extends DuskTestCase

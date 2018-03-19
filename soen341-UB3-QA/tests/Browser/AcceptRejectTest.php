@@ -2,12 +2,12 @@
 
 namespace Tests\Browser;
 
-use App\Reply;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Question;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use App\Question;
 use App\User;
+use App\Reply;
 use Exception;
 
 class AcceptRejectTest extends DuskTestCase
@@ -72,8 +72,8 @@ class AcceptRejectTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/question/1')
-                ->assertMissing('@accept-owner-1')
-                ->assertMissing('@accept-owner-2')
+                ->assertDontSeeLink('@accept-owner-1')
+                ->assertDontSeeLink('@accept-owner-2')
                 ->assertGuest();
         });
     }
@@ -89,8 +89,8 @@ class AcceptRejectTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/question/1')
-                ->assertMissing('@normal-owner-1')
-                ->assertMissing('@normal-owner-2')
+                ->assertDontSeeLink('@normal-owner-1')
+                ->assertDontSeeLink('@normal-owner-2')
                 ->assertGuest();
         });
     }
@@ -106,8 +106,8 @@ class AcceptRejectTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/question/1')
-                ->assertMissing('@reject-owner-1')
-                ->assertMissing('@reject-owner-2')
+                ->assertDontSeeLink('@reject-owner-1')
+                ->assertDontSeeLink('@reject-owner-2')
                 ->assertGuest();
         });
     }
@@ -124,8 +124,8 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertMissing('@accept-owner-1')
-                ->assertMissing('@accept-owner-2');
+                ->assertDontSeeLink('@accept-owner-1')
+                ->assertDontSeeLink('@accept-owner-2');
         });
     }
 
@@ -141,8 +141,8 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertMissing('@normal-owner-1')
-                ->assertMissing('@normal-owner-2');
+                ->assertDontSeeLink('@normal-owner-1')
+                ->assertDontSeeLink('@normal-owner-2');
         });
     }
 
@@ -158,8 +158,8 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertMissing('@reject-owner-1')
-                ->assertMissing('@reject-owner-2');
+                ->assertDontSeeLink('@reject-owner-1')
+                ->assertDontSeeLink('@reject-owner-2');
         });
     }
 
@@ -175,7 +175,7 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->assertVisible('@accept-owner-2')
+                ->assertSeeLink('@accept-owner-2')
                 ->click('@accept-owner-2')
                 ->pause(3000);
             $this->assertDatabaseHas('replies', ['id' => 2, 'status' => 1]);
@@ -194,7 +194,7 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->assertVisible('@normal-owner-2')
+                ->assertSeeLink('@normal-owner-2')
                 ->click('@normal-owner-2')
                 ->pause(3000);
             $this->assertDatabaseHas('replies', ['id' => 2, 'status' => 0]);
@@ -213,7 +213,7 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->assertVisible('@reject-owner-1')
+                ->assertSeeLink('@reject-owner-1')
                 ->click('@reject-owner-1')
                 ->pause(3000);
             $this->assertDatabaseHas('replies', ['id' => 1, 'status' => -1]);
@@ -255,7 +255,7 @@ class AcceptRejectTest extends DuskTestCase
             $browser->loginAs(\App\User::find(2))
                 ->logout()
                 ->visit('/question/1')
-                ->assertVisible('@accept-user-1')
+                ->assertSeeLink('@accept-user-1')
                 ->assertGuest();
         });
     }
@@ -271,7 +271,7 @@ class AcceptRejectTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/question/1')
-                ->assertVisible('@reject-user-2')
+                ->assertSeeLink('@reject-user-2')
                 ->assertGuest();
         });
     }
@@ -289,7 +289,7 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertVisible('@accept-user-1')
+                ->assertSeeLink('@accept-user-1')
                 ->assertAuthenticated();
         });
     }
@@ -307,7 +307,7 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertVisible('@reject-user-2')
+                ->assertSeeLink('@reject-user-2')
                 ->assertAuthenticated();
         });
     }
@@ -325,7 +325,7 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertVisible('@accept-user-1')
+                ->assertSeeLink('@accept-user-1')
                 ->click('@accept-user-1')
                 ->assertAuthenticated();
             $this->assertDatabaseHas('replies', ['id' => 1, 'status' => 1]);
@@ -345,7 +345,7 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertVisible('@reject-user-2')
+                ->assertSeeLink('@reject-user-2')
                 ->click('@reject-user-2')
                 ->assertAuthenticated();
             $this->assertDatabaseHas('replies', ['id' => 2, 'status' => -1]);
