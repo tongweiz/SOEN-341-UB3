@@ -22,12 +22,14 @@ class AcceptRejectTest extends DuskTestCase
 
         //create new users
         factory(User::class)->create([
+            'id' => 1,
             'name' => 'user1',
             'email' => 'user1@gmail.com',
             'password' => 'secret1234',
         ]);
 
         factory(Question::class)->create([
+            'id' => 1,
             'title' => 'first title test',
             'content' => 'first content',
             'user_id' => 1,
@@ -37,12 +39,14 @@ class AcceptRejectTest extends DuskTestCase
         ]);
 
         factory(User::class)->create([
+            'id' => 2,
             'name' => 'user2',
             'email' => 'user2@gmail.com',
             'password' => 'secret1234',
         ]);
 
         factory(Reply::class)->create([
+            'id' => 1,
             'content' => 'first reply',
             'question_id' => 1,
             'user_id' => 2,
@@ -52,6 +56,7 @@ class AcceptRejectTest extends DuskTestCase
         ]);
 
         factory(Reply::class)->create([
+            'id' => 2,
             'content' => 'second reply',
             'question_id' => 1,
             'user_id' => 2,
@@ -175,13 +180,10 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->screenshot('sample');
-               //not being seen ->assertSee('first title test')
-                  // ->pause(30000)
-                //->assertSee('Leave a Reply:')
-                //->assertVisible('@accept-owner-2')
-                //->click('@accept-owner-2')
-                //->pause(3000);
+                ->assertSee('Leave a Reply:')
+                ->assertVisible('@accept-owner-2')
+                ->click('@accept-owner-2')
+                ->pause(3000);
             //$this->assertDatabaseHas('replies', ['id' => 2, 'status' => 1]);
         });
     }
