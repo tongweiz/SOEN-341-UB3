@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\reply;
-use App\question;
-use App\like;
-use App\dislike;
+use App\Reply;
+use App\Question;
+use App\Like;
+use App\Dislike;
 use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
