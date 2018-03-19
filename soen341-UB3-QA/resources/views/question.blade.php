@@ -165,15 +165,18 @@
 
                             <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
                                 @if($qOwner)
-                                    <a dusk="accept-owner-{{$reply->id}}" class="accept click"  name="accept" id="accept">
+                                    <a dusk="accept-owner-{{$reply->id}}" class="accept click"  name="accept" id="accept"
+                                       href="#" onclick="return false;">
                                         <i class="fa fa-check-circle <?php if ($reply->status == 1) echo 'fa-2x'; ?>"
                                            style="color:rgb(45, 188, 16)" id="{{$reply->id}}a"></i>
                                     </a>
-                                    <a class="normalize click" dusk="normal-owner-{{$reply->id}}" name="normal" id="normal">
+                                    <a class="normalize click" dusk="normal-owner-{{$reply->id}}" name="normal" id="normal"
+                                       href="#" onclick="return false;">
                                         <i class="fa fa-bars <?php if ($reply->status == 0) echo 'fa-2x'; ?>"
                                            style="color:rgb(106, 115, 124)" id="{{$reply->id}}n"></i>
                                     </a>
-                                    <a class="reject click" dusk="reject-owner-{{$reply->id}}" name="reject" id="reject">
+                                    <a class="reject click" dusk="reject-owner-{{$reply->id}}" name="reject" id="reject"
+                                       href="#" onclick="return false;">
                                         <i class="fa fa-ban <?php if ($reply->status == -1) echo 'fa-2x'; ?>"
                                            style="color:rgb(255, 0, 0)" id="{{$reply->id}}r"></i>
                                     </a>
