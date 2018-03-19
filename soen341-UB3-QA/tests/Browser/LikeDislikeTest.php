@@ -62,8 +62,13 @@ class LikeDislikeTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like')
+                ->pause(3000)
+                ->assertDialogOpened('You are not logged in! 
+                Only logged in users can like replies. Please use the Login or Register links at the top of the page and try again')
+                ->acceptDialog()
                 ->assertGuest();
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
         });
@@ -79,8 +84,10 @@ class LikeDislikeTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike')
+                ->pause(3000)
                 ->assertGuest();
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
         });
@@ -95,8 +102,9 @@ class LikeDislikeTest extends DuskTestCase
     public function testLikeUser()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like')
                 ->pause(3000)
@@ -115,8 +123,9 @@ class LikeDislikeTest extends DuskTestCase
     public function testDislikeUser()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike')
                 ->pause(3000)
@@ -136,8 +145,9 @@ class LikeDislikeTest extends DuskTestCase
     public function testSwitchOpinionUser()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike')
                 ->pause(3000)
@@ -162,8 +172,9 @@ class LikeDislikeTest extends DuskTestCase
     public function testSeveralLikeClicksUser()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like')
                 ->pause(3000)
@@ -186,8 +197,9 @@ class LikeDislikeTest extends DuskTestCase
     public function testSeveralDislikeClicksUser()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike')
                 ->pause(3000)
@@ -210,8 +222,9 @@ class LikeDislikeTest extends DuskTestCase
     public function testLikeOwner()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(2))
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like')
                 ->pause(3000)
@@ -233,8 +246,9 @@ class LikeDislikeTest extends DuskTestCase
     public function testSeveralLikeClicksOwner()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(2))
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like')
                 ->pause(3000)
@@ -259,8 +273,9 @@ class LikeDislikeTest extends DuskTestCase
     public function testDislikeOwner()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(2))
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike')
                 ->pause(3000)
@@ -282,8 +297,9 @@ class LikeDislikeTest extends DuskTestCase
     public function testSeveralDislikeClicksOwner()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(2))
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike')
                 ->pause(3000)
