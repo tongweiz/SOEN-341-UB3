@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\question;
+use App\Question;
 use App\User;
 use App\Like;
 use App\Dislike;
