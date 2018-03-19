@@ -137,7 +137,7 @@
                                         }
                                         if ($flag != TRUE) echo 'rgb(30, 144, 255)';
                                     } else echo 'rgb(30, 144, 255)'; ?>"
-                                       class="like click" id="{{$reply->id}}bl" dusk="like" name="like">
+                                       class="like click" id="{{$reply->id}}bl" dusk="like-{{$reply->id}}" name="like">
                                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                     </a>
                                     <span dusk="numlike-{{$reply->id}}" id="{{$reply->id}}l">{{$reply->likectr}}</span>
@@ -155,7 +155,7 @@
                                         }
                                         if ($flag != TRUE) echo 'rgb(30, 144, 255)';
                                     } else echo 'rgb(30, 144, 255)'; ?>"
-                                       class="dislike click" id="{{$reply->id}}bdl" dusk="dislike" name="dislike">
+                                       class="dislike click" id="{{$reply->id}}bdl" dusk="dislike-{{$reply->id}}" name="dislike">
                                         <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "
                                            aria-hidden="true"></i>
                                     </a>

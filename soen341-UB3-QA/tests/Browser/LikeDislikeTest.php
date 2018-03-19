@@ -45,6 +45,7 @@ class LikeDislikeTest extends DuskTestCase
         ]);
 
         factory(Reply::class)->create([
+            'id' => 1,
             'content' => 'first reply',
             'question_id' => 1,
             'user_id' => 2,
@@ -66,7 +67,7 @@ class LikeDislikeTest extends DuskTestCase
             $browser->visit('/question/1')
                 ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
-                ->click('@like')
+                ->click('@like-1')
                 ->pause(3000)
                 ->assertDialogOpened('You are not logged in! Only logged in users can like replies. Please use the Login or Register links at the top of the page and try again.')
                 ->pause(3000)
@@ -88,9 +89,9 @@ class LikeDislikeTest extends DuskTestCase
             $browser->visit('/question/1')
                 ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
-                ->click('@dislike')
+                ->click('@dislike-1')
                 ->pause(3000)
-                ->assertDialogOpened('You are not logged in! Only logged in users can like replies. Please use the Login or Register links at the top of the page and try again.')
+                ->assertDialogOpened('You are not logged in! Only logged in users can dislike replies. Please use the Login or Register links at the top of the page and try again.')
                 ->pause(3000)
                 ->acceptDialog()
                 ->assertGuest();
@@ -106,17 +107,15 @@ class LikeDislikeTest extends DuskTestCase
      */
     public function testLikeUser()
     {
-        $user = \App\User::find(1);
-
-        $this->browse(function (Browser $browser) use ($user) {
-            $browser->loginAs($user)
+        $this->browse(function (Browser $browser){
+            $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->assertAuthenticated()
                 ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
-                ->click('@like')
+                ->click('@like-1')
                 ->pause(3000)
-                ->assertSeeIn('@numlike-1',67)
-                ->assertAuthenticated();
+                ->assertSeeIn('@numlike-1',67);
             $this->assertDatabaseHas('replies', ['likectr' => 67]);
         });
     }
@@ -132,12 +131,12 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->assertAuthenticated()
                 ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
-                ->click('@dislike')
+                ->click('@dislike-1')
                 ->pause(3000)
-                ->assertSeeIn('@numdislike-1',125)
-                ->assertAuthenticated();
+                ->assertSeeIn('@numdislike-1',125);
             $this->assertDatabaseHas('replies', ['dislikectr' => 125]);
         });
     }
@@ -154,17 +153,17 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->assertAuthenticated()
                 ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
-                ->click('@dislike')
+                ->click('@dislike-1')
                 ->pause(3000)
                 ->assertSeeIn('@numdislike-1',125)
                 ->assertSeeIn('@numlike-1',66)
-                ->click('@like')
+                ->click('@like-1')
                 ->pause(3000)
                 ->assertSeeIn('@numlike-1',67)
-                ->assertSeeIn('@numdislike-1',124)
-                ->assertAuthenticated();
+                ->assertSeeIn('@numdislike-1',124);
             $this->assertDatabaseHas('replies', ['likectr' => 67, 'dislikectr' => 124]);
         });
     }
@@ -181,15 +180,15 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->assertAuthenticated()
                 ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
-                ->click('@like')
+                ->click('@like-1')
                 ->pause(3000)
                 ->assertSeeIn('@numlike-1',67)
-                ->click('@like')
+                ->click('@like-1')
                 ->pause(3000)
-                ->assertSeeIn('@numlike-1',67)
-                ->assertAuthenticated();
+                ->assertSeeIn('@numlike-1',67);
             $this->assertDatabaseHas('replies', ['likectr' => 67]);
         });
     }
@@ -206,15 +205,15 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->assertAuthenticated()
                 ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
-                ->click('@dislike')
+                ->click('@dislike-1')
                 ->pause(3000)
                 ->assertSeeIn('@numdislike-1',125)
-                ->click('@dislike')
+                ->click('@dislike-1')
                 ->pause(3000)
-                ->assertSeeIn('@numdislike-1',125)
-                ->assertAuthenticated();
+                ->assertSeeIn('@numdislike-1',125);
             $this->assertDatabaseHas('replies', ['dislikectr' => 125]);
         });
     }
@@ -231,14 +230,14 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->assertAuthenticated()
                 ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
-                ->click('@like')
+                ->click('@like-1')
                 ->pause(3000)
                 ->assertDialogOpened('You can\'t like your own replies!')
                 ->acceptDialog()
-                ->assertSeeIn('@numlike-1',66)
-                ->assertAuthenticated();
+                ->assertSeeIn('@numlike-1',66);
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
         });
     }
@@ -255,17 +254,17 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->assertAuthenticated()
                 ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
-                ->click('@like')
+                ->click('@like-1')
                 ->pause(3000)
                 ->assertDialogOpened('You can\'t like your own replies!')
                 ->acceptDialog()
                 ->assertSeeIn('@numlike-1',66)
-                ->click('@like')
+                ->click('@like-1')
                 ->pause(3000)
-                ->assertSeeIn('@numlike-1',66)
-                ->assertAuthenticated();
+                ->assertSeeIn('@numlike-1',66);
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
         });
     }
@@ -282,14 +281,14 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->assertAuthenticated()
                 ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
-                ->click('@dislike')
+                ->click('@dislike-1')
                 ->pause(3000)
                 ->assertDialogOpened('You can\'t dislike your own replies!')
                 ->acceptDialog()
-                ->assertSeeIn('@numdislike-1',124)
-                ->assertAuthenticated();
+                ->assertSeeIn('@numdislike-1',124);
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
         });
     }
@@ -306,17 +305,17 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->assertAuthenticated()
                 ->pause(3000)
                 ->assertSeeIn('@numdislike-1',124)
-                ->click('@dislike')
+                ->click('@dislike-1')
                 ->pause(3000)
                 ->assertDialogOpened('You can\'t dislike your own replies!')
                 ->acceptDialog()
                 ->assertSeeIn('@numdislike-1',124)
-                ->click('@dislike')
+                ->click('@dislike-1')
                 ->pause(3000)
-                ->assertSeeIn('@numdislike-1',124)
-                ->assertAuthenticated();
+                ->assertSeeIn('@numdislike-1',124);
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
         });
     }
