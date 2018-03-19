@@ -10,6 +10,7 @@ use App\User;
 use App\Reply;
 use Exception;
 
+
 class LikeDislikeTest extends DuskTestCase
 {
     use DatabaseMigrations;
