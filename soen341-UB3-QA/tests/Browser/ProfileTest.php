@@ -8,7 +8,6 @@ use Laravel\Dusk\Browser;
 use App\Question;
 use App\User;
 use Exception;
-use Tests\BrowserKitTestCase;
 
 class ProfileTest extends DuskTestCase
 {

@@ -22,6 +22,7 @@ class LikeDislikeTest extends DuskTestCase
 
         //create new users
         factory(User::class)->create([
+            'id' => 1,
             'name' => 'user1',
             'email' => 'user1@gmail.com',
             'password' => 'secret1234',
@@ -37,6 +38,7 @@ class LikeDislikeTest extends DuskTestCase
         ]);
 
         factory(User::class)->create([
+            'id' => 2,
             'name' => 'user2',
             'email' => 'user2@gmail.com',
             'password' => 'secret1234',
@@ -66,8 +68,8 @@ class LikeDislikeTest extends DuskTestCase
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like')
                 ->pause(3000)
-                ->assertDialogOpened('You are not logged in! 
-                Only logged in users can like replies. Please use the Login or Register links at the top of the page and try again')
+                ->assertDialogOpened(' You are not logged in! 
+                Only logged in users can like replies. Please use the Login or Register links at the top of the page and try again.')
                 ->acceptDialog()
                 ->assertGuest();
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
@@ -88,6 +90,9 @@ class LikeDislikeTest extends DuskTestCase
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike')
                 ->pause(3000)
+                ->assertDialogOpened(' You are not logged in! 
+                Only logged in users can like replies. Please use the Login or Register links at the top of the page and try again.')
+                ->acceptDialog()
                 ->assertGuest();
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
         });
@@ -103,6 +108,7 @@ class LikeDislikeTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
+                ->assertAuthenticatedAs(\App\User::find(1))
                 ->visit('/question/1')
                 ->pause(3000)
                 ->assertSeeIn('@numlike-1',66)
