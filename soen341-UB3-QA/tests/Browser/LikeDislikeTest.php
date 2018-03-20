@@ -106,7 +106,7 @@ class LikeDislikeTest extends DuskTestCase
 
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->assertAuthenticated()
+                //->assertAuthenticated()
                 ->dump();
                 //->pause(3000)
                 //->click('@like-1')
