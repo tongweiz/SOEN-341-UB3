@@ -69,9 +69,6 @@ class LikeDislikeTest extends DuskTestCase
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like-1')
                 ->pause(3000)
-                ->assertDialogOpened('You are not logged in! Only logged in users can like replies. Please use the Login or Register links at the top of the page and try again.')
-                ->pause(3000)
-                ->acceptDialog()
                 ->assertGuest();
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
         });
@@ -91,9 +88,6 @@ class LikeDislikeTest extends DuskTestCase
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike-1')
                 ->pause(3000)
-                ->assertDialogOpened('You are not logged in! Only logged in users can dislike replies. Please use the Login or Register links at the top of the page and try again.')
-                ->pause(3000)
-                ->acceptDialog()
                 ->assertGuest();
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
         });
@@ -235,8 +229,6 @@ class LikeDislikeTest extends DuskTestCase
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like-1')
                 ->pause(3000)
-                ->assertDialogOpened('You can\'t like your own replies!')
-                ->acceptDialog()
                 ->assertSeeIn('@numlike-1',66);
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
         });
@@ -259,8 +251,6 @@ class LikeDislikeTest extends DuskTestCase
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like-1')
                 ->pause(3000)
-                ->assertDialogOpened('You can\'t like your own replies!')
-                ->acceptDialog()
                 ->assertSeeIn('@numlike-1',66)
                 ->click('@like-1')
                 ->pause(3000)
@@ -276,7 +266,7 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-    /*public function testDislikeOwner()
+   /* public function testDislikeOwner()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
@@ -286,8 +276,6 @@ class LikeDislikeTest extends DuskTestCase
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike-1')
                 ->pause(3000)
-                ->assertDialogOpened('You can\'t dislike your own replies!')
-                ->acceptDialog()
                 ->assertSeeIn('@numdislike-1',124);
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
         });
@@ -310,8 +298,6 @@ class LikeDislikeTest extends DuskTestCase
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike-1')
                 ->pause(3000)
-                ->assertDialogOpened('You can\'t dislike your own replies!')
-                ->acceptDialog()
                 ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike-1')
                 ->pause(3000)
