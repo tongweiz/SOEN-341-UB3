@@ -99,20 +99,20 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-   /* public function testLikeUser()
+    public function testLikeUser()
     {
         $this->browse(function (Browser $browser){
+            $this->assertDatabaseHas('replies', ['likectr' => 66]);
+
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->assertAuthenticated()
                 ->pause(3000)
-                ->assertSeeIn('@numlike-1',66)
                 ->click('@like-1')
-                ->pause(3000)
-                ->assertSeeIn('@numlike-1',67);
+                ->pause(3000);
+
             $this->assertDatabaseHas('replies', ['likectr' => 67]);
         });
-    }*/
+    }
 
     /**
      * This test shows that when authenticated, disliking a reply will be saved.
@@ -120,20 +120,19 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-    /*public function testDislikeUser()
+    public function testDislikeUser()
     {
         $this->browse(function (Browser $browser) {
+            $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
+
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->assertAuthenticated()
-                ->pause(3000)
-                ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike-1')
-                ->pause(3000)
-                ->assertSeeIn('@numdislike-1',125);
+                ->pause(3000);
+
             $this->assertDatabaseHas('replies', ['dislikectr' => 125]);
         });
-    }*/
+    }
 
     /**
      * This test shows that when authenticated, if you change opinion
@@ -142,25 +141,25 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-    /*public function testSwitchOpinionUser()
+    public function testSwitchOpinionUser()
     {
         $this->browse(function (Browser $browser) {
+            $this->assertDatabaseHas('replies', ['likectr' => 66, 'dislikectr' => 124]);
+
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->assertAuthenticated()
                 ->pause(3000)
-                ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike-1')
-                ->pause(3000)
-                ->assertSeeIn('@numdislike-1',125)
-                ->assertSeeIn('@numlike-1',66)
-                ->click('@like-1')
-                ->pause(3000)
-                ->assertSeeIn('@numlike-1',67)
-                ->assertSeeIn('@numdislike-1',124);
+                ->pause(3000);
+
+            $this->assertDatabaseHas('replies', ['likectr' => 66, 'dislikectr' => 125]);
+
+            $browser->click('@like-1')
+                    ->pause(3000);
+
             $this->assertDatabaseHas('replies', ['likectr' => 67, 'dislikectr' => 124]);
         });
-    }*/
+    }
 
     /**
      * This test shows that when authenticated, if you click several
@@ -169,23 +168,25 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-   /* public function testSeveralLikeClicksUser()
+    public function testSeveralLikeClicksUser()
     {
         $this->browse(function (Browser $browser) {
+            $this->assertDatabaseHas('replies', ['likectr' => 66]);
+
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->assertAuthenticated()
                 ->pause(3000)
-                ->assertSeeIn('@numlike-1',66)
                 ->click('@like-1')
-                ->pause(3000)
-                ->assertSeeIn('@numlike-1',67)
-                ->click('@like-1')
-                ->pause(3000)
-                ->assertSeeIn('@numlike-1',67);
+                ->pause(3000);
+
+            $this->assertDatabaseHas('replies', ['likectr' => 67]);
+
+            $browser->click('@like-1')
+                ->pause(3000);
+
             $this->assertDatabaseHas('replies', ['likectr' => 67]);
         });
-    }*/
+    }
 
     /**
      * This test shows that when authenticated, if you click several
@@ -194,23 +195,25 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-    /*public function testSeveralDislikeClicksUser()
+    public function testSeveralDislikeClicksUser()
     {
         $this->browse(function (Browser $browser) {
+            $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
+
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
-                ->assertAuthenticated()
                 ->pause(3000)
-                ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike-1')
-                ->pause(3000)
-                ->assertSeeIn('@numdislike-1',125)
-                ->click('@dislike-1')
-                ->pause(3000)
-                ->assertSeeIn('@numdislike-1',125);
+                ->pause(3000);
+
+            $this->assertDatabaseHas('replies', ['dislikectr' => 125]);
+
+            $browser->click('@dislike-1')
+                ->pause(3000);
+
             $this->assertDatabaseHas('replies', ['dislikectr' => 125]);
         });
-    }*/
+    }
 
     /**
      * This test shows that when you are the owner of a reply, you
@@ -219,20 +222,20 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-   /* public function testLikeOwner()
+    public function testLikeOwner()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(\App\User::find(1))
+            $this->assertDatabaseHas('replies', ['likectr' => 66]);
+
+            $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertAuthenticated()
                 ->pause(3000)
-                ->assertSeeIn('@numlike-1',66)
                 ->click('@like-1')
-                ->pause(3000)
-                ->assertSeeIn('@numlike-1',66);
+                ->pause(3000);
+
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
         });
-    }*/
+    }
 
     /**
      * This test shows that when you are the owner of a reply, you
@@ -241,23 +244,25 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-   /* public function testSeveralLikeClicksOwner()
+    public function testSeveralLikeClicksOwner()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(\App\User::find(1))
+            $this->assertDatabaseHas('replies', ['likectr' => 66]);
+
+            $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertAuthenticated()
                 ->pause(3000)
-                ->assertSeeIn('@numlike-1',66)
                 ->click('@like-1')
-                ->pause(3000)
-                ->assertSeeIn('@numlike-1',66)
-                ->click('@like-1')
-                ->pause(3000)
-                ->assertSeeIn('@numlike-1',66);
+                ->pause(3000);
+
+            $this->assertDatabaseHas('replies', ['likectr' => 66]);
+
+            $browser->click('@like-1')
+                ->pause(3000);
+
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
         });
-    }*/
+    }
 
     /**
      * This test shows that when you are the owner of a reply, you
@@ -266,20 +271,20 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-   /* public function testDislikeOwner()
+    public function testDislikeOwner()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(\App\User::find(1))
+            $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
+
+            $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertAuthenticated()
                 ->pause(3000)
-                ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike-1')
-                ->pause(3000)
-                ->assertSeeIn('@numdislike-1',124);
+                ->pause(3000);
+
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
         });
-    }*/
+    }
 
     /**
      * This test shows that when you are the owner of a reply, you
@@ -288,21 +293,23 @@ class LikeDislikeTest extends DuskTestCase
      * @throws Exception if operation fail
      * @throws \Throwable if operation fail
      */
-    /*public function testSeveralDislikeClicksOwner()
+    public function testSeveralDislikeClicksOwner()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(\App\User::find(1))
+            $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
+
+            $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
-                ->assertAuthenticated()
                 ->pause(3000)
-                ->assertSeeIn('@numdislike-1',124)
                 ->click('@dislike-1')
-                ->pause(3000)
-                ->assertSeeIn('@numdislike-1',124)
-                ->click('@dislike-1')
-                ->pause(3000)
-                ->assertSeeIn('@numdislike-1',124);
+                ->pause(3000);
+
+            $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
+
+            $browser->click('@dislike-1')
+                ->pause(3000);
+
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
         });
-    }*/
+    }
 }
