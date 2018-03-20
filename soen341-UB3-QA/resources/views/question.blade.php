@@ -137,10 +137,10 @@
                                         }
                                         if ($flag != TRUE) echo 'rgb(30, 144, 255)';
                                     } else echo 'rgb(30, 144, 255)'; ?>"
-                                       class="like click" id="{{$reply->id}}bl" name="like">
+                                       class="like click" id="{{$reply->id}}bl" dusk="like-{{$reply->id}}" name="like">
                                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                     </a>
-                                    <span id="{{$reply->id}}l">{{$reply->likectr}}</span>
+                                    <span dusk="numlike-{{$reply->id}}" id="{{$reply->id}}l">{{$reply->likectr}}</span>
                                 </div>
                                 <br/>
 
@@ -155,32 +155,32 @@
                                         }
                                         if ($flag != TRUE) echo 'rgb(30, 144, 255)';
                                     } else echo 'rgb(30, 144, 255)'; ?>"
-                                       class="dislike click" id="{{$reply->id}}bdl" name="dislike">
+                                       class="dislike click" id="{{$reply->id}}bdl" dusk="dislike-{{$reply->id}}" name="dislike">
                                         <i class="fa fa-thumbs-up" style="transform: rotate(180deg); "
                                            aria-hidden="true"></i>
                                     </a>
-                                    <span id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
+                                    <span dusk="numdislike-{{$reply->id}}" id="{{$reply->id}}dl">{{$reply->dislikectr}}</span>
                                 </div>
                             </td>
 
                             <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
                                 @if($qOwner)
-                                    <a class="accept click" name="accept" id="accept">
+                                    <a dusk="accept-owner-{{$reply->id}}" class="accept click"  name="accept" id="accept">
                                         <i class="fa fa-check-circle <?php if ($reply->status == 1) echo 'fa-2x'; ?>"
                                            style="color:rgb(45, 188, 16)" id="{{$reply->id}}a"></i>
                                     </a>
-                                    <a class="normalize click" name="normal" id="normal">
+                                    <a class="normalize click" dusk="normal-owner-{{$reply->id}}" name="normal" id="normal">
                                         <i class="fa fa-bars <?php if ($reply->status == 0) echo 'fa-2x'; ?>"
                                            style="color:rgb(106, 115, 124)" id="{{$reply->id}}n"></i>
                                     </a>
-                                    <a class="reject click" name="reject" id="reject">
+                                    <a class="reject click" dusk="reject-owner-{{$reply->id}}" name="reject" id="reject">
                                         <i class="fa fa-ban <?php if ($reply->status == -1) echo 'fa-2x'; ?>"
                                            style="color:rgb(255, 0, 0)" id="{{$reply->id}}r"></i>
                                     </a>
                                 @elseif($reply->status == -1)
-                                    <i class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(255, 0, 0)"></i>
+                                    <i dusk="reject-user-{{$reply->id}}" class="fa fa-ban <?php echo 'fa-2x'; ?>" style="color:rgb(255, 0, 0)"></i>
                                 @elseif($reply->status == 1)
-                                    <i class="fa fa-check-circle <?php echo 'fa-2x'; ?>"
+                                    <i dusk="accept-user-{{$reply->id}}" class="fa fa-check-circle <?php echo 'fa-2x'; ?>"
                                        style="color:rgb(45, 188, 16)"></i>
                                 @endif
                             </td>

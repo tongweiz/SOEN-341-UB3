@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\reply;
-use App\question;
+use App\Reply;
+use App\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
