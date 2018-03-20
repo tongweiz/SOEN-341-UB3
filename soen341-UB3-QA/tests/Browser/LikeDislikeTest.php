@@ -227,7 +227,7 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
 
-            $browser->loginAs(\App\User::find(1))
+            $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
                 ->pause(3000)
                 ->click('@like-1')
@@ -249,7 +249,7 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $this->assertDatabaseHas('replies', ['likectr' => 66]);
 
-            $browser->loginAs(\App\User::find(1))
+            $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
                 ->pause(3000)
                 ->click('@like-1')
@@ -276,7 +276,7 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
 
-            $browser->loginAs(\App\User::find(1))
+            $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
                 ->pause(3000)
                 ->click('@dislike-1')
@@ -298,7 +298,7 @@ class LikeDislikeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $this->assertDatabaseHas('replies', ['dislikectr' => 124]);
 
-            $browser->loginAs(\App\User::find(1))
+            $browser->loginAs(\App\User::find(2))
                 ->visit('/question/1')
                 ->pause(3000)
                 ->click('@dislike-1')
