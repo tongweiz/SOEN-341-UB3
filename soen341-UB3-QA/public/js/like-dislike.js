@@ -12,13 +12,14 @@ $(document).ready(function () {
         $.get("/question/like/" + id, function (data, status) {
             if (status == "success") {
                 if (data == "#" && loggedFlag == false) {
-                    alert("You are not logged in! Only logged in users can like replies. " +
+                    /*alert("You are not logged in! Only logged in users can like replies. " +
                         "Please use the Login or Register links at the top of the page and try again.");
-                    loggedFlag = true;
+                    loggedFlag = true;*/
+                    window.location.replace("/login");
                 }
                 else if (data == "##" && sameFlag == false) {
-                    alert("You can't like your own replies!");
-                    sameFlag = true;
+                    /*alert("You can't like your own replies!");
+                    sameFlag = true;*/
                 }
                 else {
                     let str = /(\d+)\.(\d+)/.exec(data);
@@ -43,13 +44,14 @@ $(document).ready(function () {
         $.get("/question/dislike/" + id, function (data, status) {
             if (status == "success") {
                 if (data == "#" && loggedFlag == false) {
-                    alert("You are not logged in! Only logged in users can dislike replies. " +
+                    /*alert("You are not logged in! Only logged in users can dislike replies. " +
                         "Please use the Login or Register links at the top of the page and try again.");
-                    loggedFlag = true;
+                    loggedFlag = true;*/
+                    window.location.replace("/login");
                 }
                 else if (data == "##" && sameFlag == false) {
-                    alert("You can't dislike your own replies!");
-                    sameFlag = true;
+                    /*alert("You can't dislike your own replies!");
+                    sameFlag = true;*/
                 }
                 else {
                     let str = /(\d+)\.(\d+)/.exec(data);
