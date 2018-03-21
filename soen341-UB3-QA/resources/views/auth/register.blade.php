@@ -23,11 +23,11 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
-<body class="Site">
+<body class="Site" onload="main()">
 
 @include('header')
+<script src="{{ asset('js/input-verification/verifier.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
-
 <div class="container Site-content">
     <div class="row">
         <div class="col-md-8 col-md-offset-2" style="margin-left: 20%; ">
@@ -35,7 +35,7 @@
                 <div class="panel-heading card-header">Register</div>
 
                 <div class="panel-body card-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" onsubmit="validatePassword()">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -56,7 +56,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" pattern=".+@.+\..+" title="example@mail.com" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -70,7 +70,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" pattern=".{6,}" title="Six or more characters" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -84,7 +84,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" pattern=".{6,}" title="Six or more characters" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
 
@@ -111,5 +111,3 @@
 
 </body>
 </html>
-
-
