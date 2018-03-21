@@ -81,6 +81,7 @@
 
             <!-- Question Post -->
             @include('common_questions')
+            @include('pagination')
 
         </div>
 
@@ -108,6 +109,9 @@
 
 <!-- Script with function to list questions with labels -->
 <script type="text/javascript" src="{{ URL::asset('js/filter-labels.js') }}"></script>
+
+<!-- Script for pagiination -->
+<script type="text/javascript" src="{{ URL::asset('js/paginate.js') }}"></script>
 
 </body>
 

@@ -6,7 +6,12 @@
 <!-- Question Post -->
 <div id="questions" class="Site-content">
     @if(count($question_data) > 0)
+        <?php 
+            $count = 0; 
+            if(!isset($page)) $page = 0;
+        ?>
         @foreach($question_data as $key => $data)
+            @if($page == floor($count++ / 5))
             <div class="card mb-4">
                 <div class="card-body">
 
@@ -46,17 +51,10 @@
                 </div>
 
             </div>
+            @endif
         @endforeach
-
-    <!-- Pagination (TO IMPLEMENT IF WE HAVE TIME)-->
-        <ul class="pagination justify-content-center mb-4">
-            <li class="page-item">
-                <a class="page-link" href="#">&larr; Previous</a>
-            </li>
-            <li class="page-item disabled">
-                <a class="page-link" href="#">Next &rarr;</a>
-            </li>
-        </ul>
+        <span id="page" class="<?php echo $page; ?>"></span>
+        <span id="lastP" class="<?php if(floor(count($question_data) / 5) == $page) { echo "1"; } else { echo "0"; } ?>"></span>
     @else
         <div class="card mb-4 ">
             <div class="card-body">

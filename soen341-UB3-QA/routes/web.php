@@ -38,7 +38,7 @@ Route::get('/question/reject/{id}', 'LikeController@reject');
 Route::get('/question/normalize/{id}', 'LikeController@normalize');
 
 //to order questions
-Route::get('/home/{order}/{direction}', 'QuestionController@order');
+Route::get('/home/{order}/{direction}/{page}', 'QuestionController@order');
 
 //user profile view and editing
 Route::get('/profile', array('as' => 'profile', 'uses' => 'ProfileController@index'));
