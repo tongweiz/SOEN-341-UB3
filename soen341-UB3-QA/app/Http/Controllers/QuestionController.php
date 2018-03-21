@@ -102,7 +102,7 @@ class QuestionController extends Controller
      * Order questions in home page
      * returns object with desired order
      */
-    public function order($order, $direction)
+    public function order($order, $direction, $page)
     {
         ($direction == "asc") ? $dir = 'asc' : $dir = 'desc';
 
@@ -147,7 +147,7 @@ class QuestionController extends Controller
                     ->get();
         }
 
-        return view('common_questions', ['question_data' => $question_data]);
+        return view('common_questions', ['question_data' => $question_data, 'page' => $page]);
     }
 
     public function showNewQuestion()
