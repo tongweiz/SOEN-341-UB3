@@ -88,6 +88,24 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Choose your Avatar</label>
+
+                            <div class="col-md-6">
+                                <input id="avatar" type="image" src="{{asset('assets/avatar1.png')}}" width="100" height="100" name="avatar" value="1"/>
+                                <input id="avatar" type="image" src="{{asset('assets/avatar2.png')}}" width="100" height="100" name="avatar" value="2"/>
+                                <input id="avatar" type="image" src="{{asset('assets/avatar3.png')}}" width="100" height="100" name="avatar" value="3"/>
+
+                                @if ($errors->has('avatar'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('avatar') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

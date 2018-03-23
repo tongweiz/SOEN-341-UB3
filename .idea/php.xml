@@ -46,7 +46,6 @@
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/filp/whoops" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/sebastian/object-enumerator" />
-      <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/sebastian/object-reflector" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/sebastian/resource-operations" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/sebastian/diff" />
@@ -57,8 +56,6 @@
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/myclabs/deep-copy" />
-      <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/phar-io/manifest" />
-      <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/phpunit/php-timer" />
@@ -74,6 +71,10 @@
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/sebastian/recursion-context" />
       <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/laravel/dusk" />
+      <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/laravel/browser-kit-testing" />
+      <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/soen341-UB3-QA/vendor/facebook/webdriver" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7" />

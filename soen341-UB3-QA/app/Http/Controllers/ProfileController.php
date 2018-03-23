@@ -48,6 +48,7 @@ class ProfileController extends Controller
         //update user with new info
         $user->name = $data['name'];
         $user->email = $data['email'];
+        $user->avatar = $data['avatar'];
 
         //save changes i did to user
         $user->save();

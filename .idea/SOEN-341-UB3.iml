@@ -11,12 +11,15 @@
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/erusev/parsedown" />
+      <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/facebook/webdriver" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/fideloper/proxy" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/filp/whoops" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/jakub-onderka/php-console-highlighter" />
+      <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/laravel/browser-kit-testing" />
+      <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/laravel/dusk" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/laravelcollective/html" />
@@ -28,8 +31,6 @@
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/paragonie/random_compat" />
-      <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/phar-io/manifest" />
-      <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/phar-io/version" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/phpdocumentor/type-resolver" />
@@ -53,7 +54,6 @@
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/sebastian/exporter" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/sebastian/global-state" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/sebastian/object-enumerator" />
-      <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/sebastian/object-reflector" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/sebastian/recursion-context" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/sebastian/resource-operations" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/sebastian/version" />
@@ -61,6 +61,7 @@
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/symfony/css-selector" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/symfony/debug" />
+      <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/symfony/dom-crawler" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/symfony/event-dispatcher" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/symfony/finder" />
       <excludeFolder url="file://$MODULE_DIR$/soen341-UB3-QA/vendor/symfony/http-foundation" />
