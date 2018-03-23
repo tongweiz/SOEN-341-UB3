@@ -13,6 +13,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- Home tab -->
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
@@ -30,10 +31,13 @@
 
                         <ul class="nav navbar-nav navbar-right">
 
+                            <!-- An unauthenticated user will see a login and register links-->
                             @guest
                                 <a class="nav-link" style="font-size: 20px" href="{{ route('login') }}">Login</a>
                                 <a class="nav-link" style="font-size: 20px" href="{{ route('register') }}">Register</a>
 
+                            <!-- An authenticated user will his name which will give access to a dropdown to go to his
+                            profile page or logout of the website.-->
                             @else
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"
@@ -68,6 +72,7 @@
             @endif
         </div>
 
+        <!-- If the user is not logged in, the new question button will redirect him to the register form. -->
         <div style="margin-left:20px">
             @if (Route::has('login'))
                 @guest

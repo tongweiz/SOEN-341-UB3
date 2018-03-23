@@ -68,6 +68,7 @@
                 echo substr($parts[2], 0, 2) . "th of $month of $parts[0] at " . substr($parts[2], 2)?> </span>
 
 
+            <!-- Question content -->
             <hr>
             <table class="table" style="background-color: #FAFAFA;">
                 <tbody>
@@ -88,7 +89,7 @@
             </table>
 
 
-            <!-- Comments Form -->
+            <!-- Reply Form -->
             <div class="card my-4">
                 <h5 class="card-header">Leave a Reply:</h5>
                 <div class="card-body">
@@ -112,6 +113,7 @@
                 </div>
             </div>
 
+            <!-- Details of the replies -->
             <p>
                 {{count($replies)}} answer(s)
             </p>
@@ -124,7 +126,7 @@
                                 <p> {{$reply->content}}</p>
                             </td>
 
-                            <!-- need to be a tags instead of buttons because of tests. Also color rgb added here for consistency.-->
+                            <!-- -A reply can be liked or disliked.-->
                             <td class="rating" style="vertical-align:middle; " width=15%>
                                 <div style="color:teal; float:left; margin: 0 40% 0 50%;">
                                     <a style="color: <?php if (null !== Auth::user()) {
@@ -163,6 +165,7 @@
                                 </div>
                             </td>
 
+                            <!-- -A reply can be accepted, rejected or normalized by owner.-->
                             <td class="w3-padding w3-xlarge w3-text-green" style="vertical-align:middle;" width=15%>
                                 @if($qOwner)
                                     <a dusk="accept-owner-{{$reply->id}}" class="accept click"  name="accept" id="accept">
@@ -186,7 +189,7 @@
                             </td>
                         </tr>
 
-                        <!-- reply information -->
+                        <!-- reply metadata -->
                         <tr>
                             <td style="border-top-style: none;">
                                 <font size="2" color="grey">
@@ -209,6 +212,7 @@
                     </table>
                 @endforeach
             @else
+                <!-- This will show if no replies have been made for a question. -->
                 <p>No comments</p>
                 @endif
                 </tbody>

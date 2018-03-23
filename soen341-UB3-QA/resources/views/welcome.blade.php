@@ -46,13 +46,13 @@
 
     <div class="row">
 
-        <!-- Blog Entries Column -->
         <div class="col-md-8">
 
             <h1 class="my-4">
                 <small> Discover User Questions!</small>
             </h1>
 
+            <!-- Question filtering -->
             <div class="btn-group" style="margin-top: 10px; margin-bottom: 25px">
 
                 <h5 style="margin-top: 5px; margin-right: 10px"> Order By: </h5>

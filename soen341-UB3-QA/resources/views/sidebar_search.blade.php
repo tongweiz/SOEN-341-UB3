@@ -3,7 +3,7 @@
 
 <body>
 
-    <!-- Search Widget -->
+    <!-- Search Widget. Searches through titles -->
     <div class="card my-4">
         <h5 class="card-header">Search </h5>
 

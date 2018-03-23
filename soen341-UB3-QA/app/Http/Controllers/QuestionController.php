@@ -14,12 +14,13 @@ use App\Reply;
 class QuestionController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource on the home page.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        //HOME PAGE
         //get question data
         $question_data = DB::table('questions')
             ->join('users', 'users.id', '=', 'questions.user_id')
@@ -34,7 +35,52 @@ class QuestionController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Display the question details on the question page.
+     *
+     * @param  $id identifier of the question to show
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //QUESTION PAGE
+        //get necessary data from db to display
+        $question = Question::find($id);
+        $user = User::where('id', $question->user_id)->get();
+        $replies = Reply::where('question_id', $id)->get();
+        $qOwner = ($question->user_id == Auth::id());
+        $likes = Like::where('question_id', $id)->get();
+        $dislikes = Dislike::where('question_id', $id)->get();
+
+        //get labels for sidebar display
+        $label_data = DB::table('questions')
+            ->select('questions.labels')->get();
+
+        //get nameInfo. from the db for reply display
+        $name_data = DB::table('users')
+            ->select('users.id', 'users.name')
+            ->get();
+
+        return view('question',
+            ['question' => $question, 'user' => $user, 'replies' => $replies, 'qOwner' => $qOwner, 'likes' => $likes, 'dislikes' => $dislikes,
+                'label_data' => $label_data, 'name_data' => $name_data]);
+    }
+
+    /**
+     * Displays the form to create a new question.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showNewQuestion()
+    {
+        //get labels for sidebar display
+        $label_data = DB::table('questions')
+            ->select('questions.labels')->get();
+
+        return view('ask', ['label_data' => $label_data]);
+    }
+
+    /**
+     * Stores a newly created question in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -69,38 +115,13 @@ class QuestionController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Displays home page with the questions ordered a specific user selected way.
      *
-     * @param  \App\question $question
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //get necessary data from db to display
-        $question = Question::find($id);
-        $user = User::where('id', $question->user_id)->get();
-        $replies = Reply::where('question_id', $id)->get();
-        $qOwner = ($question->user_id == Auth::id());
-        $likes = Like::where('question_id', $id)->get();
-        $dislikes = Dislike::where('question_id', $id)->get();
-
-        //get labels for sidebar display
-        $label_data = DB::table('questions')
-            ->select('questions.labels')->get();
-
-        //get nameInfo. from the db for reply display
-        $name_data = DB::table('users')
-            ->select('users.id', 'users.name')
-            ->get();
-
-        return view('question',
-            ['question' => $question, 'user' => $user, 'replies' => $replies, 'qOwner' => $qOwner, 'likes' => $likes, 'dislikes' => $dislikes,
-                'label_data' => $label_data, 'name_data' => $name_data]);
-    }
-
-    /**
-     * Order questions in home page
-     * returns object with desired order
+     * @params order the condition to filter on
+     * @params direction ascending or descending
+     * @params page which page it will start to be displayed on (pagination)
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function order($order, $direction, $page)
     {
@@ -150,20 +171,13 @@ class QuestionController extends Controller
         return view('common_questions', ['question_data' => $question_data, 'page' => $page]);
     }
 
-    public function showNewQuestion()
-    {
-        //get labels for sidebar display
-        $label_data = DB::table('questions')
-            ->select('questions.labels')->get();
-
-        return view('ask', ['label_data' => $label_data]);
-    }
 
     /**
-     * Only returns questions that have that label clicked on
+     * Displays the questions that have been selected by the specific label.
      *
-     * @param $label
+     * @param $label the label that was clicked on
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws
      */
     public function filterLabel($label)
     {
