@@ -6,6 +6,7 @@ use App\Reply;
 use App\Question;
 use App\Like;
 use App\Dislike;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
@@ -113,6 +114,14 @@ class LikeController extends Controller
         if (Auth::check()) {
             $question = Question::find($reply->question_id);
             if (Auth::id() == $question->user_id) {
+
+                $reps = DB::table('replies')
+                            ->where('question_id', $reply->question_id)
+                            ->get();
+                foreach($reps as $rep) {
+                    if($rep->status == 1){ return "##"; }
+                }
+
                 $reply->status = 1;
                 $reply->save();
                 return "$reply->status";
