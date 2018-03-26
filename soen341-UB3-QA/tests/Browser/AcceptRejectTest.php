@@ -187,6 +187,8 @@ class AcceptRejectTest extends DuskTestCase
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
                 ->pause(3000)
+                ->click('@normal-owner-1')
+                ->pause(3000)
                 ->click('@accept-owner-2')
                 ->pause(3000);
             $this->assertDatabaseHas('replies', ['id' => 2, 'status' => 1]);
@@ -244,6 +246,8 @@ class AcceptRejectTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(\App\User::find(1))
                 ->visit('/question/1')
+                ->pause(3000)
+                ->click('@normal-owner-1')
                 ->pause(3000)
                 ->click('@accept-owner-2')
                 ->pause(3000);

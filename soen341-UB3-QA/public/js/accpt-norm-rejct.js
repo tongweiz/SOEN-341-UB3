@@ -6,7 +6,10 @@ $(document).ready(function () {
 
         $.get("/question/accept/" + id, function (data, status) {
             if (status == "success") {
-                applyStatus(id, data);
+                if(data == '##') { /*alert("You can only accept a single reply at a time!");*/ }
+                else {
+                    applyStatus(id, data);
+                }
             }
         });
     });
