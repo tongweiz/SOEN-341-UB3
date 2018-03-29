@@ -57,6 +57,7 @@
                         <div class="row">
                             <div class="col-lg-auto">
                                 <ul style="list-style-type: none; padding: 0; margin: 0;">
+
                                     <li><p style="margin-bottom: 0; font-weight: bold;"> Name: </p>
                                         <input id="username-input" type="text" value="{{$data->name}}"
                                                style="margin-bottom: 15px;" disabled dusk="name-input">

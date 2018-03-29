@@ -89,12 +89,14 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Choose your Avatar</label>
+                            <label for="avatar" class="col-md-4 control-label">Choose your Avatar</label>
 
                             <div class="col-md-6">
-                                <input id="avatar" type="image" src="{{asset('assets/avatar1.png')}}" width="100" height="100" name="avatar" value="1"/>
-                                <input id="avatar" type="image" src="{{asset('assets/avatar2.png')}}" width="100" height="100" name="avatar" value="2"/>
-                                <input id="avatar" type="image" src="{{asset('assets/avatar3.png')}}" width="100" height="100" name="avatar" value="3"/>
+
+                                <label><input id="avatar" type="radio" value="1" name="avatar" checked> <img src="{{asset('assets/avatar1.png')}}" width="100" height="100" > </label>
+                                <label><input id="avatar" type="radio" value="2" name="avatar"> <img src="{{asset('assets/avatar2.png')}}" width="100" height="100" > </label>
+                                <label><input id="avatar" type="radio" value="3" name="avatar"> <img src="{{asset('assets/avatar3.png')}}" width="100" height="100" > </label>
+                               
 
                                 @if ($errors->has('avatar'))
                                     <span class="help-block">
