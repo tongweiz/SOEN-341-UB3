@@ -96,7 +96,7 @@
                                 <label><input id="avatar" type="radio" value="1" name="avatar" checked> <img src="{{asset('assets/avatar1.png')}}" width="100" height="100" > </label>
                                 <label><input id="avatar" type="radio" value="2" name="avatar"> <img src="{{asset('assets/avatar2.png')}}" width="100" height="100" > </label>
                                 <label><input id="avatar" type="radio" value="3" name="avatar"> <img src="{{asset('assets/avatar3.png')}}" width="100" height="100" > </label>
-                               
+
 
                                 @if ($errors->has('avatar'))
                                     <span class="help-block">

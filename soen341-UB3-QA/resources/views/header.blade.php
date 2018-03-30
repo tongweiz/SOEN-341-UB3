@@ -39,6 +39,7 @@
                             <!-- An authenticated user will his name which will give access to a dropdown to go to his
                             profile page or logout of the website.-->
                             @else
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"
                                        aria-expanded="false" aria-haspopup="true" style="font-size: 20px" id="auth_user_name">
@@ -71,6 +72,32 @@
                 </div>
             @endif
         </div>
+
+        @if (Route::has('login'))
+
+
+            @guest
+
+            @else
+
+                    @if ((Auth::user()->avatar) == 1 )
+                        <img src="{{asset('assets/avatar1.png')}}" class="img-circle" width="50" height="50">
+                    @endif
+
+
+                    @if ((Auth::user()->avatar) == 2 )
+                        <img src="{{asset('assets/avatar2.png')}}" class="img-circle"  width="50" height="50">
+
+                    @endif
+
+                    @if ((Auth::user()->avatar) == 3 )
+                        <img src="{{asset('assets/avatar3.png')}}" class="img-circle"  width="50" height="50">
+                    @endif
+
+            @endguest
+
+
+         @endif
 
         <!-- If the user is not logged in, the new question button will redirect him to the register form. -->
         <div style="margin-left:20px">
