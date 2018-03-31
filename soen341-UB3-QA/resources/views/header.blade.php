@@ -75,11 +75,9 @@
 
         @if (Route::has('login'))
 
-
             @guest
 
             @else
-
                     @if ((Auth::user()->avatar) == 1 )
                         <img src="{{asset('assets/avatar1.png')}}" class="img-circle" width="50" height="50">
                     @endif
@@ -95,8 +93,6 @@
                     @endif
 
             @endguest
-
-
          @endif
 
         <!-- If the user is not logged in, the new question button will redirect him to the register form. -->

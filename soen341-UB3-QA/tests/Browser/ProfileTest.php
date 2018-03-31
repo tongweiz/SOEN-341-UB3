@@ -23,6 +23,7 @@ class ProfileTest extends DuskTestCase
             'name' => 'user1',
             'email' => 'user1@gmail.com',
             'password' => 'secret1234',
+            'avatar' => 1
         ]);
 
         //create user2
@@ -30,6 +31,7 @@ class ProfileTest extends DuskTestCase
             'name' => 'user2',
             'email' => 'user2@gmail.com',
             'password' => 'secret1234',
+            'avatar' => 2
         ]);
     }
 
@@ -249,6 +251,7 @@ class ProfileTest extends DuskTestCase
                 ->click('@edit-button')
                 ->type('@email-input', 'newemail@gmail.com')
                 ->click('@save-button')
+                ->pause(3000)
                 ->assertDontSee('ERRORS');
             $this->assertDatabaseHas('users', ['email' => 'newemail@gmail.com', 'name' => 'user1']);
         });

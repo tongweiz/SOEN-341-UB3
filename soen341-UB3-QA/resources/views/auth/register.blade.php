@@ -28,6 +28,7 @@
 @include('header')
 <script src="{{ asset('js/input-verification/verifier.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+
 <div class="container Site-content">
     <div class="row">
         <div class="col-md-8 col-md-offset-2" style="margin-left: 20%; ">
@@ -91,11 +92,11 @@
                         <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
                             <label for="avatar" class="col-md-4 control-label">Choose your Avatar</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
 
-                                <label><input id="avatar" type="radio" value="1" name="avatar" checked> <img src="{{asset('assets/avatar1.png')}}" width="100" height="100" > </label>
-                                <label><input id="avatar" type="radio" value="2" name="avatar"> <img src="{{asset('assets/avatar2.png')}}" width="100" height="100" > </label>
-                                <label><input id="avatar" type="radio" value="3" name="avatar"> <img src="{{asset('assets/avatar3.png')}}" width="100" height="100" > </label>
+                                <label style="margin-right: 20px"><input id="avatar" type="radio" value="1" name="avatar" checked> <img src="{{asset('assets/avatar1.png')}}" width="100" height="100" > </label>
+                                <label style="margin-right: 20px"><input id="avatar" type="radio" value="2" name="avatar"> <img src="{{asset('assets/avatar2.png')}}" width="100" height="100" > </label>
+                                <label style="margin-right: 20px"><input id="avatar" type="radio" value="3" name="avatar"> <img src="{{asset('assets/avatar3.png')}}" width="100" height="100" > </label>
 
 
                                 @if ($errors->has('avatar'))
