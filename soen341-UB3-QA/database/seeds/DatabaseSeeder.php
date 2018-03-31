@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'user1',
             'email' => 'user1@gmail.com',
             'password' => bcrypt('user1'),
+            'avatar' => 1,
             'created_at' => '2018-02-10 12:00:00',
             'updated_at' => '2018-02-10 12:00:00'
         ]);
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'user2',
             'email' => 'user2@gmail.com',
             'password' => bcrypt('user2'),
+            'avatar' => 3,
             'created_at' => '2018-02-10 13:00:00',
             'updated_at' => '2018-02-10 13:00:00'
         ]);
